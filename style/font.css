@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'JetBrains Mono';
+  src:
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.eot') format('embedded-opentype'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff') format('woff'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --base-font-size: 1rem;
+  --font-size-xs: calc(base-font-size * 0.5);
+  --font-size-s: calc(base-font-size * 0.7);
+  --font-size-m: calc(base-font-size);
+  --font-size-l: calc(base-font-size * 2);
+  --font-size-xl: calc(base-font-size * 3);
+  --font-weight-bold: bold;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 500;
+  --line-height: 1.4;
+  
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height);
+  text-rendering: optimizeSpeed;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
