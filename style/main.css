@@ -1,7 +1,7 @@
 @import './colors.css';
 @import './font.css';
 
-* {
+*, ::after, ::before {
   box-sizing: border-box;
   margin: 0;
 }

@@ -1,0 +1,1 @@
+export const GDSC_CLUB_ROOT_URL = 'https://gdsc.community.dev/lodz-university-of-technology/';

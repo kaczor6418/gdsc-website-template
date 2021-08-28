@@ -1,3 +1,5 @@
+import { getPastEvents, getUpcommingEvents } from "./gdscEvents.js";
+
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const root = document.firstElementChild;
 
@@ -11,3 +13,5 @@ toggleThemeButton.addEventListener('click', () => {
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
   root.setAttribute('color-scheme', newTheme);
 });
+getPastEvents().then(res => console.log(res));
+getUpcommingEvents().then(res => console.log(res));
