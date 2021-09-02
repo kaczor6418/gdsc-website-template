@@ -1,5 +1,8 @@
 @import './colors.css';
 @import './font.css';
+@import './shadow.css';
+@import './timing.functions.css';
+@import './transition.duration.css';
 
 *, ::after, ::before {
   box-sizing: border-box;

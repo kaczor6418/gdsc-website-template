@@ -1,0 +1,9 @@
+:root {
+  --shadow-top: 0 -0.07rem 0.3rem;
+  --shadow-right: 0.07rem 0 0.3rem;
+  --shadow-bottom: 0 0.07rem 0.3rem;
+  --shadow-left: -0.07rem 0 0.3rem;
+  --shadow-around-level-0: 0 0 0.2rem;
+  --shadow-around-level-1: 0 0 0.5rem;
+  --shadow-around-level-2: 0 0 1rem;
+}

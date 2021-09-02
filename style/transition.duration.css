@@ -1,0 +1,7 @@
+:root {
+  --super-fast-duration: calc(250ms * 0.25);
+  --fast-duration: calc(250ms * 0.5);
+  --default-duration: calc(250ms);
+  --long-duration: calc(250ms * 2);
+  --super-long-duration: calc(250ms * 3);
+}

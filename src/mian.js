@@ -1,6 +1,8 @@
+import { Header } from './components/heaedr/Header.js';
 import { getPastEvents, getUpcommingEvents } from "./gdscEvents.js";
 
 const toggleThemeButton = document.querySelector('#toggle-theme');
+const appHeader = document.querySelector('kk-header');
 const root = document.firstElementChild;
 
 window.onload = () => {
@@ -15,3 +17,31 @@ toggleThemeButton.addEventListener('click', () => {
 });
 getPastEvents().then(res => console.log(res));
 getUpcommingEvents().then(res => console.log(res));
+
+appHeader.setTitleAndLogo('GDSC - LODZ', 'logo');
+
+appHeader.addNavigation({
+  tabs: [
+    {
+      name: 'Events',
+      changeTabCallback: () => console.log('Move to events'),
+      disabled: false
+    },
+    {
+      name: 'Contact',
+      changeTabCallback: () => console.log('Move to contacts'),
+      disabled: false
+    },
+    {
+      name: 'Teams',
+      changeTabCallback: () => console.log('Move to teams'),
+      disabled: false
+    },
+    {
+      name: 'Projects',
+      changeTabCallback: () => console.log('Move to projects'),
+      disabled: false
+    }
+  ],
+  activeTab: 'Tab 1'
+});

@@ -26,3 +26,23 @@ export async function loadWholeStream(stream) {
   }
   return content;
 }
+
+export function rippleEffect(element, e) {
+  const ripple = document.createElement('span');
+  const styleWrapper = document.createElement('style');
+  const { left, top, width, height } = element.getBoundingClientRect();
+  styleWrapper.innerHTML = styles;
+  ripple.appendChild(styleWrapper);
+  ripple.className = 'ripple';
+  if (e.offsetX === 0 && e.clientY === 0) {
+    ripple.style.left = `${width / 2}px`;
+    ripple.style.top = `${height / 2}px`;
+  } else {
+    ripple.style.left = `${e.clientX - left}px`;
+    ripple.style.top = `${e.clientY - top}px`;
+  }
+  element.appendChild(ripple);
+  window.setTimeout(() => {
+    ripple.remove();
+  }, CONSTANTS.TRANSITION_DURATION_LONG);
+}

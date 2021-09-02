@@ -1,0 +1,7 @@
+:root {
+  --spacing-xs: calc(0.625rem * 0.1);
+  --spacing-s: calc(0.625rem * 0.5);
+  --spacing-m: calc(0.625rem);
+  --spacing-l: calc(0.625rem * 1.5);
+  --spacing-xl: calc(0.625rem * 2);
+}
