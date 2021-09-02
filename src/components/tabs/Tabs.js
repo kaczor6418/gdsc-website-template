@@ -59,6 +59,7 @@ export class Tabs extends KKWebComponent {
 
   appendTab(tab) {
     const li = document.createElement('li');
+    li.setAttribute('role', 'tab');
     li.appendChild(tab);
     this.tabsWrapper.appendChild(li);
   }

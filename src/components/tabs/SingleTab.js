@@ -2,7 +2,7 @@ import { KKWebComponent } from '../KKWebComponent.js';
 import { rippleEffect } from '../../rippleEffect.js';
 
 const template = `
-<button class="tab" tabindex="0" aria-selected="false">
+<button role="tab" class="tab" tabindex="0" aria-selected="false">
   <span class="content" data-content=""></span>
 </button>
 `;
