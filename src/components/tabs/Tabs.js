@@ -1,3 +1,4 @@
+import { style } from './Tabs.style.js'
 import { KKWebComponent } from '../KKWebComponent.js';
 import { SingleTab } from './SingleTab.js';
 import { TabIndicator } from './TabIndicator.js';
@@ -16,7 +17,7 @@ export class Tabs extends KKWebComponent {
   tabNameTab = new Map();
 
   constructor() {
-    super(template, import('./Tabs.style.js'));
+    super(template, style);
     this.tabIndicator = new TabIndicator({ width: 0 });
     this.tabsWrapper.appendChild(this.tabIndicator);
   }

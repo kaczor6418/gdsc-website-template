@@ -18,7 +18,7 @@ toggleThemeButton.addEventListener('click', () => {
 getPastEvents().then(res => console.log(res));
 getUpcommingEvents().then(res => console.log(res));
 
-appHeader.setTitleAndLogo('GDSC - LODZ', 'logo');
+void appHeader.setTitleAndLogo('GDSC - LODZ', 'logo');
 
 appHeader.addNavigation({
   tabs: [

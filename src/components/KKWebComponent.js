@@ -8,10 +8,9 @@ export class KKWebComponent extends HTMLElement {
     console.log('constructor');
   }
 
-  async injectStyles(styles) {
-    const rawStyles = await styles;
+  injectStyles(styles) {
     const styleWrapper = document.createElement('style');
-    styleWrapper.innerHTML = rawStyles.style;
+    styleWrapper.innerHTML = styles;
     this.shadowRoot.appendChild(styleWrapper);
     console.log('Inject styles');
   }

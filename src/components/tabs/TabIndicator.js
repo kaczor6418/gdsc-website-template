@@ -1,3 +1,4 @@
+import {style} from './TabIndicator.style.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 
 
@@ -14,7 +15,7 @@ export class TabIndicator extends KKWebComponent {
   index;
 
   constructor({ width }) {
-    super(template, import('./TabIndicator.style.js'));
+    super(template, style);
     this.index = 0;
     this.width = width;
     this.indicator.style.width = `${width}%`;

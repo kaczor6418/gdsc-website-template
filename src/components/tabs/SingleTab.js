@@ -1,3 +1,4 @@
+import {style} from './SingleTab.style.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { rippleEffect } from '../../rippleEffect.js';
 
@@ -17,7 +18,7 @@ export class SingleTab extends KKWebComponent {
   _name;
 
   constructor({ changeTabCallback, name }, index) {
-    super(template, import('./SingleTab.style.js'));
+    super(template, style);
     this._name = name;
     this._index = index;
     this.changeTabCallback = changeTabCallback;

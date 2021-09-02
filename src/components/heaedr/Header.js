@@ -1,3 +1,4 @@
+import {style} from './Header.style.js';
 import { Icon } from "../icon/Icon.js";
 import { KKWebComponent } from "../KKWebComponent.js";
 import { Tabs } from "../tabs/Tabs.js";
@@ -21,7 +22,7 @@ export class Header extends KKWebComponent {
   icon = this.shadowRoot.querySelector(Icon.TAG);
 
   constructor() {
-    super(template, import('./Header.style.js'));
+    super(template, style);
   }
 
   addNavigation(props) {
@@ -39,9 +40,9 @@ export class Header extends KKWebComponent {
     }
   }
 
-  setTitleAndLogo(title, iconId) {
+  async setTitleAndLogo(title, iconId) {
     this.headerTitle.textContent = title;
-    this.icon.setIcon(iconId);
+    await this.icon.setIcon(iconId);
   }
 }
 

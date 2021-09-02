@@ -1,3 +1,4 @@
+import { style } from "./Icon.style.js";
 import { loadWholeStream } from "../../utils.js";
 import { KKWebComponent } from "../KKWebComponent.js";
 
@@ -11,7 +12,7 @@ export class Icon extends KKWebComponent {
   size;
 
   constructor() {
-    super(template, import('./Icon.style.js'));
+    super(template, style);
     this.size = 64;
   }
 
