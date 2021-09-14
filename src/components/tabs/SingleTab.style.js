@@ -10,7 +10,7 @@ button {
 }
 
 .tab {
-  background-color: var(--color-primary);
+  background-color: var(--surface1);
   font-size: var(--font-size-l);
   font-weight: var(--font-weight-semibold);
   position: relative;
@@ -32,7 +32,7 @@ button {
 }
 .tab[aria-selected=true] {
   position: relative;
-  background-color: var(--color-accent-2);
+  background-color: var(--surface2);
 }
 .tab[aria-selected=true]::before {
   content: "";
@@ -43,7 +43,7 @@ button {
   left: 0;
   opacity: 20%;
   background-color: inherit;
-  background-image: linear-gradient(transparent 40%, rgba(var(--color-accent-1-rgb), 50%) 80%);
+  background-image: linear-gradient(transparent 40%, rgba(51,153,119, .5) 80%);
   background-size: 100% 10%;
   filter: brightness(120%);
   animation: scroll-vhs 6s linear infinite;
@@ -55,7 +55,7 @@ button {
 }
 .tab[aria-selected=true] .content::after, .tab[aria-selected=true] .content::before {
   content: attr(data-content);
-  color: var(--color-text);
+  color: var(--text1);
   width: inherit;
   height: inherit;
   position: absolute;
@@ -71,7 +71,7 @@ button {
   animation: glitch-noise-after 2s infinite linear alternate-reverse, glitch-color var(--super-long-duration) infinite;
 }
 .tab--active {
-  color: var(--color-accent-1);
+  color: var(--brand);
 }
 .tab--disabled {
   opacity: 40%;

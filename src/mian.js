@@ -43,5 +43,5 @@ appHeader.addNavigation({
       disabled: false
     }
   ],
-  activeTab: 'Tab 1'
+  activeTab: 'Events'
 });

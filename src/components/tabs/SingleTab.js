@@ -1,6 +1,7 @@
-import {style} from './SingleTab.style.js';
+import { style } from './SingleTab.style.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { rippleEffect } from '../../rippleEffect.js';
+import { SelectService } from '../../SelectionService.js';
 
 const template = `
 <button role="tab" class="tab" tabindex="0" aria-selected="false">
@@ -22,6 +23,7 @@ export class SingleTab extends KKWebComponent {
     this._name = name;
     this._index = index;
     this.changeTabCallback = changeTabCallback;
+    this.selectionService = new SelectService(this.tab);
     this.setTabContent();
   }
 
