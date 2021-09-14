@@ -1,7 +1,7 @@
 import { style } from './SingleTab.style.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { rippleEffect } from '../../rippleEffect.js';
-import { SelectService } from '../../SelectionService.js';
+import { SelectService } from '../../services/SelectionService.js';
 
 const template = `
 <button role="tab" class="tab" tabindex="0" aria-selected="false">

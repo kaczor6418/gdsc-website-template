@@ -1,5 +1,5 @@
 import { style } from "./Icon.style.js";
-import { loadWholeStream } from "../../utils.js";
+import { loadWholeStreamAsString } from "../../utils.js";
 import { KKWebComponent } from "../KKWebComponent.js";
 
 const template = ``;
@@ -35,7 +35,7 @@ export class Icon extends KKWebComponent {
       this.shadowRoot.removeChild(this.icon);
     }
     const iconResponse = await fetch(`./assets/icons/${iconId}.svg`, {cache: "force-cache"});
-    const rawIcon = (await loadWholeStream(iconResponse.body)).join('');
+    const rawIcon = (await loadWholeStreamAsString(iconResponse.body));
     this.icon = new DOMParser().parseFromString(rawIcon, 'image/svg+xml').firstElementChild;
     this.shadowRoot.appendChild(this.icon);
     this.setSize(this.size);

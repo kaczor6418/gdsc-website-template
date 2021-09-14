@@ -1,5 +1,5 @@
 import { Header } from './components/heaedr/Header.js';
-import { getPastEvents, getUpcommingEvents } from "./gdscEvents.js";
+import { GDSCDataService } from "./services/GDSCEvents.js";
 
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const appHeader = document.querySelector('kk-header');
@@ -15,8 +15,11 @@ toggleThemeButton.addEventListener('click', () => {
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
   root.setAttribute('color-scheme', newTheme);
 });
-getPastEvents().then(res => console.log(res));
-getUpcommingEvents().then(res => console.log(res));
+const gdsData = new GDSCDataService();
+gdsData.initializeData().then(() => {
+  console.log(gdsData.getPastEvents());
+  console.log(gdsData.getUpcommingEvents());
+});
 
 void appHeader.setTitleAndLogo('GDSC - LODZ', 'logo');
 
