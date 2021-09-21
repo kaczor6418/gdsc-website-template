@@ -1,4 +1,4 @@
-import {style} from './Header.style.js';
+import { style } from './Header.style.js';
 import { Icon } from "../icon/Icon.js";
 import { KKWebComponent } from "../KKWebComponent.js";
 import { Tabs } from "../tabs/Tabs.js";

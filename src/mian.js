@@ -1,8 +1,10 @@
 import { Header } from './components/heaedr/Header.js';
+import { Footer } from './components/footer/Footer.js';
 import { GDSCDataService } from "./services/GDSCEvents.js";
 
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const appHeader = document.querySelector('kk-header');
+const appFooter = document.querySelector('kk-footer');
 const root = document.firstElementChild;
 
 window.onload = () => {
@@ -10,11 +12,11 @@ window.onload = () => {
   root.setAttribute('color-scheme', savedTheme ?? 'dark');
 };
 
-toggleThemeButton.addEventListener('click', () => {
-  const currentTheme = root.getAttribute('color-scheme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  root.setAttribute('color-scheme', newTheme);
-});
+// toggleThemeButton.addEventListener('click', () => {
+//   const currentTheme = root.getAttribute('color-scheme');
+//   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+//   root.setAttribute('color-scheme', newTheme);
+// });
 const gdsData = new GDSCDataService();
 gdsData.initializeData().then(() => {
   console.log(gdsData.getPastEvents());
@@ -22,7 +24,6 @@ gdsData.initializeData().then(() => {
 });
 
 void appHeader.setTitleAndLogo('GDSC - LODZ', 'logo');
-
 appHeader.addNavigation({
   tabs: [
     {
@@ -47,4 +48,10 @@ appHeader.addNavigation({
     }
   ],
   activeTab: 'Events'
+});
+
+appFooter.setCopyright({
+  date: '2021',
+  author: 'Krzysztof Kaczyński',
+  termsReferenceUrl: 'https://github.com/GDSC-Lodz-University-of-Technology/gdsc-tul-website/blob/master/LICENSE'
 });
