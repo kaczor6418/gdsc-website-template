@@ -1,10 +1,11 @@
 
 import { style } from './Footer.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
-import { Icon } from '../icon/Icon.js';
+import { SocialMedia } from '../socialMedia/SocialMedia.js';
 
 const template = `
 <footer>
+  <${SocialMedia.TAG}></${SocialMedia.TAG}>
 </footer>
 `;
 
@@ -12,9 +13,14 @@ export class Footer extends KKWebComponent {
   static TAG = `kk-footer`;
 
   footer = this.shadowRoot.querySelector('footer');
+  socialMedia = this.shadowRoot.querySelector(SocialMedia.TAG);
 
   constructor() {
     super(template, style);
+  }
+
+  addSocialMediaIcons(icons) {
+    this.socialMedia.setSocialMediaIcons(icons);
   }
 
   setCopyright({ date, author, termsReferenceUrl }) {

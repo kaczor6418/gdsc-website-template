@@ -4,11 +4,19 @@ export class SelectService {
 
   constructor(interactiveElement, disabled = false) {
     this.interactiveElement = interactiveElement;
-    this.addNeededAttributes();
-    this.setListeners();
+    if(this.interactiveElement !== undefined) {
+      this.addNeededAttributes();
+      this.setListeners();
+    }
     if (disabled) {
       this.disable();
     }
+  }
+
+  changeInteractiveElement(newElement) {
+    this.interactiveElement = newElement;
+    this.addNeededAttributes();
+    this.setListeners();
   }
 
   disable() {

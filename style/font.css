@@ -11,12 +11,12 @@
 }
 
 :root {
-  --base-font-size: 1rem;
-  --font-size-xs: calc(base-font-size * 0.5);
-  --font-size-s: calc(base-font-size * 0.7);
-  --font-size-m: calc(base-font-size);
-  --font-size-l: calc(base-font-size * 2);
-  --font-size-xl: calc(base-font-size * 3);
+  --base-font-size: 1.5rem;
+  --font-size-xs: 0.5rem;
+  --font-size-s: 0.7rem;
+  --font-size-m: 1rem;
+  --font-size-l: 2rem;
+  --font-size-xl: 3rem;
   --font-weight-bold: bold;
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -24,7 +24,7 @@
   --line-height: 1.4;
   
   font-family: 'JetBrains Mono', monospace;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-m);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height);
   text-rendering: optimizeSpeed;

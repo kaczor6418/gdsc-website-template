@@ -2,7 +2,7 @@
   /* brand foundation */
   --brand-hue: 160;
   --brand-saturation: 100%;
-  --brand-lightness: 60%;
+  --brand-lightness: 70%;
 
   /* light */
   --brand-light: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));

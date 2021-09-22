@@ -11,8 +11,8 @@ button {
 
 .tab {
   background-color: var(--surface1);
-  font-size: var(--font-size-l);
   font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-m);
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
