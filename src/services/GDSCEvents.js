@@ -1,33 +1,37 @@
-import { GDSC_CLUB_ROOT_URL } from '../constants.js';
 import { loadWholeStreamAsString } from '../utils.js';
 
 export class GDSCDataService {
-  #gdscData;
+  gdscData;
+  gdscClubUrl;
+
+  constructor(gdscClubUrl) {
+    this.gdscClubUrl = gdscClubUrl;
+  }
 
   async initializeData() {
-    const response = await fetch(GDSC_CLUB_ROOT_URL, {
+    const response = await fetch(this.gdscClubUrl, {
       headers: { 'Content-Type': 'text/html; charset=utf-8' }
     }).then(response => response.body).then(body => loadWholeStreamAsString(body));
-    this.#gdscData = new DOMParser().parseFromString(response, 'text/html');
+    this.gdscData = new DOMParser().parseFromString(response, 'text/html');
   }
 
   getPastEvents() {
-    const pastEvents = this.#gdscData?.querySelector('#past-events');
+    const pastEvents = this.gdscData?.querySelector('#past-events');
     if (pastEvents === null) {
       return [];
     }
-    return this.#htmlPastEventsToArrayOfEvents(pastEvents);
+    return this.htmlPastEventsToArrayOfEvents(pastEvents);
   }
 
   getUpcommingEvents() {
-    const upcomingEvents = this.#gdscData?.querySelector('#upcoming-events');
+    const upcomingEvents = this.gdscData?.querySelector('#upcoming-events');
     if (upcomingEvents.querySelector('strong').textContent.includes('There are no upcoming events')) {
       return [];
     }
-    return this.#htmlUpcomingEventsToArrayOfEvents(upcomingEvents);
+    return this.htmlUpcomingEventsToArrayOfEvents(upcomingEvents);
   }
 
-  #htmlPastEventsToArrayOfEvents(htmlEvents) {
+  htmlPastEventsToArrayOfEvents(htmlEvents) {
     const eventsTitles = [];
     const eventsUrls = [];
     for (const event of Array.from(htmlEvents.querySelectorAll('a'))) {
@@ -50,7 +54,7 @@ export class GDSCDataService {
     return parsedEvents;
   }
 
-  #htmlUpcomingEventsToArrayOfEvents(htmlEvents) {
+  htmlUpcomingEventsToArrayOfEvents(htmlEvents) {
     const eventsTitles = Array.from(htmlEvents.querySelectorAll('h4')).map(title => title.textContent);
     const eventsImagesUrls = Array.from(htmlEvents.querySelectorAll('img')).map(image => image.src);
     const eventsDates = Array.from(htmlEvents.querySelectorAll('strong')).map(date => date.textContent);

@@ -1,1 +1,0 @@
-export const GDSC_CLUB_ROOT_URL = 'https://gdsc.community.dev/london-school-of-economics-and-political-science/';

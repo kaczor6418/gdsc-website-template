@@ -1,6 +1,7 @@
 import { Header } from './components/heaedr/Header.js';
 import { Footer } from './components/footer/Footer.js';
 import { GDSCDataService } from "./services/GDSCEvents.js";
+import { config } from '../config.js';
 
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const appHeader = document.querySelector('kk-header');
@@ -17,8 +18,8 @@ window.onload = () => {
 //   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 //   root.setAttribute('color-scheme', newTheme);
 // });
-const gdsData = new GDSCDataService();
-gdsData.initializeData().then(() => {
+const gdsData = new GDSCDataService(config.gdscClubRootUrl);
+void gdsData.initializeData().then(() => {
   console.log(gdsData.getPastEvents());
   console.log(gdsData.getUpcommingEvents());
 });
@@ -50,11 +51,7 @@ appHeader.addNavigation({
   activeTab: 'Events'
 });
 
-appFooter.addSocialMediaIcons([
-  {iconId: 'facebook', url: 'https://www.facebook.com/GDSC-%C5%81%C3%B3d%C5%BA-110179034737749'},
-  {iconId: 'twitter', url: 'https://twitter.com/GdscLodz'},
-  {iconId: 'github', url: 'https://github.com/GDSC-Lodz-University-of-Technology'}
-]);
+appFooter.addSocialMediaIcons(config.socialMedia);
 appFooter.setCopyright({
   date: '2021',
   author: 'Krzysztof Kaczyński',
