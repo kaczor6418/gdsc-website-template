@@ -36,7 +36,7 @@ export class GDSCDataService {
     const eventsUrls = [];
     for (const event of Array.from(htmlEvents.querySelectorAll('a'))) {
       eventsTitles.push(event.title);
-      eventsUrls.push(event.href.replace(window.location.href, 'https://gdsc.community.dev/'));
+      eventsUrls.push(event.href.replace(window.location.host, 'gdsc.community.dev'));
     }
     const eventsImagesUrls = Array.from(htmlEvents.querySelectorAll('img')).map(image => image.src);
     const eventsDates = Array.from(htmlEvents.querySelectorAll('.vertical-box--event-date')).map(date => date.textContent.trim());
