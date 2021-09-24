@@ -59,7 +59,7 @@ export class GDSCDataService {
     const eventsImagesUrls = Array.from(htmlEvents.querySelectorAll('img')).map(image => image.src);
     const eventsDates = Array.from(htmlEvents.querySelectorAll('strong')).map(date => date.textContent);
     const eventsTypes = Array.from(htmlEvents.querySelectorAll('span')).map(type => type.textContent);
-    const eventsUrls = Array.from(htmlEvents.querySelectorAll('a')).map(eventUrl => eventUrl.href.replace(window.location.href, 'https://gdsc.community.dev/'));
+    const eventsUrls = Array.from(htmlEvents.querySelectorAll('a')).map(eventUrl => eventUrl.href.replace(window.location.host, 'gdsc.community.dev'));
     const eventsTags = Array.from(htmlEvents.querySelectorAll('div[data-tags]')).map(tags => tags.getAttribute('data-tags').split(' / '));
     const eventsDescriptions = Array.from(htmlEvents.querySelectorAll('p')).map(description => description.textContent);
     const parsedEvents = [];
