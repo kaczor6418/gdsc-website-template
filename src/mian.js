@@ -1,5 +1,6 @@
 import { Header } from './components/heaedr/Header.js';
 import { Footer } from './components/footer/Footer.js';
+import { Body } from './components/body/Body.js';
 import { GDSCDataService } from "./services/GDSCEvents.js";
 import { config } from '../config.js';
 import { SingleEvent } from './components/singleEvent/SingleEvent.js';
@@ -19,20 +20,6 @@ window.onload = () => {
 //   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 //   root.setAttribute('color-scheme', newTheme);
 // });
-const gdsData = new GDSCDataService(config.gdscClubRootUrl);
-void gdsData.initializeData().then(() => {
-  console.log(gdsData.getPastEvents());
-  const upcommingEvents = gdsData.getUpcommingEvents();
-  for(const event of upcommingEvents) {
-    document.body.append(new SingleEvent({
-      'kk-url': event.url,
-      'kk-picture': event.imageUrl,
-      'kk-title': event.title,
-      'kk-date': event.date,
-      'kk-description': event.description
-    }));
-  }
-});
 
 void appHeader.setTitleAndLogo('GDSC - LODZ', 'logo');
 appHeader.addNavigation({

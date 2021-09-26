@@ -3,6 +3,7 @@ export const config = {
   socialMedia: [
     { iconId: 'facebook', url: 'https://www.facebook.com/GDSC-%C5%81%C3%B3d%C5%BA-110179034737749' },
     { iconId: 'twitter', url: 'https://twitter.com/GdscLodz' },
-    { iconId: 'github', url: 'https://github.com/GDSC-Lodz-University-of-Technology' }
+    { iconId: 'github', url: 'https://github.com/GDSC-Lodz-University-of-Technology' },
+    { iconId: 'gdsc', url: 'https://gdsc.community.dev/lodz-university-of-technology/' }
   ]
 }
