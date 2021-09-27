@@ -1,25 +1,10 @@
 import { Header } from './components/heaedr/Header.js';
 import { Footer } from './components/footer/Footer.js';
 import { Body } from './components/body/Body.js';
-import { GDSCDataService } from "./services/GDSCEvents.js";
 import { config } from '../config.js';
-import { SingleEvent } from './components/singleEvent/SingleEvent.js';
 
-const toggleThemeButton = document.querySelector('#toggle-theme');
 const appHeader = document.querySelector('kk-header');
 const appFooter = document.querySelector('kk-footer');
-const root = document.firstElementChild;
-
-window.onload = () => {
-  const savedTheme = localStorage.getItem('THEME');
-  root.setAttribute('color-scheme', savedTheme ?? 'dark');
-};
-
-// toggleThemeButton.addEventListener('click', () => {
-//   const currentTheme = root.getAttribute('color-scheme');
-//   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-//   root.setAttribute('color-scheme', newTheme);
-// });
 
 void appHeader.setTitleAndLogo('GDSC - LODZ', 'logo');
 appHeader.addNavigation({

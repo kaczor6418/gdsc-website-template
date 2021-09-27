@@ -1,4 +1,3 @@
-
 import { style } from './Events.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { SingleEvent } from '../singleEvent/SingleEvent.js';
@@ -6,11 +5,11 @@ import { SingleEvent } from '../singleEvent/SingleEvent.js';
 const template = `
   <section>
     <details class="upcomming-events-wrapper" open>
-      <summary>Upcomming Events</summary>
+      <summary><h2>Upcomming Events</h2></summary>
       <ul></ul>
     </details>
     <details class="past-events-wrapper">
-      <summary>Past events</summary>
+      <summary><h2>Past events</h2></summary>
       <ul></ul>
     </details>
   </section>

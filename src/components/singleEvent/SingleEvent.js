@@ -9,7 +9,7 @@ const template = `
     <img class="picture" loading=lazy src="#" alt="Event picture miniature">
     <div class="content">
       <div class="header">
-        <h2 class="title"></h2>
+        <h3 class="title"></h3>
         <span class="date"></span>
       </div>
       <p class="description"></p>

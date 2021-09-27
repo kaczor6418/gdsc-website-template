@@ -8,7 +8,7 @@ header {
   filter: drop-shadow(var(--shadow-bottom) #000000);
 }
 header section {
-  padding: var(--spacing-l);
+  padding: var(--spacing-s);
 }
 header section .logo-title {
   display: flex;
