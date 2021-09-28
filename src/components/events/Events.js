@@ -1,6 +1,6 @@
 import { style } from './Events.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
-import { SingleEvent } from '../singleEvent/SingleEvent.js';
+import { UpcommingEvent } from './UpcommingEvent.js';
 
 const template = `
   <section>
@@ -34,7 +34,7 @@ export class Events extends KKWebComponent {
     const allEvents = document.createDocumentFragment();
     for (const event of events) {
       const eventWrapper = document.createElement('li');
-      eventWrapper.append(new SingleEvent({
+      eventWrapper.append(new UpcommingEvent({
         'kk-url': event.url,
         'kk-picture': event.imageUrl,
         'kk-title': event.title,

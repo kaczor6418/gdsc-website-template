@@ -1,4 +1,3 @@
-
 import { style } from './Body.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { GDSCDataService } from '../../services/GDSCEvents.js';

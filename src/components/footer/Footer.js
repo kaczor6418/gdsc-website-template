@@ -1,4 +1,3 @@
-
 import { style } from './Footer.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { SocialMedia } from '../socialMedia/SocialMedia.js';

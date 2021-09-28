@@ -1,7 +1,6 @@
 import {style} from './TabIndicator.style.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 
-
 const template = `
   <span class="indicator"></span>
 `;
