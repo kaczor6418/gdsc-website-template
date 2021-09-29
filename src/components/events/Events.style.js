@@ -26,15 +26,16 @@ ul {
   padding: 0 var(--spacing-l) 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  justify-items: center;
 }
 li {
   padding: var(--spacing-l);
 }
 @media (min-width: 760px) {
   ul {
-    justify-content: space-around;
+    justify-content: flex-start;
   }
 }
 `;

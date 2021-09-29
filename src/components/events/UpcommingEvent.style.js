@@ -55,15 +55,12 @@ a {
 }
 @media (min-width: 760px) {
   .content {
-    min-height: 17.2rem;
+    min-height: 18.8rem;
   }
 }
 @media (min-width: 1300px) {
   .wrapper {
     width: 22rem;
-  }
-  .content {
-    min-height: 18.6rem;
   }
   .description {
     -webkit-line-clamp: 8;
