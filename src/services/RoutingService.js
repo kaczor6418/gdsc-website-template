@@ -1,8 +1,9 @@
 export class RoutingService {
-  config;
+  routes;
+  currentRoute;
 
-  constructor(config) {
-    this.config = config;
+  constructor(routes) {
+    this.routes = routes;
     this.listenOnRoutChanges();
   }
 
@@ -10,5 +11,10 @@ export class RoutingService {
     document.addEventListener('DOMContentLoaded', () => {
       debugger;
     });
+  }
+
+  setPath(path) {
+    this.currentRoute = path;
+    const componentToRender = this.routes[path];
   }
 }
