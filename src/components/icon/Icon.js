@@ -38,7 +38,7 @@ export class Icon extends KKWebComponent {
     if (this.hasChildNodes() && this.icon != null) {
       this.shadowRoot.removeChild(this.icon.interactiveElement);
     }
-    const iconResponse = await fetch(`./assets/icons/${iconId}.svg`, {cache: "force-cache"});
+    const iconResponse = await fetch(`./assets/icons/${iconId}.svg`, {cache: 'force-cache'});
     const rawIcon = (await loadWholeStreamAsString(iconResponse.body));
     this.icon.changeInteractiveElement(new DOMParser().parseFromString(rawIcon, 'image/svg+xml').firstElementChild);
     this.shadowRoot.appendChild(this.icon.interactiveElement);

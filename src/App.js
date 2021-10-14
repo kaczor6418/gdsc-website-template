@@ -2,7 +2,6 @@ import { Body } from "./components/body/Body.js";
 import { Header } from "./components/heaedr/Header.js";
 import { Footer } from "./components/footer/Footer.js";
 import { KKWebComponent } from "./components/KKWebComponent.js";
-import { config } from "../config.js";
 
 const style = `
 :host {
@@ -31,11 +30,13 @@ export class App extends KKWebComponent {
 
   constructor() {
     super(template, style);
-    this.initializeApp();
+    void this.initializeApp();
   }
 
-  initializeApp() {
-    void this.header.setTitleAndLogo('GDSC - LODZ', 'logo');
+  async initializeApp() {
+    await this.header.setTitleAndLogo('GDSC - LODZ', 'logo');
+    const config = await fetch('./assets/configs/config.json', {cache: 'force-cache'});
+    const {gdscClubRootUrl, socialMedia} = await config.json();
     this.header.addNavigation({
       tabs: [
         {
@@ -61,8 +62,8 @@ export class App extends KKWebComponent {
       ],
       activeTab: 'Events'
     });
-
-    this.footer.addSocialMediaIcons(config.socialMedia);
+    await this.body.initialize(gdscClubRootUrl)
+    this.footer.addSocialMediaIcons(socialMedia);
     this.footer.setCopyright({
       date: '2021',
       author: 'Krzysztof Kaczyński',

@@ -9,7 +9,7 @@ export class RoutingService {
 
   listenOnRoutChanges() {
     document.addEventListener('DOMContentLoaded', () => {
-      debugger;
+      // debugger;
     });
   }
 
