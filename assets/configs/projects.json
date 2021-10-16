@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Project title",
+    "description": "project description max 500chars",
+    "technologies": ["javascript", "rust"],
+    "demo": "demo.url",
+    "sourceCode": "source.code.url",
+    "creators": [
+      {"name": "name or alias", "github": "GHuRL", "linkedin": "liUrl", "twitter": "twitterUrl"},
+      {"name": "name or alias", "github": "GHuRL", "linkedin": "liUrl", "twitter": "twitterUrl"},
+      {"name": "name or alias", "github": "GHuRL", "linkedin": "liUrl", "twitter": "twitterUrl"}
+    ]
+  }
+]

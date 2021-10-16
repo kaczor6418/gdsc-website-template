@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Team name",
+    "description": "description of what team want to do",
+    "lookingFor": "description of skills of person which want to join team",
+    "technologies": ["javascript", "rust"],
+    "contact": {
+      "discord": "discord.chanel.url",
+      "email": "email2",
+      "messanger": "messangerName",
+      "teegram": "telegram",
+      "phone": 123456789
+    },
+    "members": [
+      {"name": "name or alias", "github": "GHuRL", "linkedin": "liUrl", "twitter": "twitterUrl"},
+    ]
+  }
+]
