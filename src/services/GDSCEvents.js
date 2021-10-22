@@ -3,6 +3,8 @@ import { loadWholeStreamAsString } from '../utils.js';
 export class GDSCDataService {
   gdscData;
   gdscClubUrl;
+  upcommingEvents = null;
+  pastEvents = null;
 
   constructor(gdscClubUrl) {
     this.gdscClubUrl = gdscClubUrl;
@@ -16,19 +18,25 @@ export class GDSCDataService {
   }
 
   getPastEvents() {
-    const pastEvents = this.gdscData?.querySelector('#past-events');
-    if (pastEvents === null) {
+    if (this.pastEvents !== null) {
+      return this.pastEvents;
+    }
+    const rawPastEvents = this.gdscData?.querySelector('#past-events');
+    if (rawPastEvents === null) {
       return [];
     }
-    return this.htmlPastEventsToArrayOfEvents(pastEvents);
+    return this.htmlPastEventsToArrayOfEvents(rawPastEvents);
   }
 
   getUpcommingEvents() {
-    const upcomingEvents = this.gdscData?.querySelector('#upcoming-events');
-    if (upcomingEvents.querySelector('strong').textContent.includes('There are no upcoming events')) {
+    if (this.upcommingEvents !== null) {
+      return this.upcommingEvents;
+    }
+    const rawUpcomingEvents = this.gdscData?.querySelector('#upcoming-events');
+    if (rawUpcomingEvents.querySelector('strong').textContent.includes('There are no upcoming events')) {
       return [];
     }
-    return this.htmlUpcomingEventsToArrayOfEvents(upcomingEvents);
+    return this.htmlUpcomingEventsToArrayOfEvents(rawUpcomingEvents);
   }
 
   htmlPastEventsToArrayOfEvents(htmlEvents) {
