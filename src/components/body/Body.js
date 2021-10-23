@@ -2,9 +2,11 @@ import { style } from './Body.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { GDSCDataService } from '../../services/GDSCEvents.js';
 import { Events } from '../events/Events.js';
+import { Teams } from '../teams/Teams.js';
 
 const template = `
   <main>
+    <${Teams.TAG}></${Teams.TAG}>
     <${Events.TAG}></${Events.TAG}>
   </main>
 `;
