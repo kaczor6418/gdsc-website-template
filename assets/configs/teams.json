@@ -8,11 +8,11 @@
       "discord": "discord.chanel.url",
       "email": "email2",
       "messanger": "messangerName",
-      "teegram": "telegram",
+      "telegram": "telegram",
       "phone": 123456789
     },
     "members": [
-      {"name": "name or alias", "github": "GHuRL", "linkedin": "liUrl", "twitter": "twitterUrl"}
+      {"name": "name or alias", "url": "someUrl"}
     ]
   }
 ]

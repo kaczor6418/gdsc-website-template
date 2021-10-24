@@ -6,9 +6,9 @@
     "demo": "demo.url",
     "sourceCode": "source.code.url",
     "creators": [
-      {"name": "name or alias", "github": "GHuRL", "linkedin": "liUrl", "twitter": "twitterUrl"},
-      {"name": "name or alias", "github": "GHuRL", "linkedin": "liUrl", "twitter": "twitterUrl"},
-      {"name": "name or alias", "github": "GHuRL", "linkedin": "liUrl", "twitter": "twitterUrl"}
+      {"name": "name or alias", "url": "someUrl"},
+      {"name": "name or alias", "url": "someUrl"},
+      {"name": "name or alias", "url": "someUrl"}
     ]
   }
 ]
