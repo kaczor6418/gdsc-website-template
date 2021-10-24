@@ -2,8 +2,8 @@ import { style } from './LabeledAvatar.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 
 const template = `
-<div>
-  <input class="avatar-img" type="image" alt="user avatar" src="./assets/images/avatart.jpg">
+<div class="wrapper">
+  <input class="avatar-img" type="image" alt="user avatar" src="./assets/images/default-avatar.webp">
   <label class="avatar-label"></label>
 </div>
 `;

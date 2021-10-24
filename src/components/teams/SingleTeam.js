@@ -6,16 +6,16 @@ import { Contact } from '../contact/Contact.js';
 const template = `
 <details>
   <summary><h2 class="team-name"></h2></summary>
-  <section class="technologies"></section>
-  <section>
+  <section class="single-section technologies"></section>
+  <section class="single-section">
     <h3>Description:</h3>
-    <p class="description"></p>
+    <p class="section-description description"></p>
   </section>
-  <section>
+  <section class="single-section">
     <h3>Looking for:</h3>
-    <p class="looking-for"></p>
+    <p class="section-description looking-for"></p>
   </section>
-  <section>
+  <section class="single-section team-info">
     <div>
       <h3>Contact:</h3>
       <${Contact.TAG}></${Contact.TAG}>
@@ -49,8 +49,8 @@ export class SingleTeam extends KKWebComponent {
     this.descriptionWrapper.textContent = basic.description;
     this.lookingForWrapper.textContent = basic.lookingFor;
     this.contacts.setContacts(contact);
-    for (const {name, url} of members) {
-      this.membersWrapper.append(new LabeledAvatar(name, url))
+    for (const {name, avatarUrl} of members) {
+      this.membersWrapper.append(new LabeledAvatar(name, avatarUrl))
     }
   }
 }

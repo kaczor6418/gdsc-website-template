@@ -12,7 +12,7 @@
       "phone": 123456789
     },
     "members": [
-      {"name": "name or alias", "url": "someUrl"}
+      {"name": "name or alias", "avatarUrl": "./assets/images/default-avatar.webp", "url": "someUrl"}
     ]
   }
 ]

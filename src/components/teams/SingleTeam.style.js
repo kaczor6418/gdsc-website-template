@@ -18,4 +18,21 @@ h2 {
   display: inline-block;
   padding-left: var(--spacing-s);
 }
+.team-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.members {
+  display: flex;
+  flex-wrap: wrap;
+}
+.kk-labeled-avatar {
+  padding: var(--spacing-m);
+}
+.single-section {
+  padding-left: var(--spacing-xl);
+}
+.section-description {
+  padding-left: var(--spacing-m);
+}
 `;
