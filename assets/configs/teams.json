@@ -6,9 +6,9 @@
     "technologies": ["javascript", "rust"],
     "contact": {
       "discord": "discord.chanel.url",
-      "email": "email2",
       "messanger": "messangerName",
       "telegram": "telegram",
+      "mail": "email2",
       "phone": 123456789
     },
     "members": [

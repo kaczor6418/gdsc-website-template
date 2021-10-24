@@ -8,15 +8,32 @@ const template = ``;
 export class Icon extends KKWebComponent {
   static TAG = `kk-icon`;
   static HIGHLIGHTED_CLASS = 'active';
+  static observedAttributes = ['kk-icon-id', 'kk-icon-size'];
 
-  icon =  new SelectService();
+  icon = new SelectService();
   size;
 
-  constructor(size = 64, iconId) {
+  constructor(iconId, size = 64) {
     super(template, style);
     this.size = size;
     if(iconId !== undefined) {
       void this.setIcon(iconId)
+    }
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) {
+      return void 0;
+    }
+    switch (name) {
+      case 'kk-icon-id':
+        void this.setIcon(newValue);
+        break;
+      case 'kk-icon-size':
+        this.setSize(parseInt(newValue));
+        break;            
+      default:
+        throw new Error(`Attribute ${name} doesn't exist in ${UrlIcon.name} component`);
     }
   }
 

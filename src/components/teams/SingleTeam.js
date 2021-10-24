@@ -1,6 +1,7 @@
 import { style } from './SingleTeam.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar.js';
+import { Contact } from '../contact/Contact.js';
 
 const template = `
 <details>
@@ -17,11 +18,11 @@ const template = `
   <section>
     <div>
       <h3>Contact:</h3>
-      <ul class="contact"></ul>
+      <${Contact.TAG}></${Contact.TAG}>
     </div>      
     <div>
       <h3>Members:</h3>
-      <p class="members"></p>
+      <div class="members"></div>
     </div>
   </section>
 </details>
@@ -34,7 +35,7 @@ export class SingleTeam extends KKWebComponent {
   technologiesWrapper = this.shadowRoot.querySelector('.technologies');
   descriptionWrapper = this.shadowRoot.querySelector('.description');
   lookingForWrapper = this.shadowRoot.querySelector('.looking-for');
-  contactWrapper = this.shadowRoot.querySelector('contact');
+  contacts = this.shadowRoot.querySelector(Contact.TAG);
   membersWrapper = this.shadowRoot.querySelector('.members');
 
   constructor(props) {
@@ -47,7 +48,7 @@ export class SingleTeam extends KKWebComponent {
     this.nameWrapper.textContent = basic.name;
     this.descriptionWrapper.textContent = basic.description;
     this.lookingForWrapper.textContent = basic.lookingFor;
-    //add contact
+    this.contacts.setContacts(contact);
     for (const {name, url} of members) {
       this.membersWrapper.append(new LabeledAvatar(name, url))
     }

@@ -28,7 +28,7 @@ export class SocialMedia extends KKWebComponent {
     const iconWrapper = document.createElement('a');
     iconWrapper.href = url;
     iconWrapper.textContent = iconId;
-    iconWrapper.append(new Icon(32, iconId));
+    iconWrapper.append(new Icon(iconId, 32));
     return iconWrapper;
   }
 }
