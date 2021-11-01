@@ -6,7 +6,6 @@ import { Teams } from '../teams/Teams.js';
 
 const template = `
   <main>
-    <${Teams.TAG}></${Teams.TAG}>
     <${Events.TAG}></${Events.TAG}>
   </main>
 `;
@@ -24,7 +23,8 @@ export class Body extends KKWebComponent {
   async initialize(gdscClubRootUrl) {
     this.gdscService = new GDSCDataService(gdscClubRootUrl);
     await this.gdscService.initializeData();
-    this.eventsWrapper.setEvents(this.gdscService.getUpcommingEvents(), this.gdscService.getPastEvents());
+    this.eventsWrapper.setUpcommingEvents(this.gdscService.getUpcommingEvents());
+    this.eventsWrapper.setPastEvents(this.gdscService.getPastEvents());
   }
 }
 

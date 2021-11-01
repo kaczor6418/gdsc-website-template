@@ -1,0 +1,17 @@
+export const style = `
+:host,
+.info {
+  width: 100%;
+}
+.box {
+  display: flex;
+  padding: var(--spacing-m) 0;
+  border: 0.25rem dashed var(--brand);
+  width: calc(100% - 0.5rem);
+}
+.info {
+  text-align: center;
+  font-size: var(--font-size-l);
+  font-weight: bold;
+}
+`;

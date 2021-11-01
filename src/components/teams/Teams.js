@@ -1,6 +1,7 @@
 import { style } from './Teams.style.js';
 import { SingleTeam } from './SingleTeam.js';
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
+import { InfoBox } from '../infoBox/InfoBox.js';
 
 const template = `
 <section class="teams">
@@ -24,8 +25,13 @@ export class Teams extends KKWebComponent {
   }
 
   renderTeams() {
-    for (const singleTeam of this.teams) {
-      this.teamsWrapper.append(new SingleTeam(singleTeam));
+    if (this.teams.length === 0) {
+      const infoBox = new InfoBox('There are no teams!');
+      this.teamsWrapper.append(infoBox);
+    } else {
+      for (const singleTeam of this.teams) {
+        this.teamsWrapper.append(new SingleTeam(singleTeam));
+      }
     }
   }
 }

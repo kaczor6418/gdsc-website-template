@@ -20,7 +20,7 @@ const template = `
 
 export class UpcommingEvent extends KKWebComponent {
   static TAG = 'kk-upcomming-event';
-  static observedAttributes = ['kk-url', 'kk-picture', 'kk-title', 'kk-date', 'kk-description']
+  static observedAttributes = ['kk-url', 'kk-picture', 'kk-title', 'kk-date', 'kk-description'];
 
   wrapper;
   container = this.shadowRoot.querySelector('a');
