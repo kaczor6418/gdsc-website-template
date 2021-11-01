@@ -16,7 +16,7 @@ export class UrlIcon extends KKWebComponent {
   icon = this.shadowRoot.querySelector(Icon.TAG);
 
   constructor(url, iconProps) {
-    super(template, style);
+    super(template, style, iconProps);
     this.iconWrapper.href = url;
   }
 

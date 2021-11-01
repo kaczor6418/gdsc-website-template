@@ -2,12 +2,13 @@ import { style } from './Events.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { UpcommingEvent } from './UpcommingEvent.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
+import { gdscService } from '../../services/globalServices.js';
 
 const template = `
   <section>
   <div>
   </div>
-    <details class="upcomming-events-wrapper" open>
+    <details class="upcomming-events-wrapper">
       <summary><h2>Upcomming Events</h2></summary>
     </details>
     <details class="past-events-wrapper">
@@ -21,12 +22,27 @@ export class Events extends KKWebComponent {
 
   upcommingEventsWrapper = this.shadowRoot.querySelector('.upcomming-events-wrapper');
   pastEventsWrapper = this.shadowRoot.querySelector('.past-events-wrapper');
+  upcommingEventsRendered = false;
+  pastEventsRendered = false;
 
   constructor() {
     super(template, style);
+    this.initializeListeners();
   }
 
-  setUpcommingEvents(events) {
+  initializeListeners() {
+    const renderUpcommingEvents = () => {
+      void this.setUpcommingEvents().then(() => this.upcommingEventsWrapper.removeEventListener('click', renderUpcommingEvents));
+    }
+    const renderPastEvents = () => {
+      void this.setPastEvents().then(() => this.pastEventsWrapper.removeEventListener('click', renderPastEvents));
+    }
+    this.upcommingEventsWrapper.addEventListener('click', renderUpcommingEvents);
+    this.pastEventsWrapper.addEventListener('click', renderPastEvents);
+  }
+
+  async setUpcommingEvents() {
+    const events = await gdscService.getUpcommingEvents();
     if(events.length === 0) {
       const infoBox = new InfoBox('There are no upcomming events!');
       this.upcommingEventsWrapper.append(infoBox);
@@ -49,7 +65,8 @@ export class Events extends KKWebComponent {
     }
   }
 
-  setPastEvents(events) {
+  async setPastEvents() {
+    const events = await gdscService.getPastEvents();
     if(events.length === 0) {
       const infoBox = new InfoBox('There are no past events!');
       this.pastEventsWrapper.append(infoBox);

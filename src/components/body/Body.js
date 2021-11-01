@@ -1,6 +1,5 @@
 import { style } from './Body.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
-import { GDSCDataService } from '../../services/GDSCEvents.js';
 import { Events } from '../events/Events.js';
 import { Teams } from '../teams/Teams.js';
 
@@ -18,13 +17,6 @@ export class Body extends KKWebComponent {
 
   constructor() {
     super(template, style);
-  }
-
-  async initialize(gdscClubRootUrl) {
-    this.gdscService = new GDSCDataService(gdscClubRootUrl);
-    await this.gdscService.initializeData();
-    this.eventsWrapper.setUpcommingEvents(this.gdscService.getUpcommingEvents());
-    this.eventsWrapper.setPastEvents(this.gdscService.getPastEvents());
   }
 }
 

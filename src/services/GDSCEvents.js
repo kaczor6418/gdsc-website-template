@@ -1,23 +1,30 @@
 import { loadWholeStreamAsString } from '../utils.js';
 
 export class GDSCDataService {
-  gdscData;
-  gdscClubUrl;
+  _gdscClubUrl = null;
+  gdscData = null;
   upcommingEvents = null;
   pastEvents = null;
 
-  constructor(gdscClubUrl) {
-    this.gdscClubUrl = gdscClubUrl;
+  get gdscClubUrl() {
+    return this._gdscClubUrl;
   }
 
-  async initializeData() {
-    const response = await fetch(this.gdscClubUrl, {
+  set gdscClubUrl(url) {
+    this._gdscClubUrl = url;
+  }
+
+  async fetchRawData() {
+    const response = await fetch(this._gdscClubUrl, {
       headers: { 'Content-Type': 'text/html; charset=utf-8' }
     }).then(response => response.body).then(body => loadWholeStreamAsString(body));
     this.gdscData = new DOMParser().parseFromString(response, 'text/html');
   }
 
-  getPastEvents() {
+  async getPastEvents() {
+    if(this.gdscData === null) {
+      await this.fetchRawData();
+    }
     if (this.pastEvents !== null) {
       return this.pastEvents;
     }
@@ -28,7 +35,10 @@ export class GDSCDataService {
     return this.htmlPastEventsToArrayOfEvents(rawPastEvents);
   }
 
-  getUpcommingEvents() {
+  async getUpcommingEvents() {
+    if(this.gdscData === null) {
+      await this.fetchRawData();
+    }
     if (this.upcommingEvents !== null) {
       return this.upcommingEvents;
     }
