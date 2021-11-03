@@ -6,8 +6,6 @@ import { gdscService } from '../../services/globalServices.js';
 
 const template = `
   <section>
-  <div>
-  </div>
     <details class="upcomming-events-wrapper">
       <summary><h2>Upcomming Events</h2></summary>
     </details>

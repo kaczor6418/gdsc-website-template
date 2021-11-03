@@ -2,13 +2,16 @@
   {
     "name": "Project title",
     "description": "project description max 500chars",
-    "technologies": ["javascript", "rust"],
-    "demo": "demo.url",
     "sourceCode": "source.code.url",
+    "technologies": ["javascript", "rust"],
+    "demo": {
+      "url": "some.project.url",
+      "picture": "some.jpg"
+    },
     "creators": [
-      {"name": "name or alias", "url": "someUrl"},
-      {"name": "name or alias", "url": "someUrl"},
-      {"name": "name or alias", "url": "someUrl"}
+      {"name": "name or alias", "avatar": "creator.jpg", "url": "someUrl"},
+      {"name": "name or alias", "avatar": "creator.jpg", "url": "someUrl"},
+      {"name": "name or alias", "avatar": "creator.jpg", "url": "someUrl"}
     ]
   }
 ]

@@ -14,10 +14,10 @@ export class LabeledAvatar extends KKWebComponent {
   labelWrapper = this.shadowRoot.querySelector('.avatar-label');
   imageWrapper = this.shadowRoot.querySelector('.avatar-img');
 
-  constructor(label, url) {
+  constructor(label, photoUrl, userUrl) {
     super(template, style);
     this.label = label;
-    this.avatar = url;
+    this.avatar = photoUrl;
   }
 
   set label(text) {
