@@ -2,10 +2,12 @@ import { style } from './Body.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { Events } from '../events/Events.js';
 import { Teams } from '../teams/Teams.js';
+import { Projects } from '../projects/Projects.js';
 
 const template = `
   <main>
-    <${Events.TAG}></${Events.TAG}>
+    <!-- <${Events.TAG}></${Events.TAG}> -->
+    <${Projects.TAG}></${Projects.TAG}>
   </main>
 `;
 

@@ -7,18 +7,20 @@ const template = `
 <details>
   <summary><h2 class="project__name"></h2></summary>
   <section class="project__technologies"></section>
-  <section class="project__info>
+  <section class="project__info">
     <div class="project__base-informations">
       <p class="project__description"></p>
       <${LabeledUrlIcon.TAG} class="project__repository"></${LabeledUrlIcon.TAG}>
       <ul class="project__creators"></ul>
     </div>
-    <a class="project__application" href="#">
-      <figure>
-        <img class="project__picture" src="#" alt="Elephant at sunset">
-        <figcaption class="project__picture__description"></figcaption>
-      </figure> 
-    </a>
+  </section>
+  <section class="project__demo">
+  <a class="project__application" href="#">
+    <figure>
+      <img class="project__picture" src="#" alt="Elephant at sunset">
+      <figcaption class="project__picture__description"></figcaption>
+    </figure> 
+  </a>
   </section>
 </details>
 `;
@@ -46,7 +48,7 @@ export class SingleProject extends KKWebComponent {
     this.projectTitle.id = name;
     this.projectTitle.textContent = name;
     this.projectDescription.textContent = description;
-    this.projectRepo.setData('github', name, sourceCode);
+    this.projectRepo.setData(name, 'github', sourceCode);
     this.addCreators(creators);
     this.projectDemo.href = demo.url;
     this.projectDemoPicture.src = demo.picture;

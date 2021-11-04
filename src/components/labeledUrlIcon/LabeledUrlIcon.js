@@ -3,7 +3,7 @@ import { KKWebComponent } from "../KKWebComponent.js";
 import { Icon } from '../icon/Icon.js';
 
 const template = `
-<a class="wrapper">
+<a class="wrapper" href="#">
   <${Icon.TAG} class="icon"></${Icon.TAG}>
   <label class="label"></label>
 </a>
@@ -24,8 +24,17 @@ export class LabeledUrlIcon extends KKWebComponent {
     this._label.textContent = text;
   }
 
-  constructor(label, iconId, url) {
+  constructor(props) {
     super(template, style);
+    if(props) {
+      this.setData(props.label, props.iconId, props.url);
+    }
+  }
+
+  setData(label, iconId, url) {
+    this.label = label;
+    this.icon = iconId;
+    this.wrapper.href = url;
   }
   
 }

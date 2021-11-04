@@ -30,10 +30,12 @@ export class Events extends KKWebComponent {
 
   initializeListeners() {
     const renderUpcommingEvents = () => {
-      void this.setUpcommingEvents().then(() => this.upcommingEventsWrapper.removeEventListener('click', renderUpcommingEvents));
+      this.upcommingEventsWrapper.removeEventListener('click', renderUpcommingEvents)
+      void this.setUpcommingEvents();
     }
     const renderPastEvents = () => {
-      void this.setPastEvents().then(() => this.pastEventsWrapper.removeEventListener('click', renderPastEvents));
+      this.pastEventsWrapper.removeEventListener('click', renderPastEvents);
+      void this.setPastEvents();
     }
     this.upcommingEventsWrapper.addEventListener('click', renderUpcommingEvents);
     this.pastEventsWrapper.addEventListener('click', renderPastEvents);

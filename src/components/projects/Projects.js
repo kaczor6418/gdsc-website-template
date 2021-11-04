@@ -20,7 +20,7 @@ export class Projects extends KKWebComponent {
 
   async fetchProjects() {
     const response = await fetch('./assets/configs/projects.json');
-    this.projects = await response.json();
+    return await response.json();
   }
 
   renderProjects(projects) {
