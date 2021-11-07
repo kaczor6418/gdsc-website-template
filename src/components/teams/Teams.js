@@ -29,9 +29,16 @@ export class Teams extends KKWebComponent {
       const infoBox = new InfoBox('There are no teams!');
       this.teamsWrapper.append(infoBox);
     } else {
+      const teamsList = document.createElement('ul');
+      const allTeams = document.createDocumentFragment();
       for (const singleTeam of this.teams) {
-        this.teamsWrapper.append(new SingleTeam(singleTeam));
+        const teamElement = document.createElement('li');
+        teamElement.className = 'team';
+        teamElement.append(new SingleTeam(singleTeam));
+        allTeams.append(teamElement);
       }
+      teamsList.append(allTeams);
+      this.teamsWrapper.append(teamsList);
     }
   }
 }

@@ -31,7 +31,7 @@ h2 {
 }
 .single-section {
   padding-left: var(--spacing-xl);
-}
+} 
 .section-description {
   padding-left: var(--spacing-m);
 }

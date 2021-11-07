@@ -11,6 +11,7 @@ const template = `
     <section class="project__info">
       <div class="project__base-informations">
         <p class="project__description"></p>
+        <h3>Creators: </h3>
         <ul class="project__creators"></ul>
       </div>
     </section>
