@@ -6,7 +6,7 @@ import { SelectService } from "../../services/SelectionService.js";
 const template = `
 <a href="#">
   <div class="wrapper">
-    <img class="picture" loading=lazy src="#" alt="Event picture miniature">
+    <img class="picture" loading="lazy" src="#" alt="Event picture miniature">
     <div class="content">
       <div class="header">
         <h3 class="title"></h3>

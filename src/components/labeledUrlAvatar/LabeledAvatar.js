@@ -1,21 +1,23 @@
-import { style } from './LabeledAvatar.style.js';
+import { style } from './LabeledUrlAvatar.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 
 const template = `
-<div class="wrapper">
+<a class="wrapper" href="#">
   <input class="avatar-img" type="image" alt="user avatar" src="./assets/images/default-avatar.webp">
   <label class="avatar-label"></label>
-</div>
+</a>
 `;
 
-export class LabeledAvatar extends KKWebComponent {
+export class LabeledUrlAvatar extends KKWebComponent {
   static TAG = `kk-labeled-avatar`;
 
+  wrapper = this.shadowRoot.querySelector('.wrapper');
   labelWrapper = this.shadowRoot.querySelector('.avatar-label');
   imageWrapper = this.shadowRoot.querySelector('.avatar-img');
 
   constructor(label, photoUrl, userUrl) {
     super(template, style);
+    this.wrapper.href = userUrl;
     this.label = label;
     this.avatar = photoUrl;
   }
@@ -39,4 +41,4 @@ export class LabeledAvatar extends KKWebComponent {
 
 }
 
-customElements.define(LabeledAvatar.TAG, LabeledAvatar);
+customElements.define(LabeledUrlAvatar.TAG, LabeledUrlAvatar);

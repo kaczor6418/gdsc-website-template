@@ -1,27 +1,29 @@
 import { style } from './SingleProject.style.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
-import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar.js';
+import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledAvatar.js';
 
 const template = `
 <details>
   <summary><h2 class="project__name"></h2></summary>
   <section class="project__technologies"></section>
-  <section class="project__info">
-    <div class="project__base-informations">
-      <p class="project__description"></p>
-      <${LabeledUrlIcon.TAG} class="project__repository"></${LabeledUrlIcon.TAG}>
-      <ul class="project__creators"></ul>
-    </div>
-  </section>
-  <section class="project__demo">
-  <a class="project__application" href="#">
-    <figure>
-      <img class="project__picture" src="#" alt="Elephant at sunset">
-      <figcaption class="project__picture__description"></figcaption>
-    </figure> 
-  </a>
-  </section>
+  <div class="project__content--wrapper">
+    <section class="project__info">
+      <div class="project__base-informations">
+        <p class="project__description"></p>
+        <ul class="project__creators"></ul>
+      </div>
+    </section>
+    <section class="project__demo">
+    <a class="project__application" href="#">
+      <figure>
+        <img class="project__picture" loading="lazy" src="#" alt="Some project">
+        <figcaption class="project__picture__description"></figcaption>
+      </figure> 
+    </a>
+    <${LabeledUrlIcon.TAG} class="project__repository"></${LabeledUrlIcon.TAG}>
+    </section>
+  </div>
 </details>
 `;
 
@@ -52,6 +54,7 @@ export class SingleProject extends KKWebComponent {
     this.addCreators(creators);
     this.projectDemo.href = demo.url;
     this.projectDemoPicture.src = demo.picture;
+    this.projectDemoPicture.alt = name;
     this.projectDemoCaption.textContent = `${name} app screenshot`;
   }
 
@@ -59,7 +62,8 @@ export class SingleProject extends KKWebComponent {
     const creatorsWrapper = document.createDocumentFragment();
     for(const {name, avatar, url} of creators) {
       const singleCreator = document.createElement('li');
-      singleCreator.append(new LabeledAvatar(name, avatar, url));
+      singleCreator.className = 'creator';
+      singleCreator.append(new LabeledUrlAvatar(name, avatar, url));
       creatorsWrapper.append(singleCreator);
     }
     this.projectCreators.append(creatorsWrapper);

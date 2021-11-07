@@ -31,6 +31,7 @@ export class Projects extends KKWebComponent {
       const allProjects = document.createDocumentFragment();
       for(const project of projects) {
         const projectElement = document.createElement('li');
+        projectElement.className = 'project';
         projectElement.append(new SingleProject(project));
         allProjects.append(projectElement);
       }

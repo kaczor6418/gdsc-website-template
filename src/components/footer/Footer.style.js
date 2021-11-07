@@ -1,4 +1,7 @@
 export const style = `
+:host {
+  width: 100%;
+}
 footer {
   background-color: var(--surface1);
   filter: drop-shadow(var( --shadow-top) #000000);

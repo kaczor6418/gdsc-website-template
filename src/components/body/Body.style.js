@@ -1,5 +1,8 @@
 export const style = `
-main{
+:host {
+  width: 100%;
+}
+main {
   width: 100%;
   padding: var(--spacing-l);
   box-sizing: border-box;

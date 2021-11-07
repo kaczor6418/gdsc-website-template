@@ -1,4 +1,10 @@
 export const style = `
+:host {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
 .wrapper {
   display: flex;
   justify-content: center;
@@ -12,6 +18,14 @@ export const style = `
 .avatar-label {
   font-weight: bold;
   padding-left: var(--spacing-m);
+  color: var(--brand);
+  user-select: none;
+  cursor: pointer;
+  opacity: 80%;
+  transition: opacity var(--default-duration) var(--ease-in-out-quint);
+}
+.avatar-label:hover {
+  opacity: 100%;
 }
 .section-title {
   padding-left: var(--font-size-l);

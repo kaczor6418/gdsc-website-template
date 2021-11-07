@@ -1,6 +1,6 @@
 import { style } from './SingleTeam.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
-import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar.js';
+import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledAvatar.js';
 import { Contact } from '../contact/Contact.js';
 
 const template = `
@@ -50,7 +50,7 @@ export class SingleTeam extends KKWebComponent {
     this.lookingForWrapper.textContent = basic.lookingFor;
     this.contacts.setContacts(contact);
     for (const {name, avatarUrl} of members) {
-      this.membersWrapper.append(new LabeledAvatar(name, avatarUrl))
+      this.membersWrapper.append(new LabeledUrlAvatar(name, avatarUrl))
     }
   }
 }
