@@ -2,6 +2,7 @@ import { style } from './SingleTeam.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledAvatar.js';
 import { Contact } from '../contact/Contact.js';
+import { InfoBox } from '../infoBox/InfoBox.js';
 
 const template = `
 <details>
@@ -49,9 +50,19 @@ export class SingleTeam extends KKWebComponent {
     this.descriptionWrapper.textContent = basic.description;
     this.lookingForWrapper.textContent = basic.lookingFor;
     this.contacts.setContacts(contact);
-    for (const {name, avatarUrl} of members) {
-      this.membersWrapper.append(new LabeledUrlAvatar(name, avatarUrl))
+    this.addMembers(members);
+  }
+
+  addMembers(members) {
+    if (members.length === 0) {
+      const infoBox = new InfoBox('There are no team mebers yet!');
+      this.membersWrapper.append(infoBox);
     }
+    const allMembers = document.createDocumentFragment();
+    for (const {name, avatarUrl} of members) {
+      allMembers.append(new LabeledUrlAvatar(name, avatarUrl))
+    }
+    this.membersWrapper.append(allMembers);
   }
 }
 

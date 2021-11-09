@@ -4,32 +4,18 @@ import { UrlIcon } from '../urlIcon/UrlIcon.js';
 
 const template = `
 <ul class="contacts">
-  <li class="contact__item">
-    <${UrlIcon.TAG} class="discord" kk-icon-id="discord"></${UrlIcon.TAG}>
-  </li>
-  <li class="contact__item">
-    <${UrlIcon.TAG} class="messanger" kk-icon-id="messanger"></${UrlIcon.TAG}>
-  </li>
-  <li class="contact__item">
-    <${UrlIcon.TAG} class="telegram" kk-icon-id="telegram"></${UrlIcon.TAG}>
-  </li>
-  <li class="contact__item">
-    <${UrlIcon.TAG} class="mail" kk-icon-id="mail"></${UrlIcon.TAG}>
-  </li>
-  <li class="contact__item">
-    <${UrlIcon.TAG} class="phone" kk-icon-id="phone"></${UrlIcon.TAG}>
-  </li>
 </ul>
 `;
 
 export class Contact extends KKWebComponent {
   static TAG = `kk-contact`;
 
-  discord = this.shadowRoot.querySelector('.discord');
-  messanger = this.shadowRoot.querySelector('.messanger');
-  telegram = this.shadowRoot.querySelector('.telegram');
-  mail = this.shadowRoot.querySelector('.mail');
-  phone = this.shadowRoot.querySelector('.phone');
+  contactsWrapper = this.shadowRoot.querySelector('.contacts');
+  discord = null;
+  messanger = null;
+  telegram = null;
+  mail = null;
+  phone = null;
 
   constructor(props) {
     super(template, style);
@@ -39,11 +25,28 @@ export class Contact extends KKWebComponent {
   }
 
   setContacts({discord, messanger, telegram, mail, phone}) {
-    this.discord.setAttribute('kk-url', discord);
-    this.messanger.setAttribute('kk-url', messanger);
-    this.telegram.setAttribute('kk-url', telegram);
-    this.mail.setAttribute('kk-url', `mailto:${mail}`);
-    this.phone.setAttribute('kk-url', `tel:${phone}`);
+    if (discord) {
+      this.addContactitem('discord', discord, 'discord');
+    }
+    if (messanger) {
+      this.addContactitem('messanger', messanger, 'messanger');
+    }
+    if (telegram) {
+      this.addContactitem('telegram', telegram, 'telegram');
+    }
+    if (mail) {
+      this.addContactitem('mail', `mailto:${mail}`, 'mail');
+    }
+    if (phone) {
+      this.addContactitem('phone', `tel:${phone}`, 'phone');
+    }
+  }
+
+  addContactitem(iconId, url, contact) {
+    this[contact] = document.createElement('li');
+    this[contact].className = 'contact__item';
+    this[contact].append(new UrlIcon(url, {'kk-icon-id': iconId}));
+    this.contactsWrapper.append(this[contact]);
   }
 
 }

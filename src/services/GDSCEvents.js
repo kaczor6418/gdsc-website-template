@@ -5,6 +5,7 @@ export class GDSCDataService {
   gdscData = null;
   upcommingEvents = null;
   pastEvents = null;
+  contacts = null;
 
   get gdscClubUrl() {
     return this._gdscClubUrl;
@@ -47,6 +48,15 @@ export class GDSCDataService {
       return [];
     }
     return this.htmlUpcomingEventsToArrayOfEvents(rawUpcomingEvents);
+  }
+
+  async getContacts() {
+    if (this.gdscData === null) {
+      await this.fetchRawData();
+    }
+    if (this.contacts !== null) {
+      return this.contacts;
+    }
   }
 
   htmlPastEventsToArrayOfEvents(htmlEvents) {

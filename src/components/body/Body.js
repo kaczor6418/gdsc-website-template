@@ -7,8 +7,8 @@ import { Projects } from '../projects/Projects.js';
 const template = `
   <main>
     <!-- <${Events.TAG}></${Events.TAG}> -->
-    <${Projects.TAG}></${Projects.TAG}>
-    <!-- <${Teams.TAG}></${Teams.TAG}> -->
+    <!-- <${Projects.TAG}></${Projects.TAG}> -->
+    <${Teams.TAG}></${Teams.TAG}>
   </main>
 `;
 
