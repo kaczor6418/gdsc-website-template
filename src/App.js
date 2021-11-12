@@ -36,10 +36,6 @@ export class App extends KKWebComponent {
 
   async initializeApp() {
     await this.header.setTitleAndLogo('GDSC - LODZ', 'logo');
-    const config = await fetch('./assets/configs/config.json', {cache: 'force-cache'});
-    const {gdscClubRootUrl, socialMedia} = await config.json();
-    gdscService.gdscClubUrl = gdscClubRootUrl;
-
     this.header.addNavigation({
       tabs: [
         {
@@ -65,6 +61,7 @@ export class App extends KKWebComponent {
       ],
       activeTab: 'Events'
     });
+    const socialMedia = await gdscService.getSocialMedia();
     this.footer.addSocialMediaIcons(socialMedia);
     this.footer.setCopyright({
       date: '2021',

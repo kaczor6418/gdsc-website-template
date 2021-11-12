@@ -1,25 +1,29 @@
 import { loadWholeStreamAsString } from '../utils.js';
 
 export class GDSCDataService {
-  _gdscClubUrl = null;
+  socialMedia = null;
+  gdscClubUrl = null;
   gdscData = null;
-  upcommingEvents = null;
+  upcomingEvents = null;
   pastEvents = null;
   contacts = null;
 
-  get gdscClubUrl() {
-    return this._gdscClubUrl;
+  constructor() {
+    void this.voidInitializeConfig();
   }
 
-  set gdscClubUrl(url) {
-    this._gdscClubUrl = url;
+  async voidInitializeConfig() {
+    this.configRequest = fetch('./assets/configs/config.json', {cache: 'force-cache'})
+        .then(response => response.json().then())
+        .then(({gdscClubRootUrl, socialMedia}) => {
+          this.gdscClubUrl = gdscClubRootUrl;
+          this.socialMedia = socialMedia;
+        });
   }
 
-  async fetchRawData() {
-    const response = await fetch(this._gdscClubUrl, {
-      headers: { 'Content-Type': 'text/html; charset=utf-8' }
-    }).then(response => response.body).then(body => loadWholeStreamAsString(body));
-    this.gdscData = new DOMParser().parseFromString(response, 'text/html');
+  async getSocialMedia() {
+    await this.configRequest;
+    return this.socialMedia;
   }
 
   async getPastEvents() {
@@ -36,12 +40,12 @@ export class GDSCDataService {
     return this.htmlPastEventsToArrayOfEvents(rawPastEvents);
   }
 
-  async getUpcommingEvents() {
+  async getUpcomingEvents() {
     if(this.gdscData === null) {
       await this.fetchRawData();
     }
-    if (this.upcommingEvents !== null) {
-      return this.upcommingEvents;
+    if (this.upcomingEvents !== null) {
+      return this.upcomingEvents;
     }
     const rawUpcomingEvents = this.gdscData?.querySelector('#upcoming-events');
     if (rawUpcomingEvents.querySelector('strong').textContent.includes('There are no upcoming events')) {
@@ -57,6 +61,14 @@ export class GDSCDataService {
     if (this.contacts !== null) {
       return this.contacts;
     }
+  }
+
+  async fetchRawData() {
+    await this.configRequest;
+    const response = await fetch(this.gdscClubUrl, {
+      headers: { 'Content-Type': 'text/html; charset=utf-8' }
+    }).then(response => response.body).then(body => loadWholeStreamAsString(body));
+    this.gdscData = new DOMParser().parseFromString(response, 'text/html');
   }
 
   htmlPastEventsToArrayOfEvents(htmlEvents) {

@@ -26,23 +26,23 @@ export class Contact extends KKWebComponent {
 
   setContacts({discord, messanger, telegram, mail, phone}) {
     if (discord) {
-      this.addContactitem('discord', discord, 'discord');
+      this.addContactItem('discord', discord, 'discord');
     }
     if (messanger) {
-      this.addContactitem('messanger', messanger, 'messanger');
+      this.addContactItem('messanger', messanger, 'messanger');
     }
     if (telegram) {
-      this.addContactitem('telegram', telegram, 'telegram');
+      this.addContactItem('telegram', telegram, 'telegram');
     }
     if (mail) {
-      this.addContactitem('mail', `mailto:${mail}`, 'mail');
+      this.addContactItem('mail', `mailto:${mail}`, 'mail');
     }
     if (phone) {
-      this.addContactitem('phone', `tel:${phone}`, 'phone');
+      this.addContactItem('phone', `tel:${phone}`, 'phone');
     }
   }
 
-  addContactitem(iconId, url, contact) {
+  addContactItem(iconId, url, contact) {
     this[contact] = document.createElement('li');
     this[contact].className = 'contact__item';
     this[contact].append(new UrlIcon(url, {'kk-icon-id': iconId}));

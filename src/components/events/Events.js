@@ -42,7 +42,7 @@ export class Events extends KKWebComponent {
   }
 
   async setUpcommingEvents() {
-    const events = await gdscService.getUpcommingEvents();
+    const events = await gdscService.getUpcomingEvents();
     if(events.length === 0) {
       const infoBox = new InfoBox('There are no upcomming events!');
       this.upcommingEventsWrapper.append(infoBox);
