@@ -37,7 +37,8 @@ export class GDSCDataService {
     if (rawPastEvents === null) {
       return [];
     }
-    return this.htmlPastEventsToArrayOfEvents(rawPastEvents);
+    this.transformHtmlPastEventsToArrayOfEvents(rawPastEvents);
+    return this.pastEvents;
   }
 
   async getUpcomingEvents() {
@@ -51,7 +52,8 @@ export class GDSCDataService {
     if (rawUpcomingEvents.querySelector('strong').textContent.includes('There are no upcoming events')) {
       return [];
     }
-    return this.htmlUpcomingEventsToArrayOfEvents(rawUpcomingEvents);
+    this.transformHtmlUpcomingEventsToArrayOfEvents(rawUpcomingEvents);
+    return this.upcomingEvents;
   }
 
   async getContacts() {
@@ -61,6 +63,9 @@ export class GDSCDataService {
     if (this.contacts !== null) {
       return this.contacts;
     }
+    const rawContacts = this.gdscData?.querySelector('#team-list');
+    this.transformHtmlContactsToArrayOfContacts(rawContacts);
+    return this.contacts;
   }
 
   async fetchRawData() {
@@ -71,7 +76,7 @@ export class GDSCDataService {
     this.gdscData = new DOMParser().parseFromString(response, 'text/html');
   }
 
-  htmlPastEventsToArrayOfEvents(htmlEvents) {
+  transformHtmlPastEventsToArrayOfEvents(htmlEvents) {
     const eventsTitles = [];
     const eventsUrls = [];
     for (const event of Array.from(htmlEvents.querySelectorAll('a'))) {
@@ -81,9 +86,8 @@ export class GDSCDataService {
     const eventsImagesUrls = Array.from(htmlEvents.querySelectorAll('img')).map(image => image.src);
     const eventsDates = Array.from(htmlEvents.querySelectorAll('.vertical-box--event-date')).map(date => date.textContent.trim());
     const eventsTypes = Array.from(htmlEvents.querySelectorAll('.vertical-box--event-type')).map(type => type.textContent.trim());
-    const parsedEvents = [];
     for (let i = 0; i < eventsTitles.length; i++) {
-      parsedEvents.push({
+      this.pastEvents.push({
         title: eventsTitles[i],
         url: eventsUrls[i],
         imageUrl: eventsImagesUrls[i],
@@ -91,10 +95,9 @@ export class GDSCDataService {
         type: eventsTypes[i]
       });
     }
-    return parsedEvents;
   }
 
-  htmlUpcomingEventsToArrayOfEvents(htmlEvents) {
+  transformHtmlUpcomingEventsToArrayOfEvents(htmlEvents) {
     const eventsTitles = Array.from(htmlEvents.querySelectorAll('h4')).map(title => title.textContent);
     const eventsImagesUrls = Array.from(htmlEvents.querySelectorAll('img')).map(image => image.src);
     const eventsDates = Array.from(htmlEvents.querySelectorAll('strong')).map(date => date.textContent);
@@ -102,9 +105,8 @@ export class GDSCDataService {
     const eventsUrls = Array.from(htmlEvents.querySelectorAll('a')).map(eventUrl => eventUrl.href.replace(window.location.host, 'gdsc.community.dev'));
     const eventsTags = Array.from(htmlEvents.querySelectorAll('div[data-tags]')).map(tags => tags.getAttribute('data-tags').split(' / '));
     const eventsDescriptions = Array.from(htmlEvents.querySelectorAll('p')).map(description => description.textContent);
-    const parsedEvents = [];
     for (let i = 0; i < eventsTitles.length; i++) {
-      parsedEvents.push({
+      this.upcomingEvents.push({
         title: eventsTitles[i],
         url: eventsUrls[i],
         imageUrl: eventsImagesUrls[i],
@@ -114,6 +116,16 @@ export class GDSCDataService {
         description: eventsDescriptions[i]
       });
     }
-    return parsedEvents;
+  }
+
+  transformHtmlContactsToArrayOfContacts(htmlContacts) {
+    this.contacts = Array.from(htmlContacts.querySelectorAll('.people-card')).map(contact => {
+      const {alt: name, src: avatar} = contact.querySelector('img');
+      return {
+        name,
+        avatar,
+        title: contact.querySelector('.people-card--title').textContent
+      }
+    });
   }
 }

@@ -1,4 +1,4 @@
-  export async function* streamAsyncIterator(stream) {
+export async function* streamAsyncIterator(stream) {
   const reader = stream.getReader();
   try {
     while (true) {
@@ -15,13 +15,10 @@
 }
 
 export async function loadWholeStreamAsString(stream) {
+  const textDecoder = new TextDecoder();
   let content = '';
   for await (const chunk of streamAsyncIterator(stream)) {
-      const translatedChunk = [];
-      for(const charCode of chunk) {
-          translatedChunk.push(String.fromCharCode(charCode));
-      }
-      content += translatedChunk.join('');
+    content += textDecoder.decode(chunk);
   }
   return content;
 }
