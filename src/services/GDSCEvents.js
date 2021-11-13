@@ -1,9 +1,7 @@
-import { loadWholeStreamAsString } from '../utils.js';
-
 export class GDSCDataService {
-  socialMedia = null;
   gdscClubUrl = null;
   gdscData = null;
+  socialMedia = null;
   upcomingEvents = null;
   pastEvents = null;
   contacts = null;
@@ -72,7 +70,7 @@ export class GDSCDataService {
     await this.configRequest;
     const response = await fetch(this.gdscClubUrl, {
       headers: { 'Content-Type': 'text/html; charset=utf-8' }
-    }).then(response => response.body).then(body => loadWholeStreamAsString(body));
+    }).then(response => response.text());
     this.gdscData = new DOMParser().parseFromString(response, 'text/html');
   }
 

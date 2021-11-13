@@ -1,5 +1,4 @@
 import { style } from "./Icon.style.js";
-import { loadWholeStreamAsString } from "../../utils.js";
 import { KKWebComponent } from "../KKWebComponent.js";
 import { SelectService } from "../../services/SelectionService.js";
 
@@ -31,7 +30,7 @@ export class Icon extends KKWebComponent {
         break;
       case 'kk-icon-size':
         this.setSize(parseInt(newValue));
-        break;            
+        break;
       default:
         throw new Error(`Attribute ${name} doesn't exist in ${UrlIcon.name} component`);
     }
@@ -55,8 +54,8 @@ export class Icon extends KKWebComponent {
     if (this.hasChildNodes() && this.icon != null) {
       this.shadowRoot.removeChild(this.icon.interactiveElement);
     }
-    const iconResponse = await fetch(`./assets/icons/${iconId}.svg`, {cache: 'force-cache'});
-    const rawIcon = (await loadWholeStreamAsString(iconResponse.body));
+    const rawIcon = await fetch(`./assets/icons/${iconId}.svg`, {cache: 'force-cache'}).then(response => response.text());
+    // const rawIcon = (await loadWholeStreamAsString(iconResponse.body));
     this.icon.changeInteractiveElement(new DOMParser().parseFromString(rawIcon, 'image/svg+xml').firstElementChild);
     this.shadowRoot.appendChild(this.icon.interactiveElement);
     this.setSize(this.size);
