@@ -4,6 +4,7 @@ import { Icon } from '../icon/Icon.js';
 
 const template = `
 <a href="#" class="icon-wrapper">
+  url-icon
   <${Icon.TAG}></${Icon.TAG}>
 </a>
 `;
@@ -30,10 +31,10 @@ export class UrlIcon extends KKWebComponent {
         break;
       case 'kk-icon-size':
         this.icon.setSize(parseInt(newValue));
-        break;      
+        break;
       case 'kk-url':
         this.iconWrapper.href = newValue;
-        break;      
+        break;
       default:
         throw new Error(`Attribute ${name} doesn't exist in ${UrlIcon.name} component`);
     }

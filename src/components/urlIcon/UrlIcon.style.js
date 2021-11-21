@@ -1,1 +1,5 @@
-export const style = ``;
+export const style = `
+a {
+  font-size: 0;
+}
+`;

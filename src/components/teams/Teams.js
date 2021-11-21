@@ -11,27 +11,26 @@ const template = `
 export class Teams extends KKWebComponent {
   static TAG = `kk-teams`;
 
-  teams = [];
   teamsWrapper =  this.shadowRoot.querySelector('.teams');
 
   constructor() {
     super(template, style);
-    void this.fetchTeams().then(() => this.renderTeams());
+    void this.fetchTeams().then((teams) => this.renderTeams(teams));
   }
 
   async fetchTeams() {
     const response = await fetch('./assets/configs/teams.json');
-    this.teams = await response.json();
+    return await response.json();
   }
 
-  renderTeams() {
-    if (this.teams.length === 0) {
+  renderTeams(teams) {
+    if (teams.length === 0) {
       const infoBox = new InfoBox('There are no teams!');
       this.teamsWrapper.append(infoBox);
     } else {
       const teamsList = document.createElement('ul');
       const allTeams = document.createDocumentFragment();
-      for (const singleTeam of this.teams) {
+      for (const singleTeam of teams) {
         const teamElement = document.createElement('li');
         teamElement.className = 'team';
         teamElement.append(new SingleTeam(singleTeam));

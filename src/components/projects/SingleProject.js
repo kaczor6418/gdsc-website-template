@@ -1,7 +1,7 @@
 import { style } from './SingleProject.style.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
-import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledAvatar.js';
+import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
 
 const template = `
 <details>
@@ -69,7 +69,7 @@ export class SingleProject extends KKWebComponent {
     }
     this.projectCreators.append(creatorsWrapper);
   }
-  
+
 }
 
 customElements.define(SingleProject.TAG, SingleProject);

@@ -1,13 +1,13 @@
 import { style } from './Events.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
-import { UpcommingEvent } from './UpcommingEvent.js';
+import { UpcomingEvent } from './UpcomingEvent.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
 import { gdscService } from '../../services/globalServices.js';
 
 const template = `
   <section>
-    <details class="upcomming-events-wrapper">
-      <summary><h2>Upcomming Events</h2></summary>
+    <details class="upcoming-events-wrapper">
+      <summary><h2>Upcoming Events</h2></summary>
     </details>
     <details class="past-events-wrapper">
       <summary><h2>Past events</h2></summary>
@@ -18,10 +18,8 @@ const template = `
 export class Events extends KKWebComponent {
   static TAG = `kk-events`;
 
-  upcommingEventsWrapper = this.shadowRoot.querySelector('.upcomming-events-wrapper');
+  upcomingEventsWrapper = this.shadowRoot.querySelector('.upcoming-events-wrapper');
   pastEventsWrapper = this.shadowRoot.querySelector('.past-events-wrapper');
-  upcommingEventsRendered = false;
-  pastEventsRendered = false;
 
   constructor() {
     super(template, style);
@@ -29,29 +27,29 @@ export class Events extends KKWebComponent {
   }
 
   initializeListeners() {
-    const renderUpcommingEvents = () => {
-      this.upcommingEventsWrapper.removeEventListener('click', renderUpcommingEvents)
-      void this.setUpcommingEvents();
+    const renderUpcomingEvents = () => {
+      this.upcomingEventsWrapper.removeEventListener('click', renderUpcomingEvents)
+      void this.setUpcomingEvents();
     }
     const renderPastEvents = () => {
       this.pastEventsWrapper.removeEventListener('click', renderPastEvents);
       void this.setPastEvents();
     }
-    this.upcommingEventsWrapper.addEventListener('click', renderUpcommingEvents);
+    this.upcomingEventsWrapper.addEventListener('click', renderUpcomingEvents);
     this.pastEventsWrapper.addEventListener('click', renderPastEvents);
   }
 
-  async setUpcommingEvents() {
+  async setUpcomingEvents() {
     const events = await gdscService.getUpcomingEvents();
     if(events.length === 0) {
-      const infoBox = new InfoBox('There are no upcomming events!');
-      this.upcommingEventsWrapper.append(infoBox);
+      const infoBox = new InfoBox('There are no upcoming events!');
+      this.upcomingEventsWrapper.append(infoBox);
     } else {
       const eventsWrapper = document.createElement('ul');
       const allEvents = document.createDocumentFragment();
       for (const event of events) {
         const eventWrapper = document.createElement('li');
-        eventWrapper.append(new UpcommingEvent({
+        eventWrapper.append(new UpcomingEvent({
           'kk-url': event.url,
           'kk-picture': event.imageUrl,
           'kk-title': event.title,
@@ -61,7 +59,7 @@ export class Events extends KKWebComponent {
         allEvents.append(eventWrapper);
       }
       eventsWrapper.append(allEvents);
-      this.upcommingEventsWrapper.append(eventsWrapper);
+      this.upcomingEventsWrapper.append(eventsWrapper);
     }
   }
 

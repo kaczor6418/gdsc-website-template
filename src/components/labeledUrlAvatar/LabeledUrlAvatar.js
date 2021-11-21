@@ -15,27 +15,27 @@ export class LabeledUrlAvatar extends KKWebComponent {
   labelWrapper = this.shadowRoot.querySelector('.avatar-label');
   imageWrapper = this.shadowRoot.querySelector('.avatar-img');
 
-  constructor(label, photoUrl, userUrl) {
+  constructor(label, photoUrl, userUrl, size) {
     super(template, style);
     this.wrapper.href = userUrl;
     this.label = label;
     this.avatar = photoUrl;
+    if (size) {
+      this.size = size;
+    }
   }
 
   set label(text) {
     this.labelWrapper.textContent = text;
   }
 
-  get label() {
-    return this.labelWrapper.textContent;
-  }  
-  
   set avatar(url) {
     this.imageWrapper.src = url;
   }
 
-  get avatar() {
-    return this.imageWrapper.src;
+  set size({width, height}) {
+    this.imageWrapper.style.width = width;
+    this.imageWrapper.style.height = height;
   }
 
 

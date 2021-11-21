@@ -1,6 +1,6 @@
 import { style } from './SingleTeam.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
-import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledAvatar.js';
+import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
 import { Contact } from '../contact/Contact.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
 

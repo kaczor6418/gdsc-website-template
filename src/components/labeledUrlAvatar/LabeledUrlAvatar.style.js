@@ -7,6 +7,7 @@ a {
 }
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -17,7 +18,7 @@ a {
 }
 .avatar-label {
   font-weight: bold;
-  padding-left: var(--spacing-m);
+  padding-top: var(--spacing-m);
   color: var(--brand);
   user-select: none;
   cursor: pointer;
