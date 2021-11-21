@@ -1,6 +1,6 @@
-import { style } from './UrlIcon.style.js';
-import { KKWebComponent } from "../KKWebComponent.js";
 import { Icon } from '../icon/Icon.js';
+import { KKWebComponent } from "../KKWebComponent.js";
+import { style } from './UrlIcon.style.js';
 
 const template = `
 <a href="#" class="icon-wrapper">

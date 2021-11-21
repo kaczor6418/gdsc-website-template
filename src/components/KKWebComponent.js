@@ -4,7 +4,7 @@ export class KKWebComponent extends HTMLElement {
   constructor(template, styles, props) {
     super();
     this.props = props;
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
     this.shadowRoot.innerHTML = template;
     this.injectStyles(styles);
   }

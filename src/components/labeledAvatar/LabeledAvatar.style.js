@@ -1,0 +1,29 @@
+export const style = `
+:host {
+  display: block;
+}
+.wrapper {
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(var(--shadow-around-level-1) #000000);
+}
+.avatar-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  cursor: auto;
+}
+.avatar-label {
+  font-weight: bold;
+  padding-top: var(--spacing-m);
+  color: var(--brand);
+}
+
+.avatar-sub-label {
+  font-size: var(--font-size-s);
+  max-width: 25ch;
+  text-align: center;
+`;

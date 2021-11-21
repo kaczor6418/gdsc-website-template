@@ -1,6 +1,6 @@
-import { style } from './Projects.style.js';
-import { KKWebComponent } from "../KKWebComponent.js";
 import { InfoBox } from '../infoBox/InfoBox.js';
+import { KKWebComponent } from "../KKWebComponent.js";
+import { style } from './Projects.style.js';
 import { SingleProject } from './SingleProject.js';
 
 const template = `
@@ -15,7 +15,11 @@ export class Projects extends KKWebComponent {
 
   constructor() {
     super(template, style);
-    void this.fetchProjects().then((projects) => this.renderProjects(projects));
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    void this.fetchProjects().then(this.renderProjects);
   }
 
   async fetchProjects() {
@@ -23,13 +27,13 @@ export class Projects extends KKWebComponent {
     return await response.json();
   }
 
-  renderProjects(projects) {
-    if(projects.length === 0) {
+  renderProjects = (projects) => {
+    if (projects.length === 0) {
       this.projectsWrapper.append(new InfoBox('There are no projects!'));
     } else {
       const projectsList = document.createElement('ul');
       const allProjects = document.createDocumentFragment();
-      for(const project of projects) {
+      for (const project of projects) {
         const projectElement = document.createElement('li');
         projectElement.className = 'project';
         projectElement.append(new SingleProject(project));

@@ -1,8 +1,7 @@
 import { Body } from "./components/body/Body.js";
-import { Header } from "./components/heaedr/Header.js";
 import { Footer } from "./components/footer/Footer.js";
+import { Header } from "./components/heaedr/Header.js";
 import { KKWebComponent } from "./components/KKWebComponent.js";
-import { gdscService } from "./services/globalServices.js";
 
 const style = `
 :host {
@@ -44,7 +43,7 @@ export class App extends KKWebComponent {
           disabled: false
         },
         {
-          name: 'Contact',
+          name: 'Info',
           changeTabCallback: () => console.log('Move to contacts'),
           disabled: false
         },
@@ -61,8 +60,6 @@ export class App extends KKWebComponent {
       ],
       activeTab: 'Events'
     });
-    const socialMedia = await gdscService.getSocialMedia();
-    this.footer.addSocialMediaIcons(socialMedia);
     this.footer.setCopyright({
       date: '2021',
       author: 'Krzysztof Kaczyński',

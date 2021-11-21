@@ -25,7 +25,7 @@ const style = `
 export function rippleEffect(element, e) {
   const ripple = document.createElement('span');
   const styleWrapper = document.createElement('style');
-  const { left, top, width, height } = element.getBoundingClientRect();
+  const {left, top, width, height} = element.getBoundingClientRect();
   styleWrapper.innerHTML = style;
   ripple.appendChild(styleWrapper);
   ripple.className = 'ripple';

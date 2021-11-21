@@ -1,5 +1,5 @@
-import { style } from './InfoBox.style.js'
 import { KKWebComponent } from "../KKWebComponent.js";
+import { style } from './InfoBox.style.js'
 
 const template = `
 <div class="box">
@@ -15,7 +15,7 @@ export class InfoBox extends KKWebComponent {
 
   constructor(infoContent) {
     super(template, style);
-    if(infoContent) {
+    if (infoContent) {
       this.content = infoContent;
     }
   }

@@ -1,7 +1,7 @@
-import { style } from './Header.style.js';
 import { Icon } from "../icon/Icon.js";
 import { KKWebComponent } from "../KKWebComponent.js";
 import { Tabs } from "../tabs/Tabs.js";
+import { style } from './Header.style.js';
 
 const template = `
 <header>
@@ -33,7 +33,7 @@ export class Header extends KKWebComponent {
     this.headerWrapper.appendChild(headerNav);
   }
 
-  initializeData({ logo, tabsProps, title }) {
+  initializeData({logo, tabsProps, title}) {
     this.setTitleAndLogo(title, logo);
     if (tabsProps != null) {
       this.addNavigation(tabsProps);

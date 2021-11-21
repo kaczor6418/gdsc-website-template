@@ -1,10 +1,10 @@
 export class GDSCDataService {
   gdscClubUrl = null;
   gdscData = null;
-  socialMedia = null;
+  contact = null;
   upcomingEvents = null;
   pastEvents = null;
-  contacts = null;
+  organizers = null;
 
   constructor() {
     void this.voidInitializeConfig();
@@ -12,20 +12,20 @@ export class GDSCDataService {
 
   async voidInitializeConfig() {
     this.configRequest = fetch('./assets/configs/config.json', {cache: 'force-cache'})
-        .then(response => response.json().then())
-        .then(({gdscClubRootUrl, socialMedia}) => {
-          this.gdscClubUrl = gdscClubRootUrl;
-          this.socialMedia = socialMedia;
-        });
+      .then(response => response.json().then())
+      .then(({gdscClubRootUrl, contact}) => {
+        this.gdscClubUrl = gdscClubRootUrl;
+        this.contact = contact;
+      });
   }
 
-  async getSocialMedia() {
+  async getContact() {
     await this.configRequest;
-    return this.socialMedia;
+    return this.contact;
   }
 
   async getPastEvents() {
-    if(this.gdscData === null) {
+    if (this.gdscData === null) {
       await this.fetchRawData();
     }
     if (this.pastEvents !== null) {
@@ -40,7 +40,7 @@ export class GDSCDataService {
   }
 
   async getUpcomingEvents() {
-    if(this.gdscData === null) {
+    if (this.gdscData === null) {
       await this.fetchRawData();
     }
     if (this.upcomingEvents !== null) {
@@ -54,22 +54,22 @@ export class GDSCDataService {
     return this.upcomingEvents;
   }
 
-  async getContacts() {
+  async getOrganizers() {
     if (this.gdscData === null) {
       await this.fetchRawData();
     }
-    if (this.contacts !== null) {
-      return this.contacts;
+    if (this.organizers !== null) {
+      return this.organizers;
     }
     const rawContacts = this.gdscData?.querySelector('#team-list');
-    this.transformHtmlContactsToArrayOfContacts(rawContacts);
-    return this.contacts;
+    this.transformHtmlOrganizersToArrayOfContacts(rawContacts);
+    return this.organizers;
   }
 
   async fetchRawData() {
     await this.configRequest;
     const response = await fetch(this.gdscClubUrl, {
-      headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      headers: {'Content-Type': 'text/html; charset=utf-8'}
     }).then(response => response.text());
     this.gdscData = new DOMParser().parseFromString(response, 'text/html');
   }
@@ -119,8 +119,8 @@ export class GDSCDataService {
     }
   }
 
-  transformHtmlContactsToArrayOfContacts(htmlContacts) {
-    this.contacts = Array.from(htmlContacts.querySelectorAll('.people-card')).map(contact => {
+  transformHtmlOrganizersToArrayOfContacts(htmlOrganizers) {
+    this.organizers = Array.from(htmlOrganizers.querySelectorAll('.people-card')).map(contact => {
       const {alt: name, src: avatar} = contact.querySelector('img');
       return {
         name,

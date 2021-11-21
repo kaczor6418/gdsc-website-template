@@ -42,7 +42,7 @@ export class SingleProject extends KKWebComponent {
 
   constructor(project) {
     super(template, style);
-    if(project) {
+    if (project) {
       this.setSingleProjectData(project);
     }
   }
@@ -61,7 +61,7 @@ export class SingleProject extends KKWebComponent {
 
   addCreators(creators) {
     const creatorsWrapper = document.createDocumentFragment();
-    for(const {name, avatar, url} of creators) {
+    for (const {name, avatar, url} of creators) {
       const singleCreator = document.createElement('li');
       singleCreator.className = 'creator';
       singleCreator.append(new LabeledUrlAvatar(name, avatar, url));

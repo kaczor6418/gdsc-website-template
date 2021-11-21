@@ -1,8 +1,8 @@
-import { style } from './Events.style.js';
-import { KKWebComponent } from "../KKWebComponent.js";
-import { UpcomingEvent } from './UpcomingEvent.js';
-import { InfoBox } from '../infoBox/InfoBox.js';
 import { gdscService } from '../../services/globalServices.js';
+import { InfoBox } from '../infoBox/InfoBox.js';
+import { KKWebComponent } from "../KKWebComponent.js";
+import { style } from './Events.style.js';
+import { UpcomingEvent } from './UpcomingEvent.js';
 
 const template = `
   <section>
@@ -41,7 +41,7 @@ export class Events extends KKWebComponent {
 
   async setUpcomingEvents() {
     const events = await gdscService.getUpcomingEvents();
-    if(events.length === 0) {
+    if (events.length === 0) {
       const infoBox = new InfoBox('There are no upcoming events!');
       this.upcomingEventsWrapper.append(infoBox);
     } else {
@@ -65,7 +65,7 @@ export class Events extends KKWebComponent {
 
   async setPastEvents() {
     const events = await gdscService.getPastEvents();
-    if(events.length === 0) {
+    if (events.length === 0) {
       const infoBox = new InfoBox('There are no past events!');
       this.pastEventsWrapper.append(infoBox);
     } else {

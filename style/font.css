@@ -3,8 +3,8 @@
   src:
    local('JetBrainsMono Regular'),
    local('JetBrainsMono-Regular'),
-   url('./fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-   url('./fonts/JetBrainsMono-Regular.ttf') format('embedded-opentype');
+   url('./assets/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+   url('./assets/fonts/JetBrainsMono-Regular.ttf') format('embedded-opentype');
   font-display: swap;
   font-weight: normal;
   font-style: normal;

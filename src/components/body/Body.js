@@ -7,9 +7,9 @@ import { ClubInfo } from '../clubInfo/ClubInfo.js';
 
 const template = `
   <main>
-    <${Events.TAG}></${Events.TAG}>
-    <${Projects.TAG}></${Projects.TAG}>
-    <${Teams.TAG}></${Teams.TAG}>
+    <!-- <${Events.TAG}></${Events.TAG}> -->
+    <!-- <${Projects.TAG}></${Projects.TAG}> -->
+    <!-- <${Teams.TAG}></${Teams.TAG}> -->
     <${ClubInfo.TAG}></${ClubInfo.TAG}>
   </main>
 `;

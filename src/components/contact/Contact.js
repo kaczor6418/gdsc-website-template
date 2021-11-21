@@ -1,6 +1,6 @@
-import { style } from './Contact.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { UrlIcon } from '../urlIcon/UrlIcon.js';
+import { style } from './Contact.style.js';
 
 const template = `
 <ul class="contacts">
@@ -19,7 +19,7 @@ export class Contact extends KKWebComponent {
 
   constructor(props) {
     super(template, style);
-    if(props !== undefined) {
+    if (props !== undefined) {
       this.setContacts(props);
     }
   }

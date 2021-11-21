@@ -1,7 +1,7 @@
-import { style } from './Teams.style.js';
-import { SingleTeam } from './SingleTeam.js';
-import { KKWebComponent } from '../KKWebComponent.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
+import { KKWebComponent } from '../KKWebComponent.js';
+import { SingleTeam } from './SingleTeam.js';
+import { style } from './Teams.style.js';
 
 const template = `
 <section class="teams">
@@ -11,11 +11,15 @@ const template = `
 export class Teams extends KKWebComponent {
   static TAG = `kk-teams`;
 
-  teamsWrapper =  this.shadowRoot.querySelector('.teams');
+  teamsWrapper = this.shadowRoot.querySelector('.teams');
 
   constructor() {
     super(template, style);
-    void this.fetchTeams().then((teams) => this.renderTeams(teams));
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    void this.fetchTeams().then(this.renderTeams);
   }
 
   async fetchTeams() {
@@ -23,7 +27,7 @@ export class Teams extends KKWebComponent {
     return await response.json();
   }
 
-  renderTeams(teams) {
+  renderTeams = (teams) => {
     if (teams.length === 0) {
       const infoBox = new InfoBox('There are no teams!');
       this.teamsWrapper.append(infoBox);

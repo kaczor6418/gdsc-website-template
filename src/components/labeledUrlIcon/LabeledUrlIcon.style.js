@@ -1,6 +1,6 @@
 export const style = `
 :host {
-  width: 100%;
+  display: block;
 }
 a {
   text-decoration: none;
@@ -10,15 +10,13 @@ a {
   color: var(--brand);
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.icon {
-  padding-right: var(--spacing-m);
-}
 .label {
   font-weight: bold;
-  padding-left: var(--spacing-m);
+  padding-top: var(--spacing-m);
   color: var(--brand);
   user-select: none;
   cursor: pointer;

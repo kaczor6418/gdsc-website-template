@@ -1,6 +1,7 @@
-import { style } from './Footer.style.js';
+import { gdscService } from "../../services/globalServices.js";
 import { KKWebComponent } from "../KKWebComponent.js";
 import { SocialMedia } from '../socialMedia/SocialMedia.js';
+import { style } from './Footer.style.js';
 
 const template = `
 <footer>
@@ -18,11 +19,16 @@ export class Footer extends KKWebComponent {
     super(template, style);
   }
 
-  addSocialMediaIcons(icons) {
+  connectedCallback() {
+    super.connectedCallback();
+    void gdscService.getContact().then(this.addSocialMediaIcons);
+  }
+
+  addSocialMediaIcons = (icons) => {
     this.socialMedia.setSocialMediaIcons(icons);
   }
 
-  setCopyright({ date, author, termsReferenceUrl }) {
+  setCopyright({date, author, termsReferenceUrl}) {
     const copyrightText = this.formattedCopyrights`Copyright © ${date} ${author} Policy terms${termsReferenceUrl}`;
     const copyrightsElement = new DOMParser().parseFromString(copyrightText, 'text/html').body.firstElementChild;
     this.footer.append(copyrightsElement);

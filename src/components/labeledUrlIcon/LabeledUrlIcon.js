@@ -1,6 +1,6 @@
-import { style } from './LabeledUrlIcon.style.js';
-import { KKWebComponent } from "../KKWebComponent.js";
 import { Icon } from '../icon/Icon.js';
+import { KKWebComponent } from "../KKWebComponent.js";
+import { style } from './LabeledUrlIcon.style.js';
 
 const template = `
 <a class="wrapper" href="#">
@@ -26,7 +26,7 @@ export class LabeledUrlIcon extends KKWebComponent {
 
   constructor(props) {
     super(template, style);
-    if(props) {
+    if (props) {
       this.setData(props.label, props.iconId, props.url);
     }
   }
@@ -36,7 +36,7 @@ export class LabeledUrlIcon extends KKWebComponent {
     this.icon = iconId;
     this.wrapper.href = url;
   }
-  
+
 }
 
 customElements.define(LabeledUrlIcon.TAG, LabeledUrlIcon);

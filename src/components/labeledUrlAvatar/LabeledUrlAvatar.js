@@ -1,5 +1,5 @@
-import { style } from './LabeledUrlAvatar.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
+import { style } from './LabeledUrlAvatar.style.js';
 
 const template = `
 <a class="wrapper" href="#">
@@ -9,20 +9,17 @@ const template = `
 `;
 
 export class LabeledUrlAvatar extends KKWebComponent {
-  static TAG = `kk-labeled-avatar`;
+  static TAG = `kk-labeled-url-avatar`;
 
   wrapper = this.shadowRoot.querySelector('.wrapper');
   labelWrapper = this.shadowRoot.querySelector('.avatar-label');
   imageWrapper = this.shadowRoot.querySelector('.avatar-img');
 
-  constructor(label, photoUrl, userUrl, size) {
+  constructor(label, photoUrl, userUrl) {
     super(template, style);
     this.wrapper.href = userUrl;
     this.label = label;
     this.avatar = photoUrl;
-    if (size) {
-      this.size = size;
-    }
   }
 
   set label(text) {
@@ -31,11 +28,6 @@ export class LabeledUrlAvatar extends KKWebComponent {
 
   set avatar(url) {
     this.imageWrapper.src = url;
-  }
-
-  set size({width, height}) {
-    this.imageWrapper.style.width = width;
-    this.imageWrapper.style.height = height;
   }
 
 

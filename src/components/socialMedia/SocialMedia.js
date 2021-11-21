@@ -1,6 +1,6 @@
-import { style } from "./SocialMedia.style.js";
-import { KKWebComponent } from "../KKWebComponent.js";
 import { Icon } from "../icon/Icon.js";
+import { KKWebComponent } from "../KKWebComponent.js";
+import { style } from "./SocialMedia.style.js";
 
 const template = `
 <section>
@@ -17,11 +17,11 @@ export class SocialMedia extends KKWebComponent {
   }
 
   setSocialMediaIcons(icons) {
-    const socailMediaIcons = document.createDocumentFragment();
-    for(const {iconId, url} of icons) {
-      socailMediaIcons.append(this.createSocialMediaIcon(iconId, url));
+    const socialMediaIcons = document.createDocumentFragment();
+    for (const {iconId, url} of icons) {
+      socialMediaIcons.append(this.createSocialMediaIcon(iconId, url));
     }
-    this.iconsWrapper.append(socailMediaIcons);
+    this.iconsWrapper.append(socialMediaIcons);
   }
 
   createSocialMediaIcon(iconId, url) {

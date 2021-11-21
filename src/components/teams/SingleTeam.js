@@ -1,8 +1,8 @@
-import { style } from './SingleTeam.style.js';
-import { KKWebComponent } from "../KKWebComponent.js";
-import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
 import { Contact } from '../contact/Contact.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
+import { KKWebComponent } from "../KKWebComponent.js";
+import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
+import { style } from './SingleTeam.style.js';
 
 const template = `
 <details>
@@ -55,7 +55,7 @@ export class SingleTeam extends KKWebComponent {
 
   addMembers(members) {
     if (members.length === 0) {
-      const infoBox = new InfoBox('There are no team mebers yet!');
+      const infoBox = new InfoBox('There are no team members yet!');
       this.membersWrapper.append(infoBox);
     }
     const allMembers = document.createDocumentFragment();
