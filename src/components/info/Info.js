@@ -2,7 +2,7 @@ import { gdscService } from '../../services/globalServices.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { LabeledAvatar } from "../labeledAvatar/LabeledAvatar.js";
 import { LabeledUrlIcon } from "../labeledUrlIcon/LabeledUrlIcon.js";
-import { style } from './ClubInfo.style.js';
+import { style } from './Info.style.js';
 
 const template = `
 <section class="organizers">
@@ -15,7 +15,7 @@ const template = `
 </section>
 `;
 
-export class ClubInfo extends KKWebComponent {
+export class Info extends KKWebComponent {
   static TAG = `kk-club-contact`;
 
   organizersWrapper = this.shadowRoot.querySelector('.organization-members');
@@ -44,4 +44,4 @@ export class ClubInfo extends KKWebComponent {
   }
 }
 
-customElements.define(ClubInfo.TAG, ClubInfo);
+customElements.define(Info.TAG, Info);

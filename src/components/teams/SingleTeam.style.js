@@ -25,6 +25,8 @@ h2 {
 .members {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 .kk-labeled-avatar {
   padding: var(--spacing-m);
@@ -34,5 +36,13 @@ h2 {
 } 
 .section-description {
   padding-left: var(--spacing-m);
+}
+@media (min-width: 1300px) {
+  .wrapper {
+    width: 22rem;
+  }
+  .description {
+    -webkit-line-clamp: 8;
+  }
 }
 `;

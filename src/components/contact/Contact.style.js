@@ -10,6 +10,9 @@ ul {
 .contacts {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  
 }
 .contact__item {
   padding: var(--spacing-m);

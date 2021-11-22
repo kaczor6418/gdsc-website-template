@@ -53,7 +53,7 @@ a {
     -webkit-line-clamp: 7;
   }
 }
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .content {
     min-height: 18.8rem;
   }

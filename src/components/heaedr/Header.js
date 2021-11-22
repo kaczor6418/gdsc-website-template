@@ -34,7 +34,7 @@ export class Header extends KKWebComponent {
   }
 
   initializeData({logo, tabsProps, title}) {
-    this.setTitleAndLogo(title, logo);
+    void this.setTitleAndLogo(title, logo);
     if (tabsProps != null) {
       this.addNavigation(tabsProps);
     }

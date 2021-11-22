@@ -38,27 +38,27 @@ export class App extends KKWebComponent {
     this.header.addNavigation({
       tabs: [
         {
-          name: 'Events',
-          changeTabCallback: () => console.log('Move to events'),
+          name: 'Info',
+          changeTabCallback: () => this.body.changeTab('Info'),
           disabled: false
         },
         {
-          name: 'Info',
-          changeTabCallback: () => console.log('Move to contacts'),
+          name: 'Events',
+          changeTabCallback: () => this.body.changeTab('Events'),
           disabled: false
         },
         {
           name: 'Teams',
-          changeTabCallback: () => console.log('Move to teams'),
+          changeTabCallback: () => this.body.changeTab('Teams'),
           disabled: false
         },
         {
           name: 'Projects',
-          changeTabCallback: () => console.log('Move to projects'),
+          changeTabCallback: () => this.body.changeTab('Projects'),
           disabled: false
         }
       ],
-      activeTab: 'Events'
+      activeTab: 'Info'
     });
     this.footer.setCopyright({
       date: '2021',

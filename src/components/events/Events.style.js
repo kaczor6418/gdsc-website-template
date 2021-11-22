@@ -4,6 +4,7 @@ section {
 }
 summary {
   color: var(--brand);
+  padding: var(--spacing-xl) 0;
   user-select: none;
   cursor: pointer;
   opacity: 80%;
@@ -17,13 +18,13 @@ details[open] summary {
   opacity: 100%;
 }
 h2 {
+  margin: 0;
   display: inline-block;
   padding-left: var(--spacing-s);
 }
 ul {
-  list-style: none;
   margin: 0;
-  padding: 0 var(--spacing-l) 0;
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -33,7 +34,7 @@ ul {
 li {
   padding: var(--spacing-l);
 }
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   ul {
     justify-content: flex-start;
   }
