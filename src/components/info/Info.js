@@ -33,7 +33,7 @@ export class Info extends KKWebComponent {
 
   renderMembers = (members) => {
     for (const {avatar, name, title} of members) {
-      this.organizersWrapper.append(new LabeledAvatar(name, avatar, title, {width: '128px', height: '128px'}));
+      this.organizersWrapper.append(new LabeledAvatar(name, avatar, title));
     }
   }
 

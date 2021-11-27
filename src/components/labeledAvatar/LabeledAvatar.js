@@ -3,7 +3,7 @@ import { style } from './LabeledAvatar.style.js';
 
 const template = `
 <div class="wrapper">
-  <input class="avatar-img" type="image" alt="user avatar" src="./assets/images/default-avatar.webp">
+  <input class="avatar-img" width="128" height="128" type="image" alt="user avatar" src="./assets/images/default-avatar.webp">
   <label class="avatar-label"></label>
   <label class="avatar-sub-label"></label>
 </div>

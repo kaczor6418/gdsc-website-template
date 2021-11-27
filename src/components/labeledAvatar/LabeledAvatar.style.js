@@ -11,8 +11,8 @@ export const style = `
   filter: drop-shadow(var(--shadow-around-level-1) #000000);
 }
 .avatar-img {
-  width: 64px;
-  height: 64px;
+  width: 128px;
+  height: 128px;
   object-fit: cover;
   cursor: auto;
 }
