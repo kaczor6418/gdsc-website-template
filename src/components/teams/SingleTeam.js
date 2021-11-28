@@ -1,3 +1,4 @@
+import { Chip } from '../chip/Chip.js';
 import { Contact } from '../contact/Contact.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
 import { KKWebComponent } from "../KKWebComponent.js";
@@ -6,7 +7,12 @@ import { style } from './SingleTeam.style.js';
 
 const template = `
 <details>
-  <summary><h2 class="team-name"></h2></summary>
+  <summary>
+    <div class="summary-wrapper">
+      <h2 class="team-name"></h2>
+      <ul class="technologies-wrapper"></ul>
+    </div>
+  </summary>
   <section class="single-section technologies"></section>
   <section class="single-section">
     <h3>Description:</h3>
@@ -33,7 +39,7 @@ export class SingleTeam extends KKWebComponent {
   static TAG = `kk-single-team`;
 
   nameWrapper = this.shadowRoot.querySelector('.team-name');
-  technologiesWrapper = this.shadowRoot.querySelector('.technologies');
+  technologiesWrapper = this.shadowRoot.querySelector('.technologies-wrapper');
   descriptionWrapper = this.shadowRoot.querySelector('.description');
   lookingForWrapper = this.shadowRoot.querySelector('.looking-for');
   contacts = this.shadowRoot.querySelector(Contact.TAG);
@@ -44,9 +50,10 @@ export class SingleTeam extends KKWebComponent {
     this.initializeDate(props);
   }
 
-  initializeDate({contact, members, ...basic}) {
+  initializeDate({contact, members, technologies, ...basic}) {
     this.nameWrapper.id = basic.name;
     this.nameWrapper.textContent = basic.name;
+    this.addTechnologiesTags(technologies);
     this.descriptionWrapper.textContent = basic.description;
     this.lookingForWrapper.textContent = basic.lookingFor;
     this.contacts.setContacts(contact);
@@ -63,6 +70,17 @@ export class SingleTeam extends KKWebComponent {
       allMembers.append(new LabeledUrlAvatar(name, avatarUrl))
     }
     this.membersWrapper.append(allMembers);
+  }
+
+  addTechnologiesTags(technologies) {
+    const technologiesWrapper = document.createDocumentFragment();
+    for (const technology of technologies) {
+      const singleTechnology = document.createElement('li');
+      singleTechnology.className = 'technology';
+      singleTechnology.append(new Chip(technology));
+      technologiesWrapper.append(singleTechnology);
+    }
+    this.technologiesWrapper.append(technologiesWrapper);
   }
 }
 

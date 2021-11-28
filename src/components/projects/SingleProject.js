@@ -1,12 +1,17 @@
 import { style } from './SingleProject.style.js';
+import { Chip } from '../chip/Chip.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
 import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
 
 const template = `
 <details>
-  <summary><h2 class="project__name"></h2></summary>
-  <section class="project__technologies"></section>
+  <summary>
+    <div class="summary-wrapper">
+      <h2 class="project__name"></h2>
+      <ul class="technologies-wrapper"></ul>
+    </div>
+  </summary>
   <div class="project__content--wrapper">
     <section class="project__info">
       <div class="project__base-informations">
@@ -32,7 +37,7 @@ export class SingleProject extends KKWebComponent {
   static TAG = `kk-single-project`;
 
   projectTitle = this.shadowRoot.querySelector('.project__name');
-  projectTechnologies = this.shadowRoot.querySelector('.project__technologies');
+  projectTechnologies = this.shadowRoot.querySelector('.technologies-wrapper');
   projectDescription = this.shadowRoot.querySelector('.project__description');
   projectRepo = this.shadowRoot.querySelector('.project__repository');
   projectCreators = this.shadowRoot.querySelector('.project__creators');
@@ -50,6 +55,7 @@ export class SingleProject extends KKWebComponent {
   setSingleProjectData({name, description, sourceCode, technologies, demo, creators}) {
     this.projectTitle.id = name;
     this.projectTitle.textContent = name;
+    this.addTechnologiesTags(technologies);
     this.projectDescription.textContent = description;
     this.projectRepo.setData(name, 'github', sourceCode);
     this.addCreators(creators);
@@ -68,6 +74,17 @@ export class SingleProject extends KKWebComponent {
       creatorsWrapper.append(singleCreator);
     }
     this.projectCreators.append(creatorsWrapper);
+  }
+
+  addTechnologiesTags(technologies) {
+    const technologiesWrapper = document.createDocumentFragment();
+    for (const technology of technologies) {
+      const singleTechnology = document.createElement('li');
+      singleTechnology.className = 'technology';
+      singleTechnology.append(new Chip(technology));
+      technologiesWrapper.append(singleTechnology);
+    }
+    this.projectTechnologies.append(technologiesWrapper);
   }
 
 }

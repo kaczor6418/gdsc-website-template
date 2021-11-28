@@ -13,19 +13,34 @@ summary,
   opacity: 80%;
   transition: opacity var(--default-duration) var(--ease-in-out-quint);
 }
-summary:hover,
-details[open] summary,
-.project__picture__description {
-  opacity: 100%;
-}
 h2 {
   margin: 0;
   display: inline-block;
   padding-left: var(--spacing-s);
 }
 ul {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
+.summary-wrapper {
+  display: inline;
+}
+.technologies-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--spacing-m) 0 0 var(--spacing-xl);
+}
+.technology {
+  padding: 0 var(--spacing-s);
+}
+summary:hover,
+details[open] summary,
+.project__picture__description {
+  opacity: 100%;
+}
+
 .project__info {
   padding-left: var(--spacing-l);
 }

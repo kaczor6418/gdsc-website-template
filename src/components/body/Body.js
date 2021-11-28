@@ -1,12 +1,10 @@
-import { Chip } from '../chip/Chip.js';
 import { style } from './Body.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { Info } from '../info/Info.js';
 
 const template = `
   <main>
-<!--    <${Info.TAG}></${Info.TAG}>-->
-<${Chip.TAG} kk-text="dupsko"></${Chip.TAG}>
+    <${Info.TAG}></${Info.TAG}>
   </main>
 `;
 

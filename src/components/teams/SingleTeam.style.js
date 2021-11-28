@@ -9,6 +9,23 @@ summary {
   opacity: 80%;
   transition: opacity var(--default-duration) var(--ease-in-out-quint);
 }
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.summary-wrapper {
+  display: inline;
+}
+.technologies-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--spacing-m) 0 0 var(--spacing-xl);
+}
+.technology {
+  padding: 0 var(--spacing-s);
+}
 summary:hover,
 details[open] summary {
   opacity: 100%;
