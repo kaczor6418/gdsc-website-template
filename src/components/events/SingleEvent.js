@@ -1,4 +1,4 @@
-import { style } from "./UpcommingEvent.style.js";
+import { style } from "./SingleEvent.style.js";
 import { KKWebComponent } from "../KKWebComponent.js";
 import { rippleEffect } from "../../rippleEffect.js";
 import { SelectService } from "../../services/SelectionService.js";
@@ -18,7 +18,7 @@ const template = `
 </a>
 `;
 
-export class UpcomingEvent extends KKWebComponent {
+export class SingleEvent extends KKWebComponent {
   static TAG = 'kk-upcoming-event';
   static observedAttributes = ['kk-url', 'kk-picture', 'kk-title', 'kk-date', 'kk-description'];
 
@@ -56,7 +56,7 @@ export class UpcomingEvent extends KKWebComponent {
         this.description.textContent = newValue;
         break;
       default:
-        throw new Error(`Attribute ${name} doesn't exist in ${UpcomingEvent.name} component`);
+        throw new Error(`Attribute ${name} doesn't exist in ${SingleEvent.name} component`);
     }
   }
 
@@ -66,4 +66,4 @@ export class UpcomingEvent extends KKWebComponent {
 
 }
 
-customElements.define(UpcomingEvent.TAG, UpcomingEvent);
+customElements.define(SingleEvent.TAG, SingleEvent);

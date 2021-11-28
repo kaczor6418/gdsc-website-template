@@ -28,12 +28,13 @@ ul {
 }
 .technologies-wrapper {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
   padding: var(--spacing-m) 0 0 var(--spacing-xl);
 }
 .technology {
-  padding: 0 var(--spacing-s);
+  padding: var(--spacing-m) var(--spacing-s);
 }
 summary:hover,
 details[open] summary,

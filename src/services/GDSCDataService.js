@@ -74,11 +74,17 @@ export class GDSCDataService {
     this.gdscData = new DOMParser().parseFromString(response, 'text/html');
   }
 
+  async fetchSinglePastEventDescription(eventUrl) {
+    const rawEvent = await fetch(eventUrl, {cache: 'force-cache'}).then(res => res.text());
+    return new DOMParser().parseFromString(rawEvent, 'text/html')
+      .querySelector('.event-short-description-on-banner')?.textContent
+      ?? 'This event does not have short description';
+  }
+
   transformHtmlPastEventsToArrayOfEvents(htmlEvents) {
     this.pastEvents = [];
     const eventsTitles = [];
     const eventsUrls = [];
-    this.pastEvents = [];
     for (const event of Array.from(htmlEvents.querySelectorAll('a'))) {
       eventsTitles.push(event.title);
       eventsUrls.push(event.href.replace(window.location.host, 'gdsc.community.dev'));
@@ -104,7 +110,6 @@ export class GDSCDataService {
     const eventsDates = Array.from(htmlEvents.querySelectorAll('strong')).map(date => date.textContent);
     const eventsTypes = Array.from(htmlEvents.querySelectorAll('span')).map(type => type.textContent);
     const eventsUrls = Array.from(htmlEvents.querySelectorAll('a')).map(eventUrl => eventUrl.href.replace(window.location.host, 'gdsc.community.dev'));
-    const eventsTags = Array.from(htmlEvents.querySelectorAll('div[data-tags]')).map(tags => tags.getAttribute('data-tags').split(' / '));
     const eventsDescriptions = Array.from(htmlEvents.querySelectorAll('p')).map(description => description.textContent);
     for (let i = 0; i < eventsTitles.length; i++) {
       this.upcomingEvents.push({
@@ -113,7 +118,6 @@ export class GDSCDataService {
         imageUrl: eventsImagesUrls[i],
         date: eventsDates[i],
         type: eventsTypes[i],
-        tags: eventsTags[i],
         description: eventsDescriptions[i]
       });
     }

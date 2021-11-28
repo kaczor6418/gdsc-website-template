@@ -2,7 +2,7 @@ import { gdscService } from '../../services/globalServices.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
 import { KKWebComponent } from "../KKWebComponent.js";
 import { style } from './Events.style.js';
-import { UpcomingEvent } from './UpcomingEvent.js';
+import { SingleEvent } from './SingleEvent.js';
 
 const template = `
   <section>
@@ -46,20 +46,18 @@ export class Events extends KKWebComponent {
       this.upcomingEventsWrapper.append(infoBox);
     } else {
       const eventsWrapper = document.createElement('ul');
-      const allEvents = document.createDocumentFragment();
+      this.upcomingEventsWrapper.append(eventsWrapper);
       for (const event of events) {
         const eventWrapper = document.createElement('li');
-        eventWrapper.append(new UpcomingEvent({
+        eventWrapper.append(new SingleEvent({
           'kk-url': event.url,
           'kk-picture': event.imageUrl,
           'kk-title': event.title,
           'kk-date': event.date,
           'kk-description': event.description
         }));
-        allEvents.append(eventWrapper);
+        eventsWrapper.append(eventWrapper);
       }
-      eventsWrapper.append(allEvents);
-      this.upcomingEventsWrapper.append(eventsWrapper);
     }
   }
 
@@ -69,7 +67,20 @@ export class Events extends KKWebComponent {
       const infoBox = new InfoBox('There are no past events!');
       this.pastEventsWrapper.append(infoBox);
     } else {
-
+      const eventsWrapper = document.createElement('ul');
+      this.pastEventsWrapper.append(eventsWrapper);
+      for (const event of events) {
+        const eventWrapper = document.createElement('li');
+        const description = await gdscService.fetchSinglePastEventDescription(event.url);
+        eventWrapper.append(new SingleEvent({
+          'kk-url': event.url,
+          'kk-picture': event.imageUrl,
+          'kk-title': event.title,
+          'kk-date': event.date,
+          'kk-description': description
+        }));
+        eventsWrapper.append(eventWrapper);
+      }
     }
   }
 
