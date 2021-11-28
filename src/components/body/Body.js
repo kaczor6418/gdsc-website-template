@@ -1,10 +1,10 @@
-import { style } from './Body.style.js';
 import { KKWebComponent } from "../KKWebComponent.js";
-import { Info } from '../info/Info.js';
+import { Events } from '../events/Events.js';
+import { style } from './Body.style.js';
 
 const template = `
   <main>
-    <${Info.TAG}></${Info.TAG}>
+    <${Events.TAG}></${Events.TAG}>
   </main>
 `;
 

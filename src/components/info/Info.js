@@ -7,11 +7,11 @@ import { style } from './Info.style.js';
 const template = `
 <section class="organizers">
   <h2>Organizers</h2>
-  <div class="items-wrapper organization-members"></div>
+  <ul class="items-wrapper organization-members"></ul>
 </section>
 <section class="club-contact">
   <h2>Contact</h2>
-  <div class="items-wrapper contact"></div>
+  <ul class="items-wrapper contact"></ul>
 </section>
 `;
 
@@ -33,13 +33,17 @@ export class Info extends KKWebComponent {
 
   renderMembers = (members) => {
     for (const {avatar, name, title} of members) {
-      this.organizersWrapper.append(new LabeledAvatar(name, avatar, title));
+      const singleOrganizer = document.createElement('li');
+      singleOrganizer.append(new LabeledAvatar(name, avatar, title));
+      this.organizersWrapper.append(singleOrganizer);
     }
   }
 
   renderContacts = (contacts) => {
     for (const {iconId, url} of contacts) {
-      this.contactWrapper.append(new LabeledUrlIcon({label: iconId.toUpperCase(), url, iconId}));
+      const singleContact = document.createElement('li');
+      singleContact.append(new LabeledUrlIcon({label: iconId.toUpperCase(), url, iconId}));
+      this.contactWrapper.append(singleContact);
     }
   }
 }

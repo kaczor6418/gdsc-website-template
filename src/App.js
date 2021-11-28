@@ -38,13 +38,13 @@ export class App extends KKWebComponent {
     this.header.addNavigation({
       tabs: [
         {
-          name: 'Info',
-          changeTabCallback: () => this.body.changeTab('Info'),
+          name: 'Events',
+          changeTabCallback: () => this.body.changeTab('Events'),
           disabled: false
         },
         {
-          name: 'Events',
-          changeTabCallback: () => this.body.changeTab('Events'),
+          name: 'Info',
+          changeTabCallback: () => this.body.changeTab('Info'),
           disabled: false
         },
         {
@@ -58,7 +58,7 @@ export class App extends KKWebComponent {
           disabled: false
         }
       ],
-      activeTab: 'Info'
+      activeTab: 'Events'
     });
     this.footer.setCopyright({
       date: '2021',
