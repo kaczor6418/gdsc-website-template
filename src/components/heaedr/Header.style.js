@@ -7,9 +7,6 @@ header {
   background: var(--surface1);
   filter: drop-shadow(var(--shadow-bottom) #000000);
 }
-header section {
-  padding: var(--spacing-s);
-}
 header section .logo-title {
   display: flex;
   align-items: center;

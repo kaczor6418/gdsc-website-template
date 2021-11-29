@@ -3,9 +3,9 @@ import { Events } from '../events/Events.js';
 import { style } from './Body.style.js';
 
 const template = `
-  <main>
-    <${Events.TAG}></${Events.TAG}>
-  </main>
+<main>
+  <${Events.TAG}></${Events.TAG}>
+</main>
 `;
 
 export class Body extends KKWebComponent {

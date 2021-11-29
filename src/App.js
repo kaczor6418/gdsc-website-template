@@ -2,6 +2,7 @@ import { Body } from "./components/body/Body.js";
 import { Footer } from "./components/footer/Footer.js";
 import { Header } from "./components/heaedr/Header.js";
 import { KKWebComponent } from "./components/KKWebComponent.js";
+import { gdscService } from './services/globalServices.js';
 
 const style = `
 :host {
@@ -34,7 +35,8 @@ export class App extends KKWebComponent {
   }
 
   async initializeApp() {
-    await this.header.setTitleAndLogo('GDSC - LODZ', 'logo');
+    const clubName = await gdscService.getClubName();
+    await this.header.setTitleAndLogo(clubName, 'gdsc');
     this.header.addNavigation({
       tabs: [
         {

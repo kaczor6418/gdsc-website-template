@@ -8,7 +8,7 @@ const template = `
 <details>
   <summary>
     <div class="summary-wrapper">
-      <h2 class="project__name"></h2>
+      <h3 class="project__name"></h3>
       <ul class="technologies-wrapper"></ul>
     </div>
   </summary>
@@ -16,13 +16,13 @@ const template = `
     <section class="project__info">
       <div class="project__base-informations">
         <p class="project__description"></p>
-        <h3>Creators: </h3>
+        <h4>Creators: </h4>
         <ul class="project__creators"></ul>
       </div>
     </section>
     <section class="project__demo">
     <a class="project__application" href="#">
-      <figure>
+      <figure class="picture-wrapper">
         <img class="project__picture" loading="lazy" src="#" alt="Some project">
         <figcaption class="project__picture__description"></figcaption>
       </figure> 

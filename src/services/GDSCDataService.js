@@ -1,5 +1,6 @@
 export class GDSCDataService {
   gdscClubUrl = null;
+  clubName
   gdscData = null;
   contact = null;
   upcomingEvents = null;
@@ -13,8 +14,9 @@ export class GDSCDataService {
   async voidInitializeConfig() {
     this.configRequest = fetch('./assets/configs/config.json', {cache: 'force-cache'})
       .then(response => response.json().then())
-      .then(({gdscClubRootUrl, contact}) => {
+      .then(({gdscClubRootUrl, clubName, contact}) => {
         this.gdscClubUrl = gdscClubRootUrl;
+        this.clubName = clubName;
         this.contact = contact;
       });
   }
@@ -22,6 +24,11 @@ export class GDSCDataService {
   async getContact() {
     await this.configRequest;
     return this.contact;
+  }
+
+  async getClubName() {
+    await this.configRequest;
+    return this.clubName;
   }
 
   async getPastEvents() {

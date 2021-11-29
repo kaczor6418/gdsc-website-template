@@ -14,7 +14,7 @@ export class Chip extends KKWebComponent {
   constructor(content) {
     super(template, style);
     if (content) {
-      this.content = content;
+      this.setAttribute('kk-text', content);
     }
   }
 

@@ -6,5 +6,7 @@ export const style = `
   padding: var(--spacing-s) var(--spacing-m);
   color: var(--brand);
   font-weight: bold;
+  text-align: center;
+  filter: drop-shadow(var(--shadow-around-level-1) #000000);
 }
 `;

@@ -4,6 +4,11 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+.divider {
+  margin: var(--spacing-m) 0;
+  border-color: var(--brand);
+  filter: drop-shadow(var(--shadow-around-level-0) var(--brand));
+}
 .project {
   padding: var(--spacing-xl) 0;
 }

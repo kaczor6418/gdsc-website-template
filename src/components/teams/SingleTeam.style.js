@@ -36,10 +36,6 @@ h2 {
   display: inline-block;
   padding-left: var(--spacing-s);
 }
-.team-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
 .members {
   display: flex;
   flex-wrap: wrap;
@@ -54,6 +50,12 @@ h2 {
 } 
 .section-description {
   padding-left: var(--spacing-m);
+}
+@media (min-width: 768px) {
+  .team-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media (min-width: 1300px) {
   .wrapper {

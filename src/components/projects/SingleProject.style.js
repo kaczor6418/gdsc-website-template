@@ -13,7 +13,7 @@ summary,
   opacity: 80%;
   transition: opacity var(--default-duration) var(--ease-in-out-quint);
 }
-h2 {
+h3 {
   margin: 0;
   display: inline-block;
   padding-left: var(--spacing-s);
@@ -54,6 +54,12 @@ details[open] summary,
 .creator {
   cursor: pointer;
   padding: var(--spacing-m);
+}
+.picture-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .project__picture__description {
   text-align: center;
