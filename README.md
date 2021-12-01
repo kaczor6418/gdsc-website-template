@@ -7,14 +7,14 @@
    1. [Create a fork](#create-a-fork)
    2. [Host your GDSC website](#host-your-gdsc-website)
 5. [Configuration](#configuration)
-   3. [General configuration](#general-configuration)
-   4. [Teams configuration](#teams-configuration)
-   5. [Projects configuration](#projects-configuration)
-   6. [Projects propositions configuration](#projects-propositions-configuration)
+   1. [General configuration](#general-configuration)
+   2. [Teams configuration](#teams-configuration)
+   3. [Projects configuration](#projects-configuration)
+   4. [Projects propositions configuration](#projects-propositions-configuration)
 6. [Updating configs](#updating-configs)
    1. [Adding new team](#adding-new-team)
    2. [Adding new project](#adding-new-project)
-   2. [Adding new project proposition](#adding-new-project-proposition)
+   3. [Adding new project proposition](#adding-new-project-proposition)
 
 ## Description
 
