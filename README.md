@@ -1,5 +1,21 @@
 # GDSC website template
 
+1. [Description](#description)
+2. [Philosophy](#philosophy)
+3. [Requirements](#requirements)
+4. [Getting started](#getting-started)
+   1. [Create a fork](#create-a-fork)
+   2. [Host your GDSC website](#host-your-gdsc-website)
+5. [Configuration](#configuration)
+   3. [General configuration](#general-configuration)
+   4. [Teams configuration](#teams-configuration)
+   5. [Projects configuration](#projects-configuration)
+   6. [Projects propositions configuration](#projects-propositions-configuration)
+6. [Updating configs](#updating-configs)
+   1. [Adding new team](#adding-new-team)
+   2. [Adding new project](#adding-new-project)
+   2. [Adding new project proposition](#adding-new-project-proposition)
+
 ## Description
 
 This repository contains a generic template for Google Developer Students Club website. By filling config files all
@@ -56,4 +72,236 @@ to make everything work and do not pay anything.
 
 ## Configuration
 
-> Here you can find a YouTube vide with full explanation how to configure your own GDSC Website **[How to configure GDSC website template]()**
+> Here you can find a YouTube vide with full explanation how to configure your own GDSC Website **[How to set general configuration for GDSC website template]()**
+
+### General configuration
+
+1. Open _**`./assets/configs/config.json`**_ file
+2. Change **`gdscClubRootUrl`** to your GDSC club page url. This is required for reflecting events and organizers
+   information
+3. Change **`clubName`** to your GDSC club name (keep it short)
+4. Add contact information. For example link to official GDSC page, GitHub of your club, discord group ...
+
+Structure of _**`config.json`**_ can be described by such interface:
+
+```typescript
+/**
+ * @gdscClubRootUrl → url to root page of your official GDSC club
+ * @clubName → name of your club
+ * @contact → how people can contact with your team
+ */
+interface Config {
+  gdscClubRootUrl: string;
+  clubName: string;
+  contact: SingleContact[];
+}
+
+/**
+ * @iconId → id of one of allowed icons
+ * @url → utl to club github/twitter/discord ...
+ */
+interface SingleContact {
+  iconId: ContactIcon;
+  url: string;
+}
+
+type ContactIcon = 'facebook' | 'twitter' | 'github' | 'discord' | 'gdsc' | 'instagram';
+```
+
+### Teams configuration
+
+> Here you can find a YouTube vide with full explanation how to set configuration for teams **[How to set teams configuration for GDSC website template]()**
+
+1. Open _**`./assets/configs/teams.json`**_ file
+2. If someone from your club members is looking for teammates to start or continue a project here is the best place to
+   add advertisement and let other club members to know about this. Each of club members can also create a request with
+   teem advertisement, but I will talk about this later
+3. If you leave this config empty then information that there is no any team yet will appear in **Teams** tab
+
+Structure of _**`teams.json`**_ can be described by such interface:
+
+```typescript
+type TeamsConfig = TeamConfig[];
+
+/**
+ * @name → name of the team should be unique across all teams
+ * @description → short description what team is doing
+ * @lookingFor → short description of people that can join team
+ * @technologies → array of technoliges which you are using in the team
+ * @contact → how to contact with team (at leas one)
+ * @members → current mebers of the team (at least one)
+ */
+interface TeamConfig {
+  name: string;
+  description: string;
+  lookingFor: string;
+  technologies: string[];
+  contact: Partial<TeamContact>;
+  members: TeamMember[];
+}
+
+/**
+ * name of the comunicator and url/number to team comunicator
+ */
+interface TeamContact {
+  discord: string;
+  messanger: string;
+  telegram: string;
+  mail: string;
+  phone: number
+}
+
+/**
+ * @name → name or alias of the team meber
+ * @avatarUrl → url to avator of team meber
+ * @url → url to teammeber Blog/GitHub/Twwiteer/LinkedIn
+ */
+interface TeamMember {
+  name: string;
+  avatarUrl: string;
+  url: string;
+}
+```
+
+### Projects configuration
+
+> Here you can find a YouTube vide with full explanation how to set configuration for projects **[How to set projects configuration for GDSC website template]()**
+
+1. Open _**`./assets/configs/projects.json`**_ file
+2. If someone from your club members or group of members want to show their project to other people here is a place to
+   do that. Showing work of your team can be a good idea to inspire other members to create their own projects too. Each
+   of club members can also create a request with description of created project, but I will talk about this later
+3. If you leave this config empty then information that there is no any created projects yet will appear in **Projects**
+   tab in **Created projects** section
+
+Structure of _**`projects.json`**_ can be described by such interface:
+
+```typescript
+type ProjectsConfig = ProjectConfig[];
+
+/**
+ * @name → name of the team should be unique across all projects
+ * @description → short description what team is doing
+ * @sourceCode → url to sorce code of the project
+ * @technologies → list of technologies which been used to create project
+ * @demo → more info about created projects
+ * @creators → list of people that have created this project
+ */
+interface ProjectConfig {
+  name: string;
+  description: string;
+  sourceCode: string;
+  technologies: string[];
+  demo: ProjectDemo;
+  creators: Creator[];
+}
+
+/**
+ * @url → url to project demo/source code/video if demo is not deployed
+ * @picture → url to picture of running project
+ */
+interface ProjectDemo {
+  url: string;
+  picture: string;
+}
+
+/**
+ * @name → name or alias of the project creator
+ * @avatarUrl → url to avator of the project creator
+ * @url → url to creator Blog/GitHub/Twwiteer/LinkedIn
+ */
+interface Creator {
+  name: string;
+  avatarUrl: string;
+  url: string;
+}
+```
+
+### Projects propositions configuration
+
+> Here you can find a YouTube vide with full explanation how to set configuration for projects propositions **[How to set projects propositions configuration for GDSC website template]()**
+
+1. Open _**`./assets/configs/projects-propositions.json`**_ file
+2. If you want to encourage your club members to work on projects and develop their skills by writing a code, here you
+   can add projects propositions on which they can work
+3. If you leave this config empty then information that there is no any created projects yet will appear in **Projects**
+   tab in **Projects propositions** section
+
+```typescript
+type ProjectsPropositionConfig = ProjectProposition[];
+
+/**
+ * @name → name of the proposed project should be unique across all proposed projects
+ * @description → short description what you can learn by doing this project and what is the main target of this project
+ * @technologies → list of technologies which you may use making this project
+ * @difficulty → what is the difficulty of this project
+ * @readmeUrl → url to readme of this project with more descriptive description of this project
+ * @pictureUrl → picture of possible project
+ */
+interface ProjectConfig {
+  name: string;
+  description: string;
+  technologies: string[];
+  difficulty: DificultyLevel;
+  readmeUrl: string;
+  pictureUrl: string;
+}
+
+type DificultyLevel = 'BASIC' | 'INTERMEDIATE' | 'ADVANCED' | 'MASTER';
+```
+
+## Updating configs
+
+### Adding new team
+
+> Here you can find a YouTube vide with full explanation how to add new team **[How to add new team to GDSC website]()**
+
+1. Open repository of your gdsc-website-for which you have created
+2. Find  _**`./assets/configs/teams.json`**_ file in GitHub repository
+3. Click **_Edit_** button
+4. Edit view of _**`teams.json`**_ should open
+5. On the beginning of this file add an object as the new first element of array with information of new team
+6. In _**Commit changes**_ section add title for example `team(team-name): add new team`
+7. Add short description why you want to add this advertisement
+8. Select _**Create a new branch for this commit and start a pull request.**_
+9. Click _**Propose changes**_ to submit you Pull Request
+10. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
+    GDSC Lead)
+11. After Pull Request will be approved and merged you should see new team in **Teams** tab at your website
+
+### Adding new project
+
+> Here you can find a YouTube vide with full explanation how to add new project **[How to add new project to GDSC website]()**
+
+1. Open repository of your gdsc-website-for which you have created
+2. Find  _**`./assets/configs/projects.json`**_ file in GitHub repository
+3. Click **_Edit_** button
+4. Edit view of _**`projects.json`**_ should open
+5. On the beginning of this file add an object as the new first element of array with information of project
+6. In _**Commit changes**_ section add title for example `project(project-name): add new project`
+7. Add short description why you want to show your work
+8. Select _**Create a new branch for this commit and start a pull request.**_
+9. Click _**Propose changes**_ to submit you Pull Request
+10. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
+    GDSC Lead)
+11. After Pull Request will be approved and merged you should see new project in **Projects** tab in **Created
+    projects** section at your website
+
+### Adding new project proposition
+
+> Here you can find a YouTube vide with full explanation how to add new project-proposition **[How to add new project-proposition to GDSC website]()**
+
+
+1. Open repository of your gdsc-website-for which you have created
+2. Find  _**`./assets/configs/projects-propositions.json`**_ file in GitHub repository
+3. Click **_Edit_** button
+4. Edit view of _**`projects-propositions.json`**_ should open
+5. On the beginning of this file add an object as the new first element of array with information of project proposition
+6. In _**Commit changes**_ section add title for example `project-proposition(project-proposition-name): add new project-proposition`
+7. Add short description why you want to show your work
+8. Select _**Create a new branch for this commit and start a pull request.**_
+9. Click _**Propose changes**_ to submit you Pull Request
+10. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
+    GDSC Lead)
+11. After Pull Request will be approved and merged you should see new project in **Projects** tab in **Created
+    projects** section at your website
