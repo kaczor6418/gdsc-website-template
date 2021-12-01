@@ -5,21 +5,26 @@ import { LabeledUrlIcon } from "../labeledUrlIcon/LabeledUrlIcon.js";
 import { style } from './Info.style.js';
 
 const template = `
-<section class="organizers">
-  <h2>Organizers</h2>
-  <ul class="items-wrapper organization-members"></ul>
+<section class="description">
+  <h2>Description</h2>
+  <div class="description-wrapper"></div>
 </section>
 <section class="club-contact">
   <h2>Contact</h2>
-  <ul class="items-wrapper contact"></ul>
+  <ul class="items-wrapper contact-wrapper"></ul>
+</section>
+<section class="organizers">
+  <h2>Organizers</h2>
+  <ul class="items-wrapper organizers-wrapper"></ul>
 </section>
 `;
 
 export class Info extends KKWebComponent {
   static TAG = `kk-club-contact`;
 
-  organizersWrapper = this.shadowRoot.querySelector('.organization-members');
-  contactWrapper = this.shadowRoot.querySelector('.contact');
+  organizersWrapper = this.shadowRoot.querySelector('.organizers-wrapper');
+  contactWrapper = this.shadowRoot.querySelector('.contact-wrapper');
+  descriptionWrapper = this.shadowRoot.querySelector('.description-wrapper');
 
   constructor() {
     super(template, style);
@@ -29,6 +34,7 @@ export class Info extends KKWebComponent {
     super.connectedCallback();
     void gdscService.getOrganizers().then(this.renderMembers)
     void gdscService.getContact().then(this.renderContacts)
+    void gdscService.getDescription().then(this.renderDescription)
   }
 
   renderMembers = (members) => {
@@ -45,6 +51,10 @@ export class Info extends KKWebComponent {
       singleContact.append(new LabeledUrlIcon({label: iconId.toUpperCase(), url, iconId}));
       this.contactWrapper.append(singleContact);
     }
+  }
+
+  renderDescription = (description) => {
+    this.descriptionWrapper.innerHTML =description;
   }
 }
 

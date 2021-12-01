@@ -17,4 +17,12 @@ kk-labeled-url-icon {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+}
+.description-wrapper {
+  padding-left: var(--spacing-l);
+}
+.description-wrapper > p {
+  margin: 0;
+  padding: var(--spacing-s) 0;
+}
 `;

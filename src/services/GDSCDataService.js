@@ -6,6 +6,9 @@ export class GDSCDataService {
   upcomingEvents = null;
   pastEvents = null;
   organizers = null;
+  description = null;
+  configRequest = null;
+  dataRequest = null;
 
   constructor() {
     void this.voidInitializeConfig();
@@ -73,18 +76,32 @@ export class GDSCDataService {
     return this.organizers;
   }
 
+  async getDescription() {
+    if (this.description === null) {
+      await this.fetchRawData();
+    }
+    if (this.description !== null) {
+      return this.description;
+    }
+    this.description = this.gdscData?.querySelector('#about .general-body').innerHTML;
+    return this.description;
+  }
+
   async fetchRawData() {
     await this.configRequest;
-    const response = await fetch(this.gdscClubUrl, {
-      headers: {'Content-Type': 'text/html; charset=utf-8'}
-    }).then(response => response.text());
-    this.gdscData = new DOMParser().parseFromString(response, 'text/html');
+    if (this.dataRequest === null) {
+      this.dataRequest = fetch(this.gdscClubUrl, {headers: {'Content-Type': 'text/html; charset=utf-8'}})
+        .then(response => response.text())
+        .then(rawData => this.gdscData = new DOMParser().parseFromString(rawData, 'text/html'));
+    }
+    await this.dataRequest;
+    return this.gdscData;
   }
 
   async fetchSinglePastEventDescription(eventUrl) {
     const rawEvent = await fetch(eventUrl, {cache: 'force-cache'}).then(res => res.text());
     return new DOMParser().parseFromString(rawEvent, 'text/html')
-      .querySelector('.event-short-description-on-banner')?.textContent
+        .querySelector('.event-short-description-on-banner')?.textContent
       ?? 'This event does not have short description';
   }
 
