@@ -39,8 +39,12 @@ h2 {
 .members {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+}
+.member {
+  cursor: pointer;
+  padding: var(--spacing-m);
 }
 .kk-labeled-avatar {
   padding: var(--spacing-m);
