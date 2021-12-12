@@ -6,10 +6,13 @@
     "technologies": ["javascript", "rust"],
     "contact": {
       "discord": "discord.chanel.url",
-      "messanger": "messangerName",
+      "messanger": "messanger.team.url",
+      "telegram": "telegram.team.url",
+      "mail": "mail.team.url",
       "phone": 123456789
     },
     "members": [
+      {"name": "name or alias", "avatarUrl": "./assets/images/default-avatar.webp", "url": "someUrl"},
       {"name": "name or alias", "avatarUrl": "./assets/images/default-avatar.webp", "url": "someUrl"}
     ]
   }
