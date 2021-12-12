@@ -50,7 +50,7 @@ to make everything work and do not pay anything.
 
 ## Getting started
 
-> Here you can find a YouTube vide with full explanation how to set up your own GDSC Website **[How to set up GDSC website template]()**
+> Here you can find a YouTube vide with full explanation how to set up your own GDSC Website **[How to set up GDSC website template](https://www.youtube.com/watch?v=QhbFGR7OAT4)**
 
 ### Create a fork
 
@@ -60,7 +60,7 @@ to make everything work and do not pay anything.
 
 ### Host your GDSC website
 
-1. Open your fork of [gdsc-website-template]() which you have created in previous step
+1. Open your fork of [gdsc-website-template](https://github.com/kaczor6418/gdsc-website-template) which you have created in previous step
 2. Open **Settings** (It is a cog button which should appear as the last tab under
    name-of-your-organization/gdsc-website-template)
 3. Find and click **Pages** tab in left vertical navbar (should be the penultimate tab)
@@ -72,7 +72,7 @@ to make everything work and do not pay anything.
 
 ## Configuration
 
-> Here you can find a YouTube vide with full explanation how to configure your own GDSC Website **[How to set general configuration for GDSC website template]()**
+> Here you can find a YouTube vide with full explanation how to configure your own GDSC Website **[How to set general configuration for GDSC website template](https://www.youtube.com/watch?v=YveI5pVWox0)**
 
 ### General configuration
 
@@ -110,7 +110,7 @@ type ContactIcon = 'facebook' | 'twitter' | 'github' | 'discord' | 'gdsc' | 'ins
 
 ### Teams configuration
 
-> Here you can find a YouTube vide with full explanation how to set configuration for teams **[How to set teams configuration for GDSC website template]()**
+> Here you can find a YouTube vide with full explanation how to set configuration for teams **[How to set teams configuration for GDSC website template](https://www.youtube.com/watch?v=QQ1KrjX5vLg)**
 
 1. Open _**`./assets/configs/teams.json`**_ file
 2. If someone from your club members is looking for teammates to start or continue a project here is the best place to
@@ -165,7 +165,7 @@ interface TeamMember {
 
 ### Projects configuration
 
-> Here you can find a YouTube vide with full explanation how to set configuration for projects **[How to set projects configuration for GDSC website template]()**
+> Here you can find a YouTube vide with full explanation how to set configuration for projects **[How to set projects configuration for GDSC website template](https://www.youtube.com/watch?v=YUqxkicjZSo)**
 
 1. Open _**`./assets/configs/projects.json`**_ file
 2. If someone from your club members or group of members want to show their project to other people here is a place to
@@ -219,7 +219,7 @@ interface Creator {
 
 ### Projects propositions configuration
 
-> Here you can find a YouTube vide with full explanation how to set configuration for projects propositions **[How to set projects propositions configuration for GDSC website template]()**
+> Here you can find a YouTube vide with full explanation how to set configuration for projects propositions **[How to set projects propositions configuration for GDSC website template](https://www.youtube.com/watch?v=b_HxDt1luZM)**
 
 1. Open _**`./assets/configs/projects-propositions.json`**_ file
 2. If you want to encourage your club members to work on projects and develop their skills by writing a code, here you
@@ -254,7 +254,7 @@ type DificultyLevel = 'BASIC' | 'INTERMEDIATE' | 'ADVANCED' | 'MASTER';
 
 ### Adding new team
 
-> Here you can find a YouTube vide with full explanation how to add new team **[How to add new team to GDSC website]()**
+> Here you can find a YouTube vide with full explanation how to add new team **[How to add new team to GDSC website](https://www.youtube.com/watch?v=DbLMpqINEGM)**
 
 1. Open repository of your gdsc-website-for which you have created
 2. Find  _**`./assets/configs/teams.json`**_ file in GitHub repository
@@ -263,15 +263,17 @@ type DificultyLevel = 'BASIC' | 'INTERMEDIATE' | 'ADVANCED' | 'MASTER';
 5. On the beginning of this file add an object as the new first element of array with information of new team
 6. In _**Commit changes**_ section add title for example `team(team-name): add new team`
 7. Add short description why you want to add this advertisement
-8. Select _**Create a new branch for this commit and start a pull request.**_
-9. Click _**Propose changes**_ to submit you Pull Request
-10. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
+8. Add `new-team` label
+9. Select _**Create a new branch for this commit and start a pull request.**_
+10. Add GDSC Lead or any core team member as reviewer
+11. Click _**Propose changes**_ to submit you Pull Request
+12. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
     GDSC Lead)
-11. After Pull Request will be approved and merged you should see new team in **Teams** tab at your website
+13. After Pull Request will be approved and merged you should see new team in **Teams** tab at your website
 
 ### Adding new project
 
-> Here you can find a YouTube vide with full explanation how to add new project **[How to add new project to GDSC website]()**
+> Here you can find a YouTube vide with full explanation how to add new project **[How to add new project to GDSC website](https://www.youtube.com/watch?v=5DaM-NeoNLs)**
 
 1. Open repository of your gdsc-website-for which you have created
 2. Find  _**`./assets/configs/projects.json`**_ file in GitHub repository
@@ -281,15 +283,17 @@ type DificultyLevel = 'BASIC' | 'INTERMEDIATE' | 'ADVANCED' | 'MASTER';
 6. In _**Commit changes**_ section add title for example `project(project-name): add new project`
 7. Add short description why you want to show your work
 8. Select _**Create a new branch for this commit and start a pull request.**_
-9. Click _**Propose changes**_ to submit you Pull Request
-10. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
+9. Add `new-project` label
+10. Add GDSC Lead or any core team member as reviewer
+11. Click _**Propose changes**_ to submit you Pull Request
+12. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
     GDSC Lead)
-11. After Pull Request will be approved and merged you should see new project in **Projects** tab in **Created
+13. After Pull Request will be approved and merged you should see new project in **Projects** tab in **Created
     projects** section at your website
 
 ### Adding new project proposition
 
-> Here you can find a YouTube vide with full explanation how to add new project-proposition **[How to add new project-proposition to GDSC website]()**
+> Here you can find a YouTube vide with full explanation how to add new project-proposition **[How to add new project-proposition to GDSC website](https://www.youtube.com/watch?v=z0SU-S8dm4w)**
 
 
 1. Open repository of your gdsc-website-for which you have created
@@ -300,8 +304,10 @@ type DificultyLevel = 'BASIC' | 'INTERMEDIATE' | 'ADVANCED' | 'MASTER';
 6. In _**Commit changes**_ section add title for example `project-proposition(project-proposition-name): add new project-proposition`
 7. Add short description why you want to show your work
 8. Select _**Create a new branch for this commit and start a pull request.**_
-9. Click _**Propose changes**_ to submit you Pull Request
-10. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
+9. Add `new-project-proposition` label
+10. Add GDSC Lead or any core team member as reviewer
+11. Click _**Propose changes**_ to submit you Pull Request
+12. Someone with Write privileges needs to approve your Pull Request and merge this with master (core-team member or
     GDSC Lead)
-11. After Pull Request will be approved and merged you should see new project in **Projects** tab in **Created
+13. After Pull Request will be approved and merged you should see new project in **Projects** tab in **Created
     projects** section at your website
