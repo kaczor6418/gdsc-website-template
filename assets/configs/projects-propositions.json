@@ -2,9 +2,27 @@
   {
     "name": "Guessing game",
     "difficulty": "BASIC",
-    "technologies": ["JavaScript", "HTML", "CSS"],
-    "description": "By doing this project, you will learn basic of JavaSscript,HTML and CSS additional you will also become familiar with storage API like LocalStorage, IndexDb.... . The task of this project is to create a responsive web-aaplication (for phones, tablets, and desktops) in which the user can try to guess the randomly rolled number. Game can be stopped in any moment and user should have a possibility to return to this game (state should be recreated). The user should also be able to see the history of the game (what number he guessed and what was the result). If you decided to use IndexDb for caching, then you can also learn a library(idb) that makes interactions with IndexDb much easier.",
+    "technologies": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "description": "By doing this project, you will learn basic of JavaScript,HTML and CSS additional you will also become familiar with storage API like LocalStorage, IndexDb.... . The task of this project is to create a responsive web-aaplication (for phones, tablets, and desktops) in which the user can try to guess the randomly rolled number. Game can be stopped in any moment and user should have a possibility to return to this game (state should be recreated). The user should also be able to see the history of the game (what number he guessed and what was the result). If you decided to use IndexDb for caching, then you can also learn a library(idb) that makes interactions with IndexDb much easier.",
     "readmeUrl": "https://github.com/kanow-blog/kanow-school-javascript-basics/blob/master/projects/project-1/guessing-game-part-1.md",
     "pictureUrl": "https://raw.githubusercontent.com/GDSC-Lodz-University-of-Technology/resources-images/master/project-propositions/guessing-game.webp"
+  },
+  {
+    "name": "Data grid",
+    "difficulty": "INTERMEDIATE",
+    "technologies": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "TypeScript",
+      "IndexDb"
+    ],
+    "description": "By doing this project, you will learn how to interact with DOM and you will get to know JavaScript, HTML, and CSS better. You will build your own data grid, which allows displaying any data in table views. You will need to fetch grid configuration created by the end user, in which he will describe how the grid should look like: columns shapes, columns visibility, columns order, columns hierarchy applicable sorting rules and so on... . Furthermore, you will need to write your render engine for grid headers and grid data, what can be a bit challenging if you think about hierarchy column orders... . After you will be done with the most basics features of data-grid you will need to refactor your project and use TypeScript what will make your code safer and maybe help you to truck some bugs in your current code.\nWhen your data-grid will be ready, then you can think about adding a backend to your project. Backend can allow tracking changes in data and grid configuration, what will allow a user to easily share configuration with his friends. In the end, you should have a nice project in your portfolio and actually working solution that can be used by anybody else who wants to work with the data.",
+    "readmeUrl": "https://github.com/kanow-blog/kanow-school-javascript-basics/blob/master/projects/project-2/data-grid-part-1.md",
+    "pictureUrl": "https://raw.githubusercontent.com/GDSC-Lodz-University-of-Technology/resources-images/master/project-propositions/data-grid.webp"
   }
 ]
