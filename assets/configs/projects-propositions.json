@@ -24,5 +24,15 @@
     "description": "By doing this project, you will learn how to interact with DOM and you will get to know JavaScript, HTML, and CSS better. You will build your own data grid, which allows displaying any data in table views. You will need to fetch grid configuration created by the end user, in which he will describe how the grid should look like: columns shapes, columns visibility, columns order, columns hierarchy applicable sorting rules and so on... . Furthermore, you will need to write your render engine for grid headers and grid data, what can be a bit challenging if you think about hierarchy column orders... . After you will be done with the most basics features of data-grid you will need to refactor your project and use TypeScript what will make your code safer and maybe help you to truck some bugs in your current code.\nWhen your data-grid will be ready, then you can think about adding a backend to your project. Backend can allow tracking changes in data and grid configuration, what will allow a user to easily share configuration with his friends. In the end, you should have a nice project in your portfolio and actually working solution that can be used by anybody else who wants to work with the data.",
     "readmeUrl": "https://github.com/kanow-blog/kanow-school-javascript-basics/blob/master/projects/project-2/data-grid-part-1.md",
     "pictureUrl": "https://raw.githubusercontent.com/GDSC-Lodz-University-of-Technology/resources-images/master/project-propositions/data-grid.webp"
+  },
+  {
+    "name": "Python beginner projects",
+    "difficulty": "BASIC",
+    "technologies": [
+      "Python"
+    ],
+    "description": "A bunch of cool beginner to intermediate project ideas, especially useful for getting familiar with Python. You're not required to do many of them - just try whichever you feel like doing. Projects are diversified and involve many different fields like webscraping, data dashboards, simulations, etc. so you can choose depending on what skills you would like to aquire. Take a look at the README to learn more about the propositions.",
+    "readmeUrl": "https://github.com/ashleve/project-proposals/blob/main/PYTHON_PROJECTS.md",
+    "pictureUrl": "https://github.com/ashleve/project-proposals/raw/main/.resources/boids.gif"
   }
 ]
