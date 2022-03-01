@@ -1,3 +1,15 @@
 [
-
+ {
+    "name": "Help For Ukraine WebDev Team",
+    "description": "Today I wanted to put my war-related NFTs up for auction in a way the money would automatically be transferred to a charity organisation... And turned out there is no such service on the web! How is that possible?! Everybody just trusts that their donates are then kindly passed by the influencer to the charity. What we'd accomplish with this project is actually a large-scale service domain to help people organise unconventional Fundraising - such that you can buy whatever but the money go to the Fundraiser if the owner agrees so. And the domain could be then maintained by us as the stakeholders or sold as a gigantic startup. I have everything designed and thought throuh, though I suppose throughout a discussion, some conceptual issues may come to light. And I have the will to make that happen, as I'm also a NFT artist and my thoughts often drift towards the market and coverage.",
+    "lookingFor": "frontend developer, backend developer, software architect, cloud solution architect, software developer",
+    "technologies": ["javascript", "to be decided (whatever fits best, could be react, next.js)"],
+    "contact": {
+      "discord": "https://discord.com/channels/901450590742261780/903352789449719839/947960987246530642",
+      "mail": "pylanski.adam@gmail.com"
+    },
+    "members": [
+      {"name": "Adam Pylański", "avatarUrl": "./assets/images/default-avatar.webp", "url": "https://www.instagram.com/verit_aeternae/"}
+    ]
+  }
 ]
