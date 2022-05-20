@@ -1,4 +1,49 @@
 [
+  {
+    "name": "Sterowanie witrynami przy pomocy ręki",
+    "description": "Wyobraź sobie sytuację, w której np.: leżąc na łóżku, jesteś w stanie w pełni kontrolować witryny internetowe tylko przy pomocy swoich rąk, bez żadnych dodatkowych zewnętrznych urządzeń, którymi musiałbyś manipulować. Celem tego projektu jest stworzenie biblioteki, która umożliwiałaby sterowanie aplikacjami internetowi tylko i wyłącznie przy pomocy ręki. Funkcjonalności: Przesuwanie strony do dołu/do góry/ w lewo/w prawo przy pomocy dłoni; Możliwość klikania w elementy na stronie przy pomocy reki; Kursor poruszający się za ręką użytkownika",
+    "lookingFor": "Software Engineer, Researcher, AI/ML/DL Engineer",
+    "technologies": ["JavaScript", "TypeScript", "Python", "Tensorflow"],
+    "contact": {
+      "discord": "https://discord.gg/ZqYM56v7wc",
+      "mail": "gdsc.lodz.university.of.technology@gmail.com"
+    },
+    "members": [
+      {"name": "Krzysztof Kaczynski", "avatarUrl": "./assets/images/krzysztof-kaczynski.webp", "url": "https://www.linkedin.com/in/kkaczy%C5%84ski/" },
+      {"name": "Łukasz Zalewski", "avatarUrl": "./assets/images/lukasz-zalewski.webp", "url": "https://www.linkedin.com/in/lukasz-zalewski/" },
+      {"name": "Bartosz Palewicz", "avatarUrl": "./assets/images/bartosz-palewicz.webp", "url": "https://www.linkedin.com/in/bartosz-palewicz-39a3831b5/ "}
+    ]
+  },
+  {
+    "name": "Zarządzanie pokojami w akademikach",
+    "description": "W akademikach istnieje możliwość rezerwacji salek np.: billarda; ping-ponga czy siłowni jednak nie wszędzie jest to rozwiązane w sposób komfortowy dla studentów (lub takiej aplikacji nie ma wcale). Pojawiają się problemy synchronizacji kluczyków, informacji kto, na ile i kiedy zarezerwował salkę. Celem projektu jest stworzenie aplikacji, którą w łatwy sposób można będzie integrować z akademikami oraz będzie ona prosta w obsłudze dla studentów i administracji. Funkcjonalności: Możliwość logowania przez konto uczelniane; Synchronizacja z bazą danych; Możliwość rezerwacji salek; Dashboard dla administracji (dodawanie salek, zarządanie nimi); Płatności wewnątrz aplikacji (np.: za salki czy internet); Powiadomienia push dla opiekunów salek i osób rezerwujących; Możliwość dodawania przez administracje ogłoszeń",
+    "lookingFor": "Frontend Developer, Backend Developer, Software Engineer, DevOps",
+    "technologies": ["JavaScript", "TypeScript", "Vue/React/Angular/Lit", "Node.js/Python/Java", "Azure", "MongoDB"],
+    "contact": {
+      "discord": "https://discord.gg/ZqYM56v7wc",
+      "mail": "gdsc.lodz.university.of.technology@gmail.com"
+    },
+    "members": [
+      {"name": "Krzysztof Kaczynski", "avatarUrl": "./assets/images/krzysztof-kaczynski.webp", "url": "https://www.linkedin.com/in/kkaczy%C5%84ski/" },
+      {"name": "Łukasz Zalewski", "avatarUrl": "./assets/images/lukasz-zalewski.webp", "url": "https://www.linkedin.com/in/lukasz-zalewski/" },
+      {"name": "Bartosz Palewicz", "avatarUrl": "./assets/images/bartosz-palewicz.webp", "url": "https://www.linkedin.com/in/bartosz-palewicz-39a3831b5/ "}
+    ]
+  },
+  {
+    "name": "Obsidian publish",
+    "description": "Obsidian.md to aplikacja/IDE do notatek oraz budowania asocjacyjnych baz wiedzy w formie plików markdown. Platforma ma dziesiątki tysięcy użytkowników i jest częściowo darmowa. Celem projektu jest stworzyć open sourcową alternatywę \"obsidian publish\", którą każdy mógłby sobie z łatwością skopiować i opublikować notatki poprzez swój profil na GitHub.Funkcjonalności: Deployment cyfrowego umysłu na github pages; Frontend odwzorowujący to co dostępne jest w \"obsidian publish\"; Renderowanie plików markdown (włącznie z wyświetlaniem obrazów); Eksploracja zawartości poprzez drzewko folderów; Obsługa specjalnej składni hiperlinków do innych notatek w bazie; Renderowanie składni latexa w plikach markdown (obsidian to potrafi); Renderowanie interaktywnych grafów połączeń",
+    "lookingFor": "Frontend Developer, Software Engineer, DevOps",
+    "technologies": ["JavaScript", "TypeScript", "Vue/React/Angular/Lit"],
+    "contact": {
+      "discord": "https://discord.gg/ZqYM56v7wc",
+      "mail": "gdsc.lodz.university.of.technology@gmail.com"
+    },
+    "members": [
+      {"name": "Krzysztof Kaczynski", "avatarUrl": "./assets/images/krzysztof-kaczynski.webp", "url": "https://www.linkedin.com/in/kkaczy%C5%84ski/" },
+      {"name": "Łukasz Zalewski", "avatarUrl": "./assets/images/lukasz-zalewski.webp", "url": "https://www.linkedin.com/in/lukasz-zalewski/" },
+      {"name": "Bartosz Palewicz", "avatarUrl": "./assets/images/bartosz-palewicz.webp", "url": "https://www.linkedin.com/in/bartosz-palewicz-39a3831b5/ "}
+    ]
+  },
  {
     "name": "Help For Ukraine WebDev Team",
     "description": "Today I wanted to put my war-related NFTs up for auction in a way the money would automatically be transferred to a charity organisation... And turned out there is no such service on the web! How is that possible?! Everybody just trusts that their donates are then kindly passed by the influencer to the charity. What we'd accomplish with this project is actually a large-scale service domain to help people organise unconventional Fundraising - such that you can buy whatever but the money go to the Fundraiser if the owner agrees so. And the domain could be then maintained by us as the stakeholders or sold as a gigantic startup. I have everything designed and thought throuh, though I suppose throughout a discussion, some conceptual issues may come to light. And I have the will to make that happen, as I'm also a NFT artist and my thoughts often drift towards the market and coverage.",

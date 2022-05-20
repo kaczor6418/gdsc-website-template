@@ -66,10 +66,10 @@ export class SingleTeam extends KKWebComponent {
       this.membersWrapper.append(infoBox);
     }
     const allMembers = document.createDocumentFragment();
-    for (const {name, avatarUrl} of members) {
+    for (const {name, avatarUrl, url} of members) {
       const singleMember = document.createElement('li');
       singleMember.className = 'member';
-      singleMember.append(new LabeledUrlAvatar(name, avatarUrl))
+      singleMember.append(new LabeledUrlAvatar(name, avatarUrl, url))
       allMembers.append(singleMember);
     }
     this.membersWrapper.append(allMembers);
