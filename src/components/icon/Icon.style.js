@@ -17,4 +17,4 @@ svg:hover, svg[aria-selected="true"] {
   filter: drop-shadow(var(--shadow-around-level-0) var(--brand));
   fill: var(--brand);
 }
-`
+`;

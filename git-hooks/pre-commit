@@ -64,12 +64,6 @@ if [[ -n "$staged_ts_files" ]]; then
   if [ $eslint_exit_code = 0 ]; then
     echo -e "${GREEN} ✔ Eslint checks passed ${NC}"
   fi
-  echo "Running Tests..."
-  ./node_modules/.bin/mocha -r @swc/register --reporter dot
-  mocha_exit_code=$?
-  if [ $mocha_exit_code = 0 ]; then
-    echo -e "${GREEN} ✔ All tests passed' ${NC}"
-  fi
 fi
 if [ $eslint_exit_code = 0 ] && [ $mocha_exit_code = 0 ]; then
   add_files_to_staged_tree "${ts_files_to_add_after_linting[*]}"

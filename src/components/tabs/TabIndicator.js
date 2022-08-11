@@ -13,7 +13,7 @@ export class TabIndicator extends KKWebComponent {
   width;
   index;
 
-  constructor({width}) {
+  constructor({ width }) {
     super(template, style);
     this.index = 0;
     this.width = width;

@@ -1,5 +1,5 @@
-import { KKWebComponent } from "../KKWebComponent.js";
-import { style } from './InfoBox.style.js'
+import { KKWebComponent } from '../KKWebComponent.js';
+import { style } from './InfoBox.style.js';
 
 const template = `
 <div class="box">
@@ -40,7 +40,6 @@ export class InfoBox extends KKWebComponent {
         throw new Error(`Attribute ${name} doesn't exist in ${InfoBox.name} component`);
     }
   }
-
 }
 
 customElements.define(InfoBox.TAG, InfoBox);

@@ -1,5 +1,5 @@
-import { gdscService } from "../../services/globalServices.js";
-import { KKWebComponent } from "../KKWebComponent.js";
+import { gdscService } from '../../services/globalServices.ts';
+import { KKWebComponent } from '../KKWebComponent.js';
 import { SocialMedia } from '../socialMedia/SocialMedia.js';
 import { style } from './Footer.style.js';
 
@@ -26,20 +26,15 @@ export class Footer extends KKWebComponent {
 
   addSocialMediaIcons = (icons) => {
     this.socialMedia.setSocialMediaIcons(icons);
-  }
+  };
 
-  setCopyright({date, author, termsReferenceUrl}) {
+  setCopyright({ date, author, termsReferenceUrl }) {
     const copyrightText = this.formattedCopyrights`Copyright © ${date} ${author} Policy terms${termsReferenceUrl}`;
     const copyrightsElement = new DOMParser().parseFromString(copyrightText, 'text/html').body.firstElementChild;
     this.footer.append(copyrightsElement);
   }
 
-  formattedCopyrights(
-    [copyright, separate, policyTerms],
-    date,
-    author,
-    policyTermsUrl
-  ) {
+  formattedCopyrights([copyright, separate, policyTerms], date, author, policyTermsUrl) {
     const policyTermsText = policyTerms.trim();
     const policyTermsUrlText = `<a href="${policyTermsUrl}">${policyTermsText}</a>`;
     return `<p>${copyright + date + separate + author}. ${policyTermsUrlText}</p>`;

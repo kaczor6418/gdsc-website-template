@@ -1,10 +1,7 @@
 @font-face {
   font-family: 'Roboto';
-  src:
-   local('JetBrainsMono Regular'),
-   local('JetBrainsMono-Regular'),
-   url('./assets/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-   url('./assets/fonts/JetBrainsMono-Regular.ttf') format('embedded-opentype');
+  src: local('JetBrainsMono Regular'), local('JetBrainsMono-Regular'), url('./assets/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('./assets/fonts/JetBrainsMono-Regular.ttf') format('embedded-opentype');
   font-display: swap;
   font-weight: normal;
   font-style: normal;
@@ -22,7 +19,7 @@
   --font-weight-normal: 400;
   --font-weight-semibold: 500;
   --line-height: 1.4;
-  
+
   font-family: 'JetBrains Mono', monospace;
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-normal);

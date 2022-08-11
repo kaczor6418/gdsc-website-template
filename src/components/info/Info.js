@@ -1,7 +1,7 @@
-import { gdscService } from '../../services/globalServices.js';
-import { KKWebComponent } from "../KKWebComponent.js";
-import { LabeledAvatar } from "../labeledAvatar/LabeledAvatar.js";
-import { LabeledUrlIcon } from "../labeledUrlIcon/LabeledUrlIcon.js";
+import { gdscService } from '../../services/globalServices.ts';
+import { KKWebComponent } from '../KKWebComponent.js';
+import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar.js';
+import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
 import { style } from './Info.style.js';
 
 const template = `
@@ -32,30 +32,30 @@ export class Info extends KKWebComponent {
 
   connectedCallback() {
     super.connectedCallback();
-    void gdscService.getOrganizers().then(this.renderMembers)
-    void gdscService.getContact().then(this.renderContacts)
-    void gdscService.getDescription().then(this.renderDescription)
+    void gdscService.getOrganizers().then(this.renderMembers);
+    void gdscService.getContact().then(this.renderContacts);
+    void gdscService.getDescription().then(this.renderDescription);
   }
 
   renderMembers = (members) => {
-    for (const {avatar, name, title} of members) {
+    for (const { avatar, name, title } of members) {
       const singleOrganizer = document.createElement('li');
       singleOrganizer.append(new LabeledAvatar(name, avatar, title));
       this.organizersWrapper.append(singleOrganizer);
     }
-  }
+  };
 
   renderContacts = (contacts) => {
-    for (const {iconId, url} of contacts) {
+    for (const { iconId, url } of contacts) {
       const singleContact = document.createElement('li');
-      singleContact.append(new LabeledUrlIcon({label: iconId.toUpperCase(), url, iconId}));
+      singleContact.append(new LabeledUrlIcon({ label: iconId.toUpperCase(), url, iconId }));
       this.contactWrapper.append(singleContact);
     }
-  }
+  };
 
   renderDescription = (description) => {
-    this.descriptionWrapper.innerHTML =description;
-  }
+    this.descriptionWrapper.innerHTML = description;
+  };
 }
 
 customElements.define(Info.TAG, Info);

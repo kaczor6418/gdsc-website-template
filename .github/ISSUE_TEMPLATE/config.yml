@@ -3,5 +3,5 @@ blank_issues_enabled: false
 
 contact_links:
   - name: "\u2753 Discord Community of GDZC - LODZ"
-    url: "https://discord.gg/2tW4jfVd"
-    about: "Please ask support questions or discuss #help"
+    url: 'https://discord.gg/2tW4jfVd'
+    about: 'Please ask support questions or discuss #help'
