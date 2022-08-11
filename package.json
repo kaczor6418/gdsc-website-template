@@ -7,7 +7,10 @@
   "modern": "dist/modern.js",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
-  "keywords": ["gdsc", "template"],
+  "keywords": [
+    "gdsc",
+    "template"
+  ],
   "author": "Krzysztof Kaczyński",
   "license": "MIT",
   "homepage": "https://github.com/kaczor6418/gdsc-website-template#readme",
@@ -22,8 +25,9 @@
     "postinstall": "git config core.hooksPath ./git-hooks",
     "serve": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
+    "lint:ts": "eslint . --ext .ts",
+    "lint:css": "stylelint **/*.css",
+    "lint:fix": "eslint . --ext .ts --fix && stylelint **/*.css --fix --allow-empty-input",
     "pretyprint": "prettier --check .",
     "pretyprint:fix": "prettier --write ."
   },
@@ -39,6 +43,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-webpack-plugin": "^3.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "stylelint": "^14.10.0",
+    "stylelint-config-recommended": "^9.0.0",
     "swc-loader": "^0.2.3",
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",
