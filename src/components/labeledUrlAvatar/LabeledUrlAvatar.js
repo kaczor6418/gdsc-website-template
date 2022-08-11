@@ -1,4 +1,4 @@
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { style } from './LabeledUrlAvatar.style.js';
 
 const template = `
@@ -29,8 +29,6 @@ export class LabeledUrlAvatar extends KKWebComponent {
   set avatar(url) {
     this.imageWrapper.src = url;
   }
-
-
 }
 
 customElements.define(LabeledUrlAvatar.TAG, LabeledUrlAvatar);

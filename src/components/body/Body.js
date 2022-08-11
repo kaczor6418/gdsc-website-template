@@ -1,4 +1,4 @@
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { Events } from '../events/Events.js';
 import { style } from './Body.style.js';
 
@@ -20,22 +20,22 @@ export class Body extends KKWebComponent {
   async changeTab(tabName) {
     switch (tabName) {
       case 'Events':
-        const {Events} = await import('../events/Events.js');
+        const { Events } = await import('../events/Events.js');
         this.bodyWrapper.firstElementChild.remove();
         this.bodyWrapper.append(new Events());
         break;
       case 'Projects':
-        const {Projects} = await import('../projects/Projects.js');
+        const { Projects } = await import('../projects/Projects.js');
         this.bodyWrapper.firstElementChild.remove();
         this.bodyWrapper.append(new Projects());
         break;
       case 'Teams':
-        const {Teams} = await import('../teams/Teams.js');
+        const { Teams } = await import('../teams/Teams.js');
         this.bodyWrapper.firstElementChild.remove();
         this.bodyWrapper.append(new Teams());
         break;
       case 'Info':
-        const {Info} = await import('../info/Info.js');
+        const { Info } = await import('../info/Info.js');
         this.bodyWrapper.firstElementChild.remove();
         this.bodyWrapper.append(new Info());
         break;

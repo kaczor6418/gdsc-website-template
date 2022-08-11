@@ -1,7 +1,7 @@
 import { KKWebComponent } from '../KKWebComponent.js';
 import { SingleTab } from './SingleTab.js';
 import { TabIndicator } from './TabIndicator.js';
-import { style } from './Tabs.style.js'
+import { style } from './Tabs.style.js';
 
 const template = `
 <ul role="tablist" class="tabs">
@@ -18,7 +18,7 @@ export class Tabs extends KKWebComponent {
 
   constructor() {
     super(template, style);
-    this.tabIndicator = new TabIndicator({width: 0});
+    this.tabIndicator = new TabIndicator({ width: 0 });
     this.tabsWrapper.appendChild(this.tabIndicator);
   }
 
@@ -26,7 +26,7 @@ export class Tabs extends KKWebComponent {
     return Array.from(this.tabNameTab.values());
   }
 
-  initializeData({tabs, activeTab}) {
+  initializeData({ tabs, activeTab }) {
     this.addTabs(tabs);
     this.activateTab(activeTab);
   }

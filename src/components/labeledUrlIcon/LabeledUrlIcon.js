@@ -1,5 +1,5 @@
 import { Icon } from '../icon/Icon.js';
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { style } from './LabeledUrlIcon.style.js';
 
 const template = `
@@ -36,7 +36,6 @@ export class LabeledUrlIcon extends KKWebComponent {
     this.icon = iconId;
     this.wrapper.href = url;
   }
-
 }
 
 customElements.define(LabeledUrlIcon.TAG, LabeledUrlIcon);

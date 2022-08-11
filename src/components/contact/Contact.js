@@ -1,4 +1,4 @@
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { UrlIcon } from '../urlIcon/UrlIcon.js';
 import { style } from './Contact.style.js';
 
@@ -24,7 +24,7 @@ export class Contact extends KKWebComponent {
     }
   }
 
-  setContacts({discord, messanger, telegram, mail, phone}) {
+  setContacts({ discord, messanger, telegram, mail, phone }) {
     if (discord) {
       this.addContactItem('discord', discord, 'discord');
     }
@@ -45,10 +45,9 @@ export class Contact extends KKWebComponent {
   addContactItem(iconId, url, contact) {
     this[contact] = document.createElement('li');
     this[contact].className = 'contact__item';
-    this[contact].append(new UrlIcon(url, {'kk-icon-id': iconId}));
+    this[contact].append(new UrlIcon(url, { 'kk-icon-id': iconId }));
     this.contactsWrapper.append(this[contact]);
   }
-
 }
 
 customElements.define(Contact.TAG, Contact);

@@ -1,6 +1,6 @@
-import { gdscService } from '../../services/globalServices.js';
+import { gdscService } from '../../services/globalServices.ts';
 import { InfoBox } from '../infoBox/InfoBox.js';
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { style } from './Events.style.js';
 import { SingleEvent } from './SingleEvent.js';
 
@@ -28,13 +28,13 @@ export class Events extends KKWebComponent {
 
   initializeListeners() {
     const renderUpcomingEvents = () => {
-      this.upcomingEventsWrapper.removeEventListener('click', renderUpcomingEvents)
+      this.upcomingEventsWrapper.removeEventListener('click', renderUpcomingEvents);
       void this.setUpcomingEvents();
-    }
+    };
     const renderPastEvents = () => {
       this.pastEventsWrapper.removeEventListener('click', renderPastEvents);
       void this.setPastEvents();
-    }
+    };
     this.upcomingEventsWrapper.addEventListener('click', renderUpcomingEvents);
     this.pastEventsWrapper.addEventListener('click', renderPastEvents);
   }
@@ -49,13 +49,15 @@ export class Events extends KKWebComponent {
       this.upcomingEventsWrapper.append(eventsWrapper);
       for (const event of events) {
         const eventWrapper = document.createElement('li');
-        eventWrapper.append(new SingleEvent({
-          'kk-url': event.url,
-          'kk-picture': event.imageUrl,
-          'kk-title': event.title,
-          'kk-date': event.date,
-          'kk-description': event.description
-        }));
+        eventWrapper.append(
+          new SingleEvent({
+            'kk-url': event.url,
+            'kk-picture': event.imageUrl,
+            'kk-title': event.title,
+            'kk-date': event.date,
+            'kk-description': event.description,
+          })
+        );
         eventsWrapper.append(eventWrapper);
       }
     }
@@ -72,18 +74,19 @@ export class Events extends KKWebComponent {
       for (const event of events) {
         const eventWrapper = document.createElement('li');
         const description = await gdscService.fetchSinglePastEventDescription(event.url);
-        eventWrapper.append(new SingleEvent({
-          'kk-url': event.url,
-          'kk-picture': event.imageUrl,
-          'kk-title': event.title,
-          'kk-date': event.date,
-          'kk-description': description
-        }));
+        eventWrapper.append(
+          new SingleEvent({
+            'kk-url': event.url,
+            'kk-picture': event.imageUrl,
+            'kk-title': event.title,
+            'kk-date': event.date,
+            'kk-description': description,
+          })
+        );
         eventsWrapper.append(eventWrapper);
       }
     }
   }
-
 }
 
 customElements.define(Events.TAG, Events);

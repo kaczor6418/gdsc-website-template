@@ -1,5 +1,5 @@
 import { Icon } from '../icon/Icon.js';
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { style } from './UrlIcon.style.js';
 
 const template = `
@@ -39,7 +39,6 @@ export class UrlIcon extends KKWebComponent {
         throw new Error(`Attribute ${name} doesn't exist in ${UrlIcon.name} component`);
     }
   }
-
 }
 
 customElements.define(UrlIcon.TAG, UrlIcon);
