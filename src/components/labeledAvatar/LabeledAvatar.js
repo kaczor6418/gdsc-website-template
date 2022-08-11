@@ -1,4 +1,4 @@
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { style } from './LabeledAvatar.style.js';
 
 const template = `
@@ -39,12 +39,10 @@ export class LabeledAvatar extends KKWebComponent {
     this.imageWrapper.src = url;
   }
 
-  set size({width, height}) {
+  set size({ width, height }) {
     this.imageWrapper.style.width = width;
     this.imageWrapper.style.height = height;
   }
-
-
 }
 
 customElements.define(LabeledAvatar.TAG, LabeledAvatar);

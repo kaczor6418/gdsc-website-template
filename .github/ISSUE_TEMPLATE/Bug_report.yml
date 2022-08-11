@@ -1,33 +1,37 @@
 name: "\U0001F41B Bug Report"
 description: "If something isn't working as expected \U0001F914"
-labels: ["bug"]
+labels: ['bug']
 body:
   - type: checkboxes
     attributes:
-      label: "Is there an existing issue for this?"
-      description: "Please search [here](https://github.com/kaczor6418/gdsc-website-template/issues) to see if an issue already exists for the bug you encountered"
+      label: 'Is there an existing issue for this?'
+      description:
+        'Please search [here](https://github.com/kaczor6418/gdsc-website-template/issues) to see if an issue already exists for the bug you
+        encountered'
       options:
-      - label: "I have searched the existing issues"
-        required: true
+        - label: 'I have searched the existing issues'
+          required: true
 
   - type: textarea
     validations:
       required: true
     attributes:
-      label: "Current behavior"
-      description: "How the issue manifests?"
+      label: 'Current behavior'
+      description: 'How the issue manifests?'
 
   - type: input
     validations:
       required: true
     attributes:
-      label: "Minimum reproduction code"
-      description: "An URL to some git repository that reproduces this issue. [Wtf is a minimum reproduction?](https://jmcdo29.github.io/wtf-is-a-minimum-reproduction)"
-      placeholder: "https://github.com/..."
+      label: 'Minimum reproduction code'
+      description:
+        'An URL to some git repository that reproduces this issue. [Wtf is a minimum
+        reproduction?](https://jmcdo29.github.io/wtf-is-a-minimum-reproduction)'
+      placeholder: 'https://github.com/...'
 
   - type: textarea
     attributes:
-      label: "Steps to reproduce"
+      label: 'Steps to reproduce'
       description: |
         How the issue manifests?
         You could leave this blank if you alread write this in your reproduction code
@@ -40,8 +44,8 @@ body:
     validations:
       required: true
     attributes:
-      label: "Expected behavior"
-      description: "A clear and concise description of what you expected to happend (or code)"
+      label: 'Expected behavior'
+      description: 'A clear and concise description of what you expected to happend (or code)'
 
   - type: markdown
     attributes:
@@ -50,15 +54,15 @@ body:
 
   - type: input
     attributes:
-      label: "GDSC Website template version"
-      description: "Which version of gdsc-website-template are you using?"
-      placeholder: "1.0.0"
+      label: 'GDSC Website template version'
+      description: 'Which version of gdsc-website-template are you using?'
+      placeholder: '1.0.0'
 
   - type: checkboxes
     validations:
       required: true
     attributes:
-      label: "In which web-browser issue happend?"
+      label: 'In which web-browser issue happend?'
       options:
         - label: Chrome
         - label: Chrome Mobile
@@ -77,7 +81,7 @@ body:
     validations:
       required: true
     attributes:
-      label: "In which operating systems have you tested?"
+      label: 'In which operating systems have you tested?'
       options:
         - label: macOS
         - label: Windows
@@ -90,7 +94,7 @@ body:
 
   - type: textarea
     attributes:
-      label: "Other"
+      label: 'Other'
       description: |
         Anything else relevant? eg: Logs, OS version, IDE, package manager, etc.
         **Tip:** You can attach images, recordings or log files by clicking this area to highlight it and then dragging files in

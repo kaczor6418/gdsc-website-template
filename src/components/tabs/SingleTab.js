@@ -18,7 +18,7 @@ export class SingleTab extends KKWebComponent {
   _index;
   _name;
 
-  constructor({changeTabCallback, name}, index) {
+  constructor({ changeTabCallback, name }, index) {
     super(template, style);
     this._name = name;
     this._index = index;

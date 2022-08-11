@@ -5,33 +5,42 @@
   "display": "fullscreen",
   "background_color": "#339977",
   "description": "Website with base information about GDSC community at TUL",
-  "icons": [{
-    "src": "assets/icons/logo48.png",
-    "sizes": "48x48",
-    "type": "image/png; charset=utf-8"
-  }, {
-    "src": "assets/icons/logo72.png",
-    "sizes": "72x72",
-    "type": "image/png; charset=utf-8"
-  }, {
-    "src": "assets/icons/logo96.png",
-    "sizes": "96x96",
-    "type": "image/png; charset=utf-8"
-  }, {
-    "src": "assets/icons/logo144.png",
-    "sizes": "144x144",
-    "type": "image/png; charset=utf-8"
-  }, {
-    "src": "assets/icons/logo168.png",
-    "sizes": "168x168",
-    "type": "image/png; charset=utf-8"
-  }, {
-    "src": "assets/icons/logo192.png",
-    "sizes": "192x192",
-    "type": "image/png; charset=utf-8"
-  }],
-  "related_applications": [{
-    "platform": "gdsc community",
-    "url": "https://gdsc.community.dev/lodz-university-of-technology/"
-  }]
+  "icons": [
+    {
+      "src": "assets/icons/logo48.png",
+      "sizes": "48x48",
+      "type": "image/png; charset=utf-8"
+    },
+    {
+      "src": "assets/icons/logo72.png",
+      "sizes": "72x72",
+      "type": "image/png; charset=utf-8"
+    },
+    {
+      "src": "assets/icons/logo96.png",
+      "sizes": "96x96",
+      "type": "image/png; charset=utf-8"
+    },
+    {
+      "src": "assets/icons/logo144.png",
+      "sizes": "144x144",
+      "type": "image/png; charset=utf-8"
+    },
+    {
+      "src": "assets/icons/logo168.png",
+      "sizes": "168x168",
+      "type": "image/png; charset=utf-8"
+    },
+    {
+      "src": "assets/icons/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png; charset=utf-8"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "gdsc community",
+      "url": "https://gdsc.community.dev/lodz-university-of-technology/"
+    }
+  ]
 }

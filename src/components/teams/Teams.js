@@ -43,7 +43,7 @@ export class Teams extends KKWebComponent {
       teamsList.append(allTeams);
       this.teamsWrapper.append(teamsList);
     }
-  }
+  };
 }
 
 customElements.define(Teams.TAG, Teams);

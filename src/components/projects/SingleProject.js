@@ -52,7 +52,7 @@ export class SingleProject extends KKWebComponent {
     }
   }
 
-  setSingleProjectData({name, description, sourceCode, technologies, demo, creators}) {
+  setSingleProjectData({ name, description, sourceCode, technologies, demo, creators }) {
     this.projectTitle.id = name;
     this.projectTitle.textContent = name;
     this.addTechnologiesTags(technologies);
@@ -67,7 +67,7 @@ export class SingleProject extends KKWebComponent {
 
   addCreators(creators) {
     const creatorsWrapper = document.createDocumentFragment();
-    for (const {name, avatar, url} of creators) {
+    for (const { name, avatar, url } of creators) {
       const singleCreator = document.createElement('li');
       singleCreator.className = 'creator';
       singleCreator.append(new LabeledUrlAvatar(name, avatar, url));
@@ -86,7 +86,6 @@ export class SingleProject extends KKWebComponent {
     }
     this.projectTechnologies.append(technologiesWrapper);
   }
-
 }
 
 customElements.define(SingleProject.TAG, SingleProject);

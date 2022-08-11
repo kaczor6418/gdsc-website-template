@@ -1,8 +1,8 @@
-import { Body } from "./components/body/Body.js";
-import { Footer } from "./components/footer/Footer.js";
-import { Header } from "./components/heaedr/Header.js";
-import { KKWebComponent } from "./components/KKWebComponent.js";
-import { gdscService } from './services/globalServices.js';
+import { Body } from './components/body/Body.js';
+import { Footer } from './components/footer/Footer.js';
+import { Header } from './components/heaedr/Header.js';
+import { KKWebComponent } from './components/KKWebComponent.js';
+import { gdscService } from './services/globalServices.ts';
 
 const style = `
 :host {
@@ -14,7 +14,7 @@ ${Body.TAG} {
   margin: 0;
   margin-bottom: auto;
 }
-`
+`;
 
 const template = `
 <${Header.TAG}></${Header.TAG}>
@@ -41,31 +41,39 @@ export class App extends KKWebComponent {
       tabs: [
         {
           name: 'Events',
-          changeTabCallback: () => this.body.changeTab('Events'),
-          disabled: false
+          changeTabCallback: () => {
+            return this.body.changeTab('Events');
+          },
+          disabled: false,
         },
         {
           name: 'Info',
-          changeTabCallback: () => this.body.changeTab('Info'),
-          disabled: false
+          changeTabCallback: () => {
+            return this.body.changeTab('Info');
+          },
+          disabled: false,
         },
         {
           name: 'Teams',
-          changeTabCallback: () => this.body.changeTab('Teams'),
-          disabled: false
+          changeTabCallback: () => {
+            return this.body.changeTab('Teams');
+          },
+          disabled: false,
         },
         {
           name: 'Projects',
-          changeTabCallback: () => this.body.changeTab('Projects'),
-          disabled: false
-        }
+          changeTabCallback: () => {
+            return this.body.changeTab('Projects');
+          },
+          disabled: false,
+        },
       ],
-      activeTab: 'Events'
+      activeTab: 'Events',
     });
     this.footer.setCopyright({
       date: '2021',
       author: 'Krzysztof Kaczyński',
-      termsReferenceUrl: 'https://github.com/GDSC-Lodz-University-of-Technology/gdsc-tul-website/blob/master/LICENSE'
+      termsReferenceUrl: 'https://github.com/GDSC-Lodz-University-of-Technology/gdsc-tul-website/blob/master/LICENSE',
     });
   }
 }

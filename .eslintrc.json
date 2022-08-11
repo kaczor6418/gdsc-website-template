@@ -59,11 +59,9 @@
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "no-unsafe-optional-chaining": "error",
-    "no-use-before-define": "error",
     "no-useless-backreference": "error",
     "use-isnan": "error",
     "valid-typeof": "error",
-
     "arrow-body-style": ["error", "always"],
     "camelcase": [
       "error",
@@ -159,6 +157,7 @@
     "import/no-cycle": "error",
     "@typescript-eslint/no-shadow": "error",
     "@typescript-eslint/no-non-null-assertion": "error",
+    "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
@@ -168,6 +167,7 @@
     ],
 
     //Disabled
+    "no-use-before-define": "off",
     "no-await-in-loop": "off",
     "no-shadow": "off",
     "no-constant-binary-expression": "off",
@@ -175,5 +175,14 @@
     "no-unmodified-loop-condition": "off",
     "accessor-pairs": "off",
     "@typescript-eslint/no-namespace": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/isDefined.ts", "**/isNullOrUndefined.ts"],
+      "rules": {
+        "eqeqeq": "off",
+        "no-eq-null": "off"
+      }
+    }
+  ]
 }

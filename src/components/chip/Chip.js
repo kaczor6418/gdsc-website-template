@@ -1,5 +1,5 @@
 import { style } from './Chip.style.js';
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 
 const template = `
   <span class="chip"></span>
@@ -34,7 +34,6 @@ export class Chip extends KKWebComponent {
         throw new Error(`Attribute ${name} doesn't exist in ${Chip.name} component`);
     }
   }
-
 }
 
 customElements.define(Chip.TAG, Chip);

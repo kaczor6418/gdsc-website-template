@@ -42,7 +42,7 @@ export class ProjectProposition extends KKWebComponent {
     }
   }
 
-  setSingleProjectData({name, difficulty, description, readmeUrl, technologies, pictureUrl}) {
+  setSingleProjectData({ name, difficulty, description, readmeUrl, technologies, pictureUrl }) {
     this.projectTitle.id = name;
     this.projectTitle.textContent = name;
     this.projectTechnologies.append(new DifficultyChip(difficulty));
@@ -64,7 +64,6 @@ export class ProjectProposition extends KKWebComponent {
     }
     this.projectTechnologies.append(technologiesWrapper);
   }
-
 }
 
 customElements.define(ProjectProposition.TAG, ProjectProposition);

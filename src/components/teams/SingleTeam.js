@@ -1,7 +1,7 @@
 import { Chip } from '../chip/Chip.js';
 import { Contact } from '../contact/Contact.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
 import { style } from './SingleTeam.style.js';
 
@@ -50,7 +50,7 @@ export class SingleTeam extends KKWebComponent {
     this.initializeDate(props);
   }
 
-  initializeDate({contact, members, technologies, ...basic}) {
+  initializeDate({ contact, members, technologies, ...basic }) {
     this.nameWrapper.id = basic.name;
     this.nameWrapper.textContent = basic.name;
     this.addTechnologiesTags(technologies);
@@ -66,10 +66,10 @@ export class SingleTeam extends KKWebComponent {
       this.membersWrapper.append(infoBox);
     }
     const allMembers = document.createDocumentFragment();
-    for (const {name, avatarUrl} of members) {
+    for (const { name, avatarUrl } of members) {
       const singleMember = document.createElement('li');
       singleMember.className = 'member';
-      singleMember.append(new LabeledUrlAvatar(name, avatarUrl))
+      singleMember.append(new LabeledUrlAvatar(name, avatarUrl));
       allMembers.append(singleMember);
     }
     this.membersWrapper.append(allMembers);

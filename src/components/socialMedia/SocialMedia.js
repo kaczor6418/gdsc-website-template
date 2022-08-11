@@ -1,6 +1,6 @@
-import { Icon } from "../icon/Icon.js";
-import { KKWebComponent } from "../KKWebComponent.js";
-import { style } from "./SocialMedia.style.js";
+import { Icon } from '../icon/Icon.js';
+import { KKWebComponent } from '../KKWebComponent.js';
+import { style } from './SocialMedia.style.js';
 
 const template = `
 <section>
@@ -18,7 +18,7 @@ export class SocialMedia extends KKWebComponent {
 
   setSocialMediaIcons(icons) {
     const socialMediaIcons = document.createDocumentFragment();
-    for (const {iconId, url} of icons) {
+    for (const { iconId, url } of icons) {
       socialMediaIcons.append(this.createSocialMediaIcon(iconId, url));
     }
     this.iconsWrapper.append(socialMediaIcons);

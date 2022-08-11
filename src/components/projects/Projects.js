@@ -1,5 +1,5 @@
 import { InfoBox } from '../infoBox/InfoBox.js';
-import { KKWebComponent } from "../KKWebComponent.js";
+import { KKWebComponent } from '../KKWebComponent.js';
 import { ProjectProposition } from './ProjectProposition.js';
 import { SingleProject } from './SingleProject.js';
 import { style } from './Projects.style.js';
@@ -55,7 +55,7 @@ export class Projects extends KKWebComponent {
       projectsList.append(allProjects);
       this.projectsWrapper.append(projectsList);
     }
-  }
+  };
 
   renderProjectsPropositions = (projects) => {
     if (projects.length === 0) {
@@ -72,7 +72,7 @@ export class Projects extends KKWebComponent {
       projectsList.append(allProjects);
       this.projectsPropositions.append(projectsList);
     }
-  }
+  };
 }
 
 customElements.define(Projects.TAG, Projects);
