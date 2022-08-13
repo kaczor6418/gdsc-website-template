@@ -1,5 +1,5 @@
 import { rippleEffect } from '../../rippleEffect.js';
-import { SelectService } from '../../services/SelectionService.js';
+import { SelectService } from '../../services/SelectionService/SelectionService.ts';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { style } from './SingleTab.style.js';
 
