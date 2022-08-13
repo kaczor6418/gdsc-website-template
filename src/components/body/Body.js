@@ -1,4 +1,4 @@
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { Events } from '../events/Events.js';
 import { style } from './Body.style.js';
 

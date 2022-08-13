@@ -1,5 +1,5 @@
 import { InfoBox } from '../infoBox/InfoBox.js';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { ProjectProposition } from './ProjectProposition.js';
 import { SingleProject } from './SingleProject.js';
 import { style } from './Projects.style.js';

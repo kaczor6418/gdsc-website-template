@@ -1,5 +1,5 @@
 import { style } from './Chip.style.js';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 
 const template = `
   <span class="chip"></span>

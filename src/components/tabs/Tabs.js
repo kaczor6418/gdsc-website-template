@@ -1,4 +1,4 @@
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { SingleTab } from './SingleTab.js';
 import { TabIndicator } from './TabIndicator.js';
 import { style } from './Tabs.style.js';
@@ -44,7 +44,9 @@ export class Tabs extends KKWebComponent {
   }
 
   addTabs(tabs) {
-    tabs.forEach((tab) => this.addTab(tab));
+    tabs.forEach((tab) => {
+      return this.addTab(tab);
+    });
   }
 
   activateTab(tabName) {

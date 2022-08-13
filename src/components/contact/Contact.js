@@ -1,4 +1,4 @@
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { UrlIcon } from '../urlIcon/UrlIcon.js';
 import { style } from './Contact.style.js';
 
