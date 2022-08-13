@@ -1,6 +1,6 @@
 import { style } from './SingleProject.style.js';
 import { Chip } from '../chip/Chip.js';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
 import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
 

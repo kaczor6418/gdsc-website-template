@@ -1,5 +1,5 @@
 import { gdscService } from '../../services/globalServices.ts';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { SocialMedia } from '../socialMedia/SocialMedia.js';
 import { style } from './Footer.style.js';
 

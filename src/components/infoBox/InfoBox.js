@@ -1,4 +1,4 @@
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { style } from './InfoBox.style.js';
 
 const template = `

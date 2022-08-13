@@ -1,5 +1,5 @@
 import { SelectService } from '../../services/SelectionService/SelectionService.ts';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { style } from './Icon.style.js';
 
 const template = ``;

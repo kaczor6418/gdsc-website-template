@@ -1,6 +1,6 @@
 import { rippleEffect } from '../../rippleEffect.js';
 import { SelectService } from '../../services/SelectionService/SelectionService.ts';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { style } from './SingleTab.style.js';
 
 const template = `
