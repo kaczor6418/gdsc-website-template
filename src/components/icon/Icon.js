@@ -1,4 +1,4 @@
-import { SelectService } from '../../services/SelectionService.js';
+import { SelectService } from '../../services/SelectionService/SelectionService.ts';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { style } from './Icon.style.js';
 
@@ -54,7 +54,9 @@ export class Icon extends KKWebComponent {
     if (this.hasChildNodes() && this.icon != null) {
       this.shadowRoot.removeChild(this.icon.interactiveElement);
     }
-    const rawIcon = await fetch(`./assets/icons/${iconId}.svg`, { cache: 'force-cache' }).then((response) => response.text());
+    const rawIcon = await fetch(`./assets/icons/${iconId}.svg`, { cache: 'force-cache' }).then((response) => {
+      return response.text();
+    });
     this.icon.changeInteractiveElement(new DOMParser().parseFromString(rawIcon, 'image/svg+xml').firstElementChild);
     this.shadowRoot.appendChild(this.icon.interactiveElement);
     this.setSize(this.size);
