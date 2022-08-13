@@ -1,7 +1,7 @@
 import { style } from './SingleEvent.style.js';
 import { KKWebComponent } from '../KKWebComponent.js';
 import { rippleEffect } from '../../rippleEffect.js';
-import { SelectService } from '../../services/SelectionService.js';
+import { SelectService } from '../../services/SelectionService/SelectionService.ts';
 
 const template = `
 <a href="#">
@@ -61,7 +61,9 @@ export class SingleEvent extends KKWebComponent {
   }
 
   initializeListeners() {
-    this.wrapper.interactiveElement.addEventListener('click', (e) => rippleEffect(this.wrapper.interactiveElement, e));
+    this.wrapper.interactiveElement.addEventListener('click', (e) => {
+      return rippleEffect(this.wrapper.interactiveElement, e);
+    });
   }
 }
 
