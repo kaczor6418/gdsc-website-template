@@ -1,4 +1,4 @@
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { style } from './TabIndicator.style.js';
 
 const template = `

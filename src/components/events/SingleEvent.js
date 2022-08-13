@@ -1,5 +1,5 @@
 import { style } from './SingleEvent.style.js';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { rippleEffect } from '../../rippleEffect.js';
 import { SelectService } from '../../services/SelectionService/SelectionService.ts';
 

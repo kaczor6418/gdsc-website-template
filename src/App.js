@@ -1,7 +1,7 @@
 import { Body } from './components/body/Body.js';
 import { Footer } from './components/footer/Footer.js';
 import { Header } from './components/heaedr/Header.js';
-import { KKWebComponent } from './components/KKWebComponent.js';
+import { KKWebComponent } from './components/KKWebComponent/KKWebComponent.ts';
 import { gdscService } from './services/globalServices.ts';
 
 const style = `

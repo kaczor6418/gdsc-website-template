@@ -1,7 +1,7 @@
 import { Chip } from '../chip/Chip.js';
 import { Contact } from '../contact/Contact.js';
 import { InfoBox } from '../infoBox/InfoBox.js';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
 import { style } from './SingleTeam.style.js';
 

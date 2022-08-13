@@ -1,5 +1,5 @@
 import { Icon } from '../icon/Icon.js';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { style } from './SocialMedia.style.js';
 
 const template = `

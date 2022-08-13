@@ -1,5 +1,5 @@
 import { gdscService } from '../../services/globalServices.ts';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar.js';
 import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
 import { style } from './Info.style.js';

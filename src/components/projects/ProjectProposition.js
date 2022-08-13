@@ -1,6 +1,6 @@
 import { Chip } from '../chip/Chip.js';
 import { DifficultyChip } from '../difficultyChip/DifficultyChip.js';
-import { KKWebComponent } from '../KKWebComponent.js';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
 import { style } from './ProjectProposition.style.js';
 
