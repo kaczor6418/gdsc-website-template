@@ -1,4 +1,4 @@
-import { InfoBox } from '../infoBox/InfoBox.js';
+import { InfoBox } from '../infoBox/InfoBox.ts';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { SingleTeam } from './SingleTeam.js';
 import { style } from './Teams.style.js';

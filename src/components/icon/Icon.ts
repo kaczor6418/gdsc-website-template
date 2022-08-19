@@ -1,63 +1,74 @@
-import { SelectService } from '../../services/SelectionService/SelectionService.ts';
-import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { style } from './Icon.style.js';
+import { IconObservedAttributes, IconSize } from './Icon.enum';
+import { CouldNotFetchConfigError } from '../../errors/CanNotFindIconError';
+import type { IIcon } from './Icon.type';
+import { isDefined } from '../../common/utils/isDefined';
+import type { ISelectionService } from '../../services/SelectionService/SelectionService.type';
+import { isNullOrUndefined } from '../../common/utils/isNullOrUndefined';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
+import { NoObservableAttribute } from '../../errors/NoObservableAttribute';
+import { SelectService } from '../../services/SelectionService/SelectionService';
+import { style } from './Icon.style';
 
 const template = ``;
 
-export class Icon extends KKWebComponent {
+export class Icon extends KKWebComponent<IconObservedAttributes> implements IIcon {
   static TAG = `kk-icon`;
   static HIGHLIGHTED_CLASS = 'active';
   static observedAttributes = ['kk-icon-id', 'kk-icon-size'];
 
-  icon = new SelectService();
-  size;
+  private icon: ISelectionService<HTMLElement> = new SelectService<HTMLElement>();
+  private size: IconSize;
 
-  constructor(iconId, size = 64) {
+  constructor(iconId: string, size = IconSize.M) {
     super(template, style);
     this.size = size;
-    if (iconId !== undefined) {
+    if (isDefined(iconId)) {
       void this.setIcon(iconId);
     }
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
+  public attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
     if (oldValue === newValue) {
-      return void 0;
+      return;
     }
     switch (name) {
       case 'kk-icon-id':
         void this.setIcon(newValue);
         break;
       case 'kk-icon-size':
-        this.setSize(parseInt(newValue));
+        this.setSize(parseInt(newValue, 10));
         break;
       default:
-        throw new Error(`Attribute ${name} doesn't exist in ${UrlIcon.name} component`);
+        throw new NoObservableAttribute(Icon.TAG, Icon.observedAttributes, name);
     }
   }
 
-  highlight() {
+  public highlight(): void {
     this.icon.interactiveElement?.classList.add(Icon.HIGHLIGHTED_CLASS);
   }
 
-  unhighlight() {
+  public unhighlight(): void {
     this.icon.interactiveElement?.classList.remove(Icon.HIGHLIGHTED_CLASS);
   }
 
-  setSize(size) {
+  public setSize(size: number): void {
     this.size = size;
-    this.icon.interactiveElement?.setAttribute('width', size);
-    this.icon.interactiveElement?.setAttribute('height', size);
+    this.icon.interactiveElement?.setAttribute('width', size.toString());
+    this.icon.interactiveElement?.setAttribute('height', size.toString());
   }
 
-  async setIcon(iconId) {
-    if (this.hasChildNodes() && this.icon != null) {
+  async setIcon(iconId: string): Promise<void> {
+    if (this.hasChildNodes() && isDefined(this.icon)) {
       this.shadowRoot.removeChild(this.icon.interactiveElement);
     }
     const rawIcon = await fetch(`./assets/icons/${iconId}.svg`, { cache: 'force-cache' }).then((response) => {
       return response.text();
     });
-    this.icon.changeInteractiveElement(new DOMParser().parseFromString(rawIcon, 'image/svg+xml').firstElementChild);
+    const newIcon = new DOMParser().parseFromString(rawIcon, 'image/svg+xml').firstElementChild;
+    if (isNullOrUndefined(newIcon)) {
+      throw new CouldNotFetchConfigError(iconId);
+    }
+    this.icon.changeInteractiveElement(newIcon as HTMLElement);
     this.shadowRoot.appendChild(this.icon.interactiveElement);
     this.setSize(this.size);
   }
