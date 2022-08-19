@@ -1,3 +1,5 @@
+import { CONSTANTS } from './common/CONSTANTS';
+
 const style = `
 .ripple {
   position: absolute;
@@ -22,7 +24,7 @@ const style = `
 }
 `;
 
-export function rippleEffect(element, e) {
+export function rippleEffect(element: HTMLElement, e: MouseEvent, rippleEffectTimeMS = CONSTANTS.DEFAULT_RIPPLE_EFFECT_TIME): void {
   const ripple = document.createElement('span');
   const styleWrapper = document.createElement('style');
   const { left, top, width, height } = element.getBoundingClientRect();
@@ -39,5 +41,5 @@ export function rippleEffect(element, e) {
   element.appendChild(ripple);
   window.setTimeout(() => {
     ripple.remove();
-  }, 500);
+  }, rippleEffectTimeMS);
 }

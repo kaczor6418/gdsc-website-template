@@ -192,6 +192,12 @@
         "eqeqeq": "off",
         "no-eq-null": "off"
       }
+    },
+    {
+      "files": ["**/rippleEffect.ts"],
+      "rules": {
+        "@typescript-eslint/no-magic-numbers": "off"
+      }
     }
   ]
 }
