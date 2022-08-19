@@ -1,4 +1,4 @@
-import { Icon } from '../icon/Icon.js';
+import { Icon } from '../icon/Icon.ts';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { style } from './LabeledUrlIcon.style.js';
 

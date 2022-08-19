@@ -1,4 +1,4 @@
-import { Chip } from '../chip/Chip.js';
+import { Chip } from '../chip/Chip.ts';
 
 export class DifficultyChip extends Chip {
   static TAG = 'kk-difficulty-chip';
