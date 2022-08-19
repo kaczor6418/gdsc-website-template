@@ -1,5 +1,6 @@
 import type { ChipObservedAttributesTypes, IChip } from './Chip.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
+import { NoObservableAttribute } from '../../errors/NoObservableAttribute';
 import { style } from './Chip.style';
 
 const template = `
@@ -32,7 +33,7 @@ export class Chip extends KKWebComponent<ChipObservedAttributesTypes> implements
         this.content = newValue;
         break;
       default:
-        throw new Error(`Attribute ${name} doesn't exist in ${Chip.TAG} component`);
+        throw new NoObservableAttribute(Chip.TAG, Chip.observedAttributes, name);
     }
   }
 }
