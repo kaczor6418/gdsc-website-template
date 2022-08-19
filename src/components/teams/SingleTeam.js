@@ -2,7 +2,7 @@ import { Chip } from '../chip/Chip.ts';
 import { Contact } from '../contact/Contact.js';
 import { InfoBox } from '../infoBox/InfoBox.ts';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.js';
+import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.ts';
 import { style } from './SingleTeam.style.js';
 
 const template = `
