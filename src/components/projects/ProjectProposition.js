@@ -1,7 +1,7 @@
 import { Chip } from '../chip/Chip.ts';
-import { DifficultyChip } from '../difficultyChip/DifficultyChip.js';
+import { DifficultyChip } from '../difficultyChip/DifficultyChip.ts';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
+import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.ts';
 import { style } from './ProjectProposition.style.js';
 
 const template = `

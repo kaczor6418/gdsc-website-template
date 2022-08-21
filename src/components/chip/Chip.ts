@@ -1,4 +1,5 @@
-import type { ChipObservedAttributesTypes, IChip } from './Chip.type';
+import type { ChipObservedAttributesTypes, KKChip } from './Chip.type';
+import { ChipObservedAttributes } from './Chip.enum';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { NoObservableAttribute } from '../../errors/NoObservableAttribute';
 import { style } from './Chip.style';
@@ -7,11 +8,11 @@ const template = `
   <span class="chip"></span>
 `;
 
-export class Chip extends KKWebComponent<ChipObservedAttributesTypes> implements IChip {
+export class Chip extends KKWebComponent<ChipObservedAttributesTypes> implements KKChip {
   static TAG = `kk-chip`;
-  static observedAttributes = ['kk-text'];
+  static observedAttributes = [ChipObservedAttributes.KK_TEXT];
 
-  private readonly tagWrapper: HTMLSpanElement = this.shadowRoot.querySelector('.chip') as HTMLSpanElement;
+  protected readonly tagWrapper: HTMLSpanElement = this.shadowRoot.querySelector('.chip') as HTMLSpanElement;
 
   constructor(content: string) {
     super(template, style);
@@ -29,7 +30,7 @@ export class Chip extends KKWebComponent<ChipObservedAttributesTypes> implements
       return;
     }
     switch (name) {
-      case 'kk-text':
+      case ChipObservedAttributes.KK_TEXT:
         this.content = newValue;
         break;
       default:

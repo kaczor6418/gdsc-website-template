@@ -1,6 +1,6 @@
 import { gdscService } from '../../services/globalServices.ts';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { SocialMedia } from '../socialMedia/SocialMedia.js';
+import { SocialMedia } from '../socialMedia/SocialMedia.ts';
 import { style } from './Footer.style.js';
 
 const template = `
