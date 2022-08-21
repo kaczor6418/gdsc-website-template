@@ -1,7 +1,7 @@
 import { style } from './SingleProject.style.js';
 import { Chip } from '../chip/Chip.ts';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
+import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.ts';
 import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.ts';
 
 const template = `

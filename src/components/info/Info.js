@@ -1,7 +1,7 @@
 import { gdscService } from '../../services/globalServices.ts';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar.ts';
-import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.js';
+import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.ts';
 import { style } from './Info.style.js';
 
 const template = `
