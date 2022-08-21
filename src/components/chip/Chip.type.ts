@@ -1,6 +1,6 @@
 import { KKWebComponentHandler } from '../KKWebComponent/KKWebComponent.type';
 
-export interface IChip extends KKWebComponentHandler<ChipObservedAttributesTypes> {
+export interface KKChip extends KKWebComponentHandler<ChipObservedAttributesTypes> {
   content: string;
 }
 

@@ -1,3 +1,5 @@
+import type { IconObservedAttributesTypes } from './InfoBox.type';
+import { InfoBoxObservedAttributes } from './InfoBox.enum';
 import type { KKInfoBox } from './InfoBox.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { NoObservableAttribute } from '../../errors/NoObservableAttribute';
@@ -9,9 +11,9 @@ const template = `
 </div>
 `;
 
-export class InfoBox extends KKWebComponent implements KKInfoBox {
+export class InfoBox extends KKWebComponent<IconObservedAttributesTypes> implements KKInfoBox {
   static TAG = `kk-info-box`;
-  static observedAttributes = ['kk-content'];
+  static observedAttributes = [InfoBoxObservedAttributes.KK_CONTENT];
 
   private contentWrapper: HTMLSpanElement = this.shadowRoot.querySelector('.info') as HTMLSpanElement;
 
@@ -35,7 +37,7 @@ export class InfoBox extends KKWebComponent implements KKInfoBox {
       return;
     }
     switch (name) {
-      case 'kk-content':
+      case InfoBoxObservedAttributes.KK_CONTENT:
         this.content = newValue;
         break;
       default:

@@ -1,6 +1,6 @@
 import { IconObservedAttributes, IconSize } from './Icon.enum';
+import type { IconObservedAttributesTypes, KKIcon } from './Icon.type';
 import { CouldNotFetchConfigError } from '../../errors/CanNotFindIconError';
-import type { IIcon } from './Icon.type';
 import { isDefined } from '../../common/utils/isDefined';
 import type { ISelectionService } from '../../services/SelectionService/SelectionService.type';
 import { isNullOrUndefined } from '../../common/utils/isNullOrUndefined';
@@ -11,10 +11,10 @@ import { style } from './Icon.style';
 
 const template = ``;
 
-export class Icon extends KKWebComponent<IconObservedAttributes> implements IIcon {
+export class Icon extends KKWebComponent<IconObservedAttributesTypes> implements KKIcon {
   static TAG = `kk-icon`;
   static HIGHLIGHTED_CLASS = 'active';
-  static observedAttributes = ['kk-icon-id', 'kk-icon-size'];
+  static observedAttributes = [IconObservedAttributes.KK_ICON_ID, IconObservedAttributes.KK_ICON_SIZE];
 
   private icon: ISelectionService<HTMLElement> = new SelectService<HTMLElement>();
   private size: IconSize;
@@ -32,10 +32,10 @@ export class Icon extends KKWebComponent<IconObservedAttributes> implements IIco
       return;
     }
     switch (name) {
-      case 'kk-icon-id':
+      case IconObservedAttributes.KK_ICON_ID:
         void this.setIcon(newValue);
         break;
-      case 'kk-icon-size':
+      case IconObservedAttributes.KK_ICON_SIZE:
         this.setSize(parseInt(newValue, 10));
         break;
       default:
