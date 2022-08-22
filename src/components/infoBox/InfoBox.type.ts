@@ -2,6 +2,6 @@ export interface KKInfoBox {
   content: string;
 }
 
-export interface IconObservedAttributesTypes {
+export interface InfoBoxObservedAttributesTypes {
   KK_CONTENT: string;
 }

@@ -1,6 +1,6 @@
-import { Body } from './components/body/Body.js';
-import { Footer } from './components/footer/Footer.js';
-import { Header } from './components/heaedr/Header.js';
+import { Body } from './components/body/Body.ts';
+import { Footer } from './components/footer/Footer.ts';
+import { Header } from './components/heaedr/Header.ts';
 import { KKWebComponent } from './components/KKWebComponent/KKWebComponent.ts';
 import { gdscService } from './services/globalServices.ts';
 
