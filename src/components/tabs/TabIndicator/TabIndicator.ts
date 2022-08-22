@@ -1,32 +1,33 @@
-import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { style } from './TabIndicator.style.js';
+import { KKTabIndicator, TabIndicatorProps } from './TabIndicator.type';
+import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
+import { style } from './TabIndicator.style';
 
 const template = `
   <span class="indicator"></span>
 `;
 
-export class TabIndicator extends KKWebComponent {
+export class TabIndicator extends KKWebComponent implements KKTabIndicator {
   static TAG = `kk-tab-indicator`;
 
-  indicator = this.shadowRoot.querySelector('span');
+  private readonly indicator: HTMLSpanElement = this.shadowRoot.querySelector('span') as HTMLSpanElement;
 
-  width;
-  index;
+  private width: number;
+  private index: number;
 
-  constructor({ width }) {
+  constructor({ width }: TabIndicatorProps) {
     super(template, style);
     this.index = 0;
     this.width = width;
     this.indicator.style.width = `${width}%`;
   }
 
-  changeWidth(width) {
+  public changeWidth(width: number): void {
     this.width = width;
     this.indicator.style.width = `${width}%`;
     this.move(this.index);
   }
 
-  move(tabIndex) {
+  public move(tabIndex: number): void {
     const delta = Math.abs(tabIndex - this.index);
     this.index = tabIndex;
     this.indicator.style.transitionDuration = `calc(250 * ${delta})`;

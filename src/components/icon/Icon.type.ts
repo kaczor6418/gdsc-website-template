@@ -1,6 +1,7 @@
 import type { IconSize } from './Icon.enum';
+import { KKWebComponentHandler } from '../KKWebComponent/KKWebComponent.type';
 
-export interface KKIcon {
+export interface KKIcon extends KKWebComponentHandler<IconObservedAttributesTypes> {
   highlight(): void;
   unhighlight(): void;
   setSize(size: number): void;

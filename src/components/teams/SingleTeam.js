@@ -1,5 +1,5 @@
 import { Chip } from '../chip/Chip.ts';
-import { Contact } from '../contact/Contact.js';
+import { Contact } from '../contact/Contact.ts';
 import { InfoBox } from '../infoBox/InfoBox.ts';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
 import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.ts';

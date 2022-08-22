@@ -15,3 +15,9 @@ export interface Size {
   height: number;
   width: number;
 }
+
+export interface ClubMember {
+  avatar: string;
+  name: string;
+  title: string;
+}

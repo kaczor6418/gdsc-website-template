@@ -1,6 +1,7 @@
+import { KKWebComponentHandler } from '../KKWebComponent/KKWebComponent.type';
 import type { Size } from '../../common/types';
 
-export interface KKLabeledAvatar {
+export interface KKLabeledAvatar extends KKWebComponentHandler {
   label: string;
   subLabel: string;
   avatar: string;

@@ -1,8 +1,10 @@
-import { gdscService } from '../../services/globalServices.ts';
-import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar.ts';
-import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.ts';
-import { style } from './Info.style.js';
+import { ClubMember, ContactMedia } from '../../common/types';
+import { gdscService } from '../../services/globalServices';
+import { KKInfo } from './Info.type';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
+import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar';
+import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon';
+import { style } from './Info.style';
 
 const template = `
 <section class="description">
@@ -19,25 +21,25 @@ const template = `
 </section>
 `;
 
-export class Info extends KKWebComponent {
+export class Info extends KKWebComponent implements KKInfo {
   static TAG = `kk-club-contact`;
 
-  organizersWrapper = this.shadowRoot.querySelector('.organizers-wrapper');
-  contactWrapper = this.shadowRoot.querySelector('.contact-wrapper');
-  descriptionWrapper = this.shadowRoot.querySelector('.description-wrapper');
+  private readonly organizersWrapper: HTMLUListElement = this.shadowRoot.querySelector('.organizers-wrapper') as HTMLUListElement;
+  private readonly contactWrapper: HTMLUListElement = this.shadowRoot.querySelector('.contact-wrapper') as HTMLUListElement;
+  private readonly descriptionWrapper: HTMLDivElement = this.shadowRoot.querySelector('.description-wrapper') as HTMLDivElement;
 
   constructor() {
     super(template, style);
   }
 
-  connectedCallback() {
+  public connectedCallback(): void {
     super.connectedCallback();
     void gdscService.getOrganizers().then(this.renderMembers);
     void gdscService.getContact().then(this.renderContacts);
     void gdscService.getDescription().then(this.renderDescription);
   }
 
-  renderMembers = (members) => {
+  renderMembers = (members: ClubMember[]): void => {
     for (const { avatar, name, title } of members) {
       const singleOrganizer = document.createElement('li');
       singleOrganizer.append(new LabeledAvatar(name, avatar, title));
@@ -45,15 +47,15 @@ export class Info extends KKWebComponent {
     }
   };
 
-  renderContacts = (contacts) => {
+  renderContacts = (contacts: ContactMedia[]): void => {
     for (const { iconId, url } of contacts) {
       const singleContact = document.createElement('li');
-      singleContact.append(new LabeledUrlIcon({ label: iconId.toUpperCase(), url, iconId }));
+      singleContact.append(new LabeledUrlIcon({ iconId: iconId, label: iconId.toUpperCase(), url: url }));
       this.contactWrapper.append(singleContact);
     }
   };
 
-  renderDescription = (description) => {
+  renderDescription = (description: string): void => {
     this.descriptionWrapper.innerHTML = description;
   };
 }

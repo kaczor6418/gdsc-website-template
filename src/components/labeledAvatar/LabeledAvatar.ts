@@ -18,7 +18,7 @@ export class LabeledAvatar extends KKWebComponent implements KKLabeledAvatar {
   private readonly subLabelWrapper: HTMLLabelElement = this.shadowRoot.querySelector('.avatar-sub-label') as HTMLLabelElement;
   private readonly imageWrapper: HTMLInputElement = this.shadowRoot.querySelector('.avatar-img') as HTMLInputElement;
 
-  constructor(label: string, photoUrl: string, subLabel: string, size: Size) {
+  constructor(label: string, photoUrl: string, subLabel: string, size?: Size) {
     super(template, style);
     this.label = label;
     this.subLabel = subLabel;

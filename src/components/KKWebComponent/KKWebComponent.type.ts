@@ -1,4 +1,4 @@
-export interface KKWebComponentHandler<T> extends HTMLElement {
+export interface KKWebComponentHandler<T = undefined> extends HTMLElement {
   readonly kkID: bigint;
 
   connectedCallback(): void;
@@ -9,5 +9,5 @@ export interface KKWebComponentHandler<T> extends HTMLElement {
 }
 
 export type KKWebComponentObservedAttributes<T> = {
-  [K in keyof T]: T[K];
+  [K in keyof T]?: T[K];
 };

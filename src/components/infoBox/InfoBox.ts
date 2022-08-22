@@ -1,5 +1,5 @@
-import type { IconObservedAttributesTypes } from './InfoBox.type';
 import { InfoBoxObservedAttributes } from './InfoBox.enum';
+import type { InfoBoxObservedAttributesTypes } from './InfoBox.type';
 import type { KKInfoBox } from './InfoBox.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { NoObservableAttribute } from '../../errors/NoObservableAttribute';
@@ -11,7 +11,7 @@ const template = `
 </div>
 `;
 
-export class InfoBox extends KKWebComponent<IconObservedAttributesTypes> implements KKInfoBox {
+export class InfoBox extends KKWebComponent<InfoBoxObservedAttributesTypes> implements KKInfoBox {
   static TAG = `kk-info-box`;
   static observedAttributes = [InfoBoxObservedAttributes.KK_CONTENT];
 
