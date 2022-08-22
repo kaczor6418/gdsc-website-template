@@ -194,7 +194,7 @@
       }
     },
     {
-      "files": ["**/rippleEffect.ts"],
+      "files": ["**/rippleEffect.ts", "**/isEmptyArray.ts"],
       "rules": {
         "@typescript-eslint/no-magic-numbers": "off"
       }
