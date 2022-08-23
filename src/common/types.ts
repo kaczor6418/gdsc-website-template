@@ -19,5 +19,9 @@ export interface Size {
 export interface ClubMember {
   avatar: string;
   name: string;
+  url?: string;
+}
+
+export interface EventSpeaker extends ClubMember {
   title: string;
 }

@@ -1,4 +1,4 @@
-import { ClubMember, ContactMedia } from '../../common/types';
+import { ContactMedia, EventSpeaker } from '../../common/types';
 import { gdscService } from '../../services/globalServices';
 import { KKInfo } from './Info.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
@@ -39,7 +39,7 @@ export class Info extends KKWebComponent implements KKInfo {
     void gdscService.getDescription().then(this.renderDescription);
   }
 
-  renderMembers = (members: ClubMember[]): void => {
+  renderMembers = (members: EventSpeaker[]): void => {
     for (const { avatar, name, title } of members) {
       const singleOrganizer = document.createElement('li');
       singleOrganizer.append(new LabeledAvatar(name, avatar, title));
