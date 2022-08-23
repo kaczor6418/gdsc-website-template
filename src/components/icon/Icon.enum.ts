@@ -6,7 +6,7 @@ export const enum IconSize {
   XL = 256,
 }
 
-export enum IconObservedAttributes {
+export const enum IconObservedAttributes {
   KK_ICON_ID = 'kk-icon-id',
   KK_ICON_SIZE = 'kk-icon-size',
 }
