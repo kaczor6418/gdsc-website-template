@@ -1,9 +1,13 @@
-import { Chip } from '../chip/Chip.ts';
-import { Contact } from '../contact/Contact.ts';
-import { InfoBox } from '../infoBox/InfoBox.ts';
-import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.ts';
-import { style } from './SingleTeam.style.js';
+import { KKSingleTeam, SingleTeamProps } from './SingleTeam.type';
+import { Chip } from '../../chip/Chip';
+import { ClubMember } from '../../../common/types';
+import { Contact } from '../../contact/Contact';
+import { InfoBox } from '../../infoBox/InfoBox';
+import { isEmptyArray } from '../../../common/utils/isEmptyArray';
+import { KKContact } from '../../contact/Contact.type';
+import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
+import { LabeledUrlAvatar } from '../../labeledUrlAvatar/LabeledUrlAvatar';
+import { style } from './SingleTeam.style';
 
 const template = `
 <details>
@@ -35,22 +39,22 @@ const template = `
 </details>
 `;
 
-export class SingleTeam extends KKWebComponent {
+export class SingleTeam extends KKWebComponent implements KKSingleTeam {
   static TAG = `kk-single-team`;
 
-  nameWrapper = this.shadowRoot.querySelector('.team-name');
-  technologiesWrapper = this.shadowRoot.querySelector('.technologies-wrapper');
-  descriptionWrapper = this.shadowRoot.querySelector('.description');
-  lookingForWrapper = this.shadowRoot.querySelector('.looking-for');
-  contacts = this.shadowRoot.querySelector(Contact.TAG);
-  membersWrapper = this.shadowRoot.querySelector('.members');
+  private readonly nameWrapper: HTMLHeadingElement = this.shadowRoot.querySelector('.team-name') as HTMLHeadingElement;
+  private readonly technologiesWrapper: HTMLUListElement = this.shadowRoot.querySelector('.technologies-wrapper') as HTMLUListElement;
+  private readonly descriptionWrapper: HTMLParagraphElement = this.shadowRoot.querySelector('.description') as HTMLParagraphElement;
+  private readonly lookingForWrapper: HTMLParagraphElement = this.shadowRoot.querySelector('.looking-for') as HTMLParagraphElement;
+  private readonly contacts: KKContact = this.shadowRoot.querySelector(Contact.TAG) as KKContact;
+  private readonly membersWrapper: HTMLElement = this.shadowRoot.querySelector('.members') as HTMLElement;
 
-  constructor(props) {
+  constructor(props: SingleTeamProps) {
     super(template, style);
     this.initializeDate(props);
   }
 
-  initializeDate({ contact, members, technologies, ...basic }) {
+  public initializeDate({ contact, members, technologies, ...basic }: SingleTeamProps): void {
     this.nameWrapper.id = basic.name;
     this.nameWrapper.textContent = basic.name;
     this.addTechnologiesTags(technologies);
@@ -60,22 +64,22 @@ export class SingleTeam extends KKWebComponent {
     this.addMembers(members);
   }
 
-  addMembers(members) {
-    if (members.length === 0) {
+  private addMembers(members: ClubMember[]): void {
+    if (isEmptyArray(members)) {
       const infoBox = new InfoBox('There are no team members yet!');
       this.membersWrapper.append(infoBox);
     }
     const allMembers = document.createDocumentFragment();
-    for (const { name, avatarUrl } of members) {
+    for (const { name, avatar, url } of members) {
       const singleMember = document.createElement('li');
       singleMember.className = 'member';
-      singleMember.append(new LabeledUrlAvatar(name, avatarUrl));
+      singleMember.append(new LabeledUrlAvatar(name, avatar, url ?? '#'));
       allMembers.append(singleMember);
     }
     this.membersWrapper.append(allMembers);
   }
 
-  addTechnologiesTags(technologies) {
+  private addTechnologiesTags(technologies: string[]): void {
     const technologiesWrapper = document.createDocumentFragment();
     for (const technology of technologies) {
       const singleTechnology = document.createElement('li');

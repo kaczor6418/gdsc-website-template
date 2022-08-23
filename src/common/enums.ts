@@ -1,4 +1,4 @@
-export enum SocialMediaType {
+export const enum SocialMediaType {
   FACEBOOK = 'facebook',
   INSTAGRAM = 'instagram',
   TWITTER = 'twitter',

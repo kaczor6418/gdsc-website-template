@@ -1,34 +1,37 @@
-import { InfoBox } from '../infoBox/InfoBox.ts';
-import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { SingleTeam } from './SingleTeam.js';
-import { style } from './Teams.style.js';
+import { InfoBox } from '../infoBox/InfoBox';
+import { isEmptyArray } from '../../common/utils/isEmptyArray';
+import { KKTeams } from './Teams.type';
+import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
+import { SingleTeam } from './SingleTeam/SingleTeam';
+import { SingleTeamProps } from './SingleTeam/SingleTeam.type';
+import { style } from './Teams.style';
 
 const template = `
 <section class="teams">
 </section>
 `;
 
-export class Teams extends KKWebComponent {
+export class Teams extends KKWebComponent implements KKTeams {
   static TAG = `kk-teams`;
 
-  teamsWrapper = this.shadowRoot.querySelector('.teams');
+  private readonly teamsWrapper: HTMLElement = this.shadowRoot.querySelector('.teams') as HTMLElement;
 
   constructor() {
     super(template, style);
   }
 
-  connectedCallback() {
+  public connectedCallback(): void {
     super.connectedCallback();
     void this.fetchTeams().then(this.renderTeams);
   }
 
-  async fetchTeams() {
+  public async fetchTeams(): Promise<SingleTeamProps[]> {
     const response = await fetch('./assets/configs/teams.json');
-    return await response.json();
+    return (await response.json()) as SingleTeamProps[];
   }
 
-  renderTeams = (teams) => {
-    if (teams.length === 0) {
+  private renderTeams = (teams: SingleTeamProps[]): void => {
+    if (isEmptyArray(teams)) {
       const infoBox = new InfoBox('There are no teams!');
       this.teamsWrapper.append(infoBox);
     } else {

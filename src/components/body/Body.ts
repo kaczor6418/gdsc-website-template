@@ -52,7 +52,7 @@ export class Body extends KKWebComponent implements KKBody {
     if (isNullOrUndefined(this.bodyWrapper.firstElementChild)) {
       throw new CanNotChangeTab('body wrapper is not defined');
     }
-    const { Projects } = await import('../projects/Projects.js');
+    const { Projects } = await import('../projects/Projects');
     this.bodyWrapper.firstElementChild.remove();
     this.bodyWrapper.append(new Projects());
   }
@@ -61,7 +61,7 @@ export class Body extends KKWebComponent implements KKBody {
     if (isNullOrUndefined(this.bodyWrapper.firstElementChild)) {
       throw new CanNotChangeTab('body wrapper is not defined');
     }
-    const { Teams } = await import('../teams/Teams.js');
+    const { Teams } = await import('../teams/Teams');
     this.bodyWrapper.firstElementChild.remove();
     this.bodyWrapper.append(new Teams());
   }

@@ -1,8 +1,11 @@
-import { style } from './SingleProject.style.js';
-import { Chip } from '../chip/Chip.ts';
-import { KKWebComponent } from '../KKWebComponent/KKWebComponent.ts';
-import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon.ts';
-import { LabeledUrlAvatar } from '../labeledUrlAvatar/LabeledUrlAvatar.ts';
+import { KKSingleProject, SingleProjectProps } from './SingleProject.type';
+import { Chip } from '../../chip/Chip';
+import { ClubMember } from '../../../common/types';
+import { KKLabeledUrlIcon } from '../../labeledUrlIcon/LabeledUrlIcon.type';
+import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
+import { LabeledUrlAvatar } from '../../labeledUrlAvatar/LabeledUrlAvatar';
+import { LabeledUrlIcon } from '../../labeledUrlIcon/LabeledUrlIcon';
+import { style } from './SingleProject.style';
 
 const template = `
 <details>
@@ -33,31 +36,31 @@ const template = `
 </details>
 `;
 
-export class SingleProject extends KKWebComponent {
+export class SingleProject extends KKWebComponent implements KKSingleProject {
   static TAG = `kk-single-project`;
 
-  projectTitle = this.shadowRoot.querySelector('.project__name');
-  projectTechnologies = this.shadowRoot.querySelector('.technologies-wrapper');
-  projectDescription = this.shadowRoot.querySelector('.project__description');
-  projectRepo = this.shadowRoot.querySelector('.project__repository');
-  projectCreators = this.shadowRoot.querySelector('.project__creators');
-  projectDemo = this.shadowRoot.querySelector('.project__application');
-  projectDemoPicture = this.projectDemo.querySelector('.project__picture');
-  projectDemoCaption = this.projectDemo.querySelector('.project__picture__description');
+  private readonly projectTitle: HTMLHeadingElement = this.shadowRoot.querySelector('.project__name') as HTMLHeadingElement;
+  private readonly projectTechnologies: HTMLUListElement = this.shadowRoot.querySelector('.technologies-wrapper') as HTMLUListElement;
+  private readonly projectDescription: HTMLParagraphElement = this.shadowRoot.querySelector('.project__description') as HTMLParagraphElement;
+  private readonly projectRepo: KKLabeledUrlIcon = this.shadowRoot.querySelector('.project__repository') as KKLabeledUrlIcon;
+  private readonly projectCreators: HTMLUListElement = this.shadowRoot.querySelector('.project__creators') as HTMLUListElement;
+  private readonly projectDemo: HTMLAnchorElement = this.shadowRoot.querySelector('.project__application') as HTMLAnchorElement;
+  private readonly projectDemoPicture: HTMLImageElement = this.projectDemo.querySelector('.project__picture') as HTMLImageElement;
+  private readonly projectDemoCaption: HTMLElement = this.projectDemo.querySelector('.project__picture__description') as HTMLElement;
 
-  constructor(project) {
+  constructor(project: SingleProjectProps) {
     super(template, style);
     if (project) {
       this.setSingleProjectData(project);
     }
   }
 
-  setSingleProjectData({ name, description, sourceCode, technologies, demo, creators }) {
+  public setSingleProjectData({ name, description, sourceCode, technologies, demo, creators }: SingleProjectProps): void {
     this.projectTitle.id = name;
     this.projectTitle.textContent = name;
     this.addTechnologiesTags(technologies);
     this.projectDescription.textContent = description;
-    this.projectRepo.setData(name, 'github', sourceCode);
+    void this.projectRepo.setData({ iconId: 'github', label: name, url: sourceCode });
     this.addCreators(creators);
     this.projectDemo.href = demo.url;
     this.projectDemoPicture.src = demo.picture;
@@ -65,18 +68,18 @@ export class SingleProject extends KKWebComponent {
     this.projectDemoCaption.textContent = `${name} app screenshot`;
   }
 
-  addCreators(creators) {
+  private addCreators(creators: ClubMember[]): void {
     const creatorsWrapper = document.createDocumentFragment();
     for (const { name, avatar, url } of creators) {
       const singleCreator = document.createElement('li');
       singleCreator.className = 'creator';
-      singleCreator.append(new LabeledUrlAvatar(name, avatar, url));
+      singleCreator.append(new LabeledUrlAvatar(name, avatar, url ?? '#'));
       creatorsWrapper.append(singleCreator);
     }
     this.projectCreators.append(creatorsWrapper);
   }
 
-  addTechnologiesTags(technologies) {
+  private addTechnologiesTags(technologies: string[]): void {
     const technologiesWrapper = document.createDocumentFragment();
     for (const technology of technologies) {
       const singleTechnology = document.createElement('li');

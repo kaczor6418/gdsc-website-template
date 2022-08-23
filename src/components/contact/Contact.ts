@@ -1,7 +1,8 @@
-import { ContactProps, KKContact } from './Contact.type';
 import { isDefined } from '../../common/utils/isDefined';
+import { KKContact } from './Contact.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { style } from './Contact.style';
+import { TeamMemberContact } from '../teams/SingleTeam/SingleTeam.type';
 import { UrlIcon } from '../urlIcon/UrlIcon';
 
 const template = `
@@ -14,14 +15,14 @@ export class Contact extends KKWebComponent implements KKContact {
 
   private readonly contactsWrapper: HTMLUListElement = this.shadowRoot.querySelector('.contacts') as HTMLUListElement;
 
-  constructor(props: ContactProps) {
+  constructor(props: TeamMemberContact) {
     super(template, style);
     if (isDefined(props)) {
       this.setContacts(props);
     }
   }
 
-  private setContacts({ discord, messanger, telegram, mail, phone }: ContactProps): void {
+  public setContacts({ discord, messanger, telegram, mail, phone }: TeamMemberContact): void {
     if (isDefined(discord)) {
       this.addContactItem('discord', discord);
     }

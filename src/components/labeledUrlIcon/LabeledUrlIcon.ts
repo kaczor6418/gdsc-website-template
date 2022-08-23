@@ -22,7 +22,7 @@ export class LabeledUrlIcon extends KKWebComponent implements KKLabeledUrlIcon {
   constructor(props: KKLabeledUrlIconProps) {
     super(template, style);
     if (isDefined(props)) {
-      void this.setProps(props);
+      void this.setData(props);
     }
   }
 
@@ -38,7 +38,7 @@ export class LabeledUrlIcon extends KKWebComponent implements KKLabeledUrlIcon {
     await this._icon.setIcon(iconId);
   }
 
-  private async setProps({ label, iconId, url }: KKLabeledUrlIconProps): Promise<void> {
+  public async setData({ label, iconId, url }: KKLabeledUrlIconProps): Promise<void> {
     this.label = label;
     this.wrapper.href = url;
     await this.setIcon(iconId);

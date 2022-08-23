@@ -33,10 +33,10 @@ export class Header extends KKWebComponent implements KKHeader {
   }
 
   public async initializeData({ logo, tabsProps, title }: HeaderProps): Promise<void> {
-    await this.setTitleAndLogo(title, logo);
     if (isDefined(tabsProps)) {
       this.addNavigation(tabsProps);
     }
+    await this.setTitleAndLogo(title, logo);
   }
 
   private async setTitleAndLogo(title: string, iconId: string): Promise<void> {
