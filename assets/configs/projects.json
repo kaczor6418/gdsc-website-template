@@ -1,2 +1,15 @@
 [
+  {
+    "name": "Video Player using web components",
+    "description": "Simple video player build using HTML, JavaScript and CSS.",
+    "sourceCode": "https://github.com/tosh00/video-player",
+    "technologies": ["JavaScript", "HTML", "CSS"],
+    "demo": {"url":"https://github.com/tosh00/vidoe-player-demo", "picture":"https://raw.githubusercontent.com/GDSC-Lodz-University-of-Technology/resources-images/master/projects/video-player.webp"},
+    "creators": [
+      {
+        "name": "Bartosz Palewicz",
+        "avatar": "https://lh3.googleusercontent.com/ogw/AOh-ky16ZyCzwj6fDFjVtgtFnVpQ9IncbLyuocExgDmd=s32-c-mo",
+        "url": "https://github.com/tosh00"
+      }
+    ]}
 ]
