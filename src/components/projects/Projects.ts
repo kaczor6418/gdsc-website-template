@@ -6,7 +6,7 @@ import { ProjectProposition } from './ProjectProposition/ProjectProposition';
 import { ProjectPropositionProps } from './ProjectProposition/ProjectProposition.type';
 import { SingleProject } from './SingleProject/SingleProject';
 import { SingleProjectProps } from './SingleProject/SingleProject.type';
-import { style } from './Projects.style';
+import style from './Projects.css';
 
 const template = `
 <section class="projects-propositions">

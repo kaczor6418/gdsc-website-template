@@ -1,4 +1,3 @@
-export const style = `
 :host {
   width: 100%;
 }
@@ -41,19 +40,12 @@ details[open] summary,
 .project__picture__description {
   opacity: 100%;
 }
-
 .project__info {
   padding-left: var(--spacing-l);
 }
-.project__creators {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-}
-.creator {
-  cursor: pointer;
-  padding: var(--spacing-m);
+.project__picture__description {
+  text-align: center;
+  font-weight: bold;
 }
 .picture-wrapper {
   display: flex;
@@ -61,24 +53,21 @@ details[open] summary,
   align-items: center;
   justify-content: center;
 }
-.project__picture__description {
-  text-align: center;
-  font-weigh: bold;
-}
 .project__picture {
   max-width: 100%;
+  padding-bottom: var(--spacing-m);
 }
+
 @media (min-width: 1350px) {
-  .project__content--wrapper {
+  .project__info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: start;
   }
-  .project__demo {
+  .project__additional-info {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
   }
 }
-`;

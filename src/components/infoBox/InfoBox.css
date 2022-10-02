@@ -1,4 +1,3 @@
-export const style = `
 :host,
 .info {
   width: 100%;
@@ -14,4 +13,3 @@ export const style = `
   font-size: var(--font-size-l);
   font-weight: bold;
 }
-`;

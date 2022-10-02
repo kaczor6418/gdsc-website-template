@@ -1,11 +1,11 @@
-import { KKSingleProject, SingleProjectProps } from './SingleProject.type';
+import type { KKSingleProject, SingleProjectProps } from './SingleProject.type';
 import { Chip } from '../../chip/Chip';
 import { ClubMember } from '../../../common/types';
 import { KKLabeledUrlIcon } from '../../labeledUrlIcon/LabeledUrlIcon.type';
 import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
 import { LabeledUrlAvatar } from '../../labeledUrlAvatar/LabeledUrlAvatar';
 import { LabeledUrlIcon } from '../../labeledUrlIcon/LabeledUrlIcon';
-import { style } from './SingleProject.style';
+import style from './SingleProject.css';
 
 const template = `
 <details>

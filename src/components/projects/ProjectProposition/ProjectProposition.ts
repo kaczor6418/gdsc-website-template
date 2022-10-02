@@ -4,7 +4,7 @@ import { DifficultyChip } from '../../difficultyChip/DifficultyChip';
 import { KKLabeledUrlIcon } from '../../labeledUrlIcon/LabeledUrlIcon.type';
 import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
 import { LabeledUrlIcon } from '../../labeledUrlIcon/LabeledUrlIcon';
-import { style } from './ProjectProposition.style';
+import style from './ProjectProposition.css';
 
 const template = `
 <details>

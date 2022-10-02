@@ -2,7 +2,7 @@ import { Icon } from '../icon/Icon';
 import { KKIcon } from '../icon/Icon.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { KKWebComponentObservedAttributes } from '../KKWebComponent/KKWebComponent.type';
-import { style } from './UrlIcon.style';
+import style from './UrlIcon.css';
 import { UrlIconObservedAttributes } from './UrlIcon.enum';
 import { UrlIconObservedAttributesTypes } from './UrlIcon.type';
 

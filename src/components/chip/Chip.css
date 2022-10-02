@@ -1,4 +1,3 @@
-export const style = `
 .chip {
   border-radius: 16px;
   max-width: 32ch;
@@ -9,4 +8,3 @@ export const style = `
   text-align: center;
   filter: drop-shadow(var(--shadow-around-level-1) #000000);
 }
-`;

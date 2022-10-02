@@ -20,7 +20,6 @@ export default {
         use: [
           {
             loader: 'css-loader',
-            options: { modules: true },
           },
         ],
         exclude: /node_modules/,

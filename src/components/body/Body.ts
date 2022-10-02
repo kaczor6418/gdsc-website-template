@@ -3,7 +3,7 @@ import { Events } from '../events/Events';
 import { isNullOrUndefined } from '../../common/utils/isNullOrUndefined';
 import { KKBody } from './Body.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
-import { style } from './Body.style';
+import style from './Body.css';
 import { TabName } from './Body.enum';
 
 const template = `

@@ -4,7 +4,7 @@ import { KKInfo } from './Info.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { LabeledAvatar } from '../labeledAvatar/LabeledAvatar';
 import { LabeledUrlIcon } from '../labeledUrlIcon/LabeledUrlIcon';
-import { style } from './Info.style';
+import style from './Info.css';
 
 const template = `
 <section class="description">

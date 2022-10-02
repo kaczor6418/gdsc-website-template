@@ -1,4 +1,3 @@
-export const style = `
 h2 {
   margin: 0;
   padding: var(--spacing-l) 0;
@@ -25,4 +24,3 @@ kk-labeled-url-icon {
   margin: 0;
   padding: var(--spacing-s) 0;
 }
-`;

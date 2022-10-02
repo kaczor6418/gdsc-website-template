@@ -1,7 +1,7 @@
 import { isDefined } from '../../common/utils/isDefined';
 import { KKContact } from './Contact.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
-import { style } from './Contact.style';
+import style from './Contact.css';
 import { TeamMemberContact } from '../teams/SingleTeam/SingleTeam.type';
 import { UrlIcon } from '../urlIcon/UrlIcon';
 

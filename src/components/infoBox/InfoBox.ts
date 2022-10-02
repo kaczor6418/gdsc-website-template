@@ -3,7 +3,7 @@ import type { InfoBoxObservedAttributesTypes } from './InfoBox.type';
 import type { KKInfoBox } from './InfoBox.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { NoObservableAttribute } from '../../errors/NoObservableAttribute';
-import { style } from './InfoBox.style';
+import style from './InfoBox.css';
 
 const template = `
 <div class="box">

@@ -4,7 +4,7 @@ import { Icon } from '../icon/Icon';
 import { isDefined } from '../../common/utils/isDefined';
 import { KKIcon } from '../icon/Icon.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
-import { style } from './Header.style';
+import style from './Header.css';
 import { Tabs } from '../tabs/Tabs';
 
 const template = `
