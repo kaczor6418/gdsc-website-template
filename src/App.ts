@@ -28,9 +28,9 @@ const template = `
 export class App extends KKWebComponent {
   static TAG = `kk-app`;
 
-  private readonly header: KKHeader = this.shadowRoot.querySelector(Header.TAG) as KKHeader;
-  private readonly body: KKBody = this.shadowRoot.querySelector(Body.TAG) as KKBody;
-  private readonly footer: KKFooter = this.shadowRoot.querySelector(Footer.TAG) as KKFooter;
+  private readonly header: KKHeader = this._shadowRoot.querySelector(Header.TAG) as KKHeader;
+  private readonly body: KKBody = this._shadowRoot.querySelector(Body.TAG) as KKBody;
+  private readonly footer: KKFooter = this._shadowRoot.querySelector(Footer.TAG) as KKFooter;
 
   constructor() {
     super(template, style);

@@ -15,7 +15,7 @@ const template = `
 export class Body extends KKWebComponent implements KKBody {
   static TAG = `kk-body`;
 
-  private readonly bodyWrapper: HTMLElement = this.shadowRoot.querySelector('main') as HTMLElement;
+  private readonly bodyWrapper: HTMLElement = this._shadowRoot.querySelector('main') as HTMLElement;
 
   constructor() {
     super(template, style);

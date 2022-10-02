@@ -15,7 +15,7 @@ const template = `
 export class LabeledUrlIcon extends KKWebComponent implements KKLabeledUrlIcon {
   static TAG = `kk-labeled-url-icon`;
 
-  private readonly wrapper: HTMLAnchorElement = this.shadowRoot.querySelector('.wrapper') as HTMLAnchorElement;
+  private readonly wrapper: HTMLAnchorElement = this._shadowRoot.querySelector('.wrapper') as HTMLAnchorElement;
   private readonly _icon: KKIcon = this.wrapper.querySelector('.icon') as unknown as KKIcon;
   private readonly _label: HTMLLabelElement = this.wrapper.querySelector('.label') as HTMLLabelElement;
 

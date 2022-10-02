@@ -21,8 +21,8 @@ const template = `
 export class Events extends KKWebComponent implements KKEvents {
   static TAG = `kk-events`;
 
-  private readonly upcomingEventsWrapper: HTMLDetailsElement = this.shadowRoot.querySelector('.upcoming-events-wrapper') as HTMLDetailsElement;
-  private readonly pastEventsWrapper: HTMLDetailsElement = this.shadowRoot.querySelector('.past-events-wrapper') as HTMLDetailsElement;
+  private readonly upcomingEventsWrapper: HTMLDetailsElement = this._shadowRoot.querySelector('.upcoming-events-wrapper') as HTMLDetailsElement;
+  private readonly pastEventsWrapper: HTMLDetailsElement = this._shadowRoot.querySelector('.past-events-wrapper') as HTMLDetailsElement;
 
   constructor() {
     super(template, style);

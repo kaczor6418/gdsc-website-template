@@ -39,12 +39,12 @@ const template = `
 export class SingleProject extends KKWebComponent implements KKSingleProject {
   static TAG = `kk-single-project`;
 
-  private readonly projectTitle: HTMLHeadingElement = this.shadowRoot.querySelector('.project__name') as HTMLHeadingElement;
-  private readonly projectTechnologies: HTMLUListElement = this.shadowRoot.querySelector('.technologies-wrapper') as HTMLUListElement;
-  private readonly projectDescription: HTMLParagraphElement = this.shadowRoot.querySelector('.project__description') as HTMLParagraphElement;
-  private readonly projectRepo: KKLabeledUrlIcon = this.shadowRoot.querySelector('.project__repository') as KKLabeledUrlIcon;
-  private readonly projectCreators: HTMLUListElement = this.shadowRoot.querySelector('.project__creators') as HTMLUListElement;
-  private readonly projectDemo: HTMLAnchorElement = this.shadowRoot.querySelector('.project__application') as HTMLAnchorElement;
+  private readonly projectTitle: HTMLHeadingElement = this._shadowRoot.querySelector('.project__name') as HTMLHeadingElement;
+  private readonly projectTechnologies: HTMLUListElement = this._shadowRoot.querySelector('.technologies-wrapper') as HTMLUListElement;
+  private readonly projectDescription: HTMLParagraphElement = this._shadowRoot.querySelector('.project__description') as HTMLParagraphElement;
+  private readonly projectRepo: KKLabeledUrlIcon = this._shadowRoot.querySelector('.project__repository') as KKLabeledUrlIcon;
+  private readonly projectCreators: HTMLUListElement = this._shadowRoot.querySelector('.project__creators') as HTMLUListElement;
+  private readonly projectDemo: HTMLAnchorElement = this._shadowRoot.querySelector('.project__application') as HTMLAnchorElement;
   private readonly projectDemoPicture: HTMLImageElement = this.projectDemo.querySelector('.project__picture') as HTMLImageElement;
   private readonly projectDemoCaption: HTMLElement = this.projectDemo.querySelector('.project__picture__description') as HTMLElement;
 

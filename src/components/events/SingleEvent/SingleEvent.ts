@@ -34,15 +34,15 @@ export class SingleEvent extends KKWebComponent<SingleEventObservedAttributesTyp
   ];
 
   private readonly wrapper: ISelectionService<HTMLElement>;
-  private readonly container: HTMLAnchorElement = this.shadowRoot.querySelector('a') as HTMLAnchorElement;
-  private readonly picture: HTMLImageElement = this.shadowRoot.querySelector('.picture') as HTMLImageElement;
-  private readonly titleHeader: HTMLHeadingElement = this.shadowRoot.querySelector('.title') as HTMLHeadingElement;
-  private readonly date: HTMLSpanElement = this.shadowRoot.querySelector('.date') as HTMLSpanElement;
-  private readonly description: HTMLParagraphElement = this.shadowRoot.querySelector('.description') as HTMLParagraphElement;
+  private readonly container: HTMLAnchorElement = this._shadowRoot.querySelector('a') as HTMLAnchorElement;
+  private readonly picture: HTMLImageElement = this._shadowRoot.querySelector('.picture') as HTMLImageElement;
+  private readonly titleHeader: HTMLHeadingElement = this._shadowRoot.querySelector('.title') as HTMLHeadingElement;
+  private readonly date: HTMLSpanElement = this._shadowRoot.querySelector('.date') as HTMLSpanElement;
+  private readonly description: HTMLParagraphElement = this._shadowRoot.querySelector('.description') as HTMLParagraphElement;
 
   constructor(props: KKWebComponentObservedAttributes<SingleEventObservedAttributesTypes>) {
     super(template, style, props);
-    this.wrapper = new SelectService(this.shadowRoot.querySelector('.wrapper') as HTMLElement);
+    this.wrapper = new SelectService(this._shadowRoot.querySelector('.wrapper') as HTMLElement);
     this.initializeListeners();
   }
 

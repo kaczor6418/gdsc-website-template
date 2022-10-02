@@ -24,9 +24,9 @@ const template = `
 export class Info extends KKWebComponent implements KKInfo {
   static TAG = `kk-club-contact`;
 
-  private readonly organizersWrapper: HTMLUListElement = this.shadowRoot.querySelector('.organizers-wrapper') as HTMLUListElement;
-  private readonly contactWrapper: HTMLUListElement = this.shadowRoot.querySelector('.contact-wrapper') as HTMLUListElement;
-  private readonly descriptionWrapper: HTMLDivElement = this.shadowRoot.querySelector('.description-wrapper') as HTMLDivElement;
+  private readonly organizersWrapper: HTMLUListElement = this._shadowRoot.querySelector('.organizers-wrapper') as HTMLUListElement;
+  private readonly contactWrapper: HTMLUListElement = this._shadowRoot.querySelector('.contact-wrapper') as HTMLUListElement;
+  private readonly descriptionWrapper: HTMLDivElement = this._shadowRoot.querySelector('.description-wrapper') as HTMLDivElement;
 
   constructor() {
     super(template, style);

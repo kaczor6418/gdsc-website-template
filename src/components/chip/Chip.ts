@@ -12,7 +12,7 @@ export class Chip extends KKWebComponent<ChipObservedAttributesTypes> implements
   static TAG = `kk-chip`;
   static observedAttributes = [ChipObservedAttributes.KK_TEXT];
 
-  protected readonly tagWrapper: HTMLSpanElement = this.shadowRoot.querySelector('.chip') as HTMLSpanElement;
+  protected readonly tagWrapper: HTMLSpanElement = this._shadowRoot.querySelector('.chip') as HTMLSpanElement;
 
   constructor(content: string) {
     super(template, style);

@@ -17,7 +17,7 @@ const template = `
 export class Footer extends KKWebComponent implements KKFooter {
   static TAG = `kk-footer`;
 
-  private readonly footer: HTMLElement = this.shadowRoot.querySelector('footer') as HTMLElement;
+  private readonly footer: HTMLElement = this._shadowRoot.querySelector('footer') as HTMLElement;
   private readonly socialMedia: KKSocialMedia = this.footer.querySelector(SocialMedia.TAG) as KKSocialMedia;
 
   constructor() {

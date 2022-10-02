@@ -14,11 +14,11 @@ export class GDSCDataService implements IGDSCDataService {
   private pastEvents: GDSCPastEvent[] | null = null;
   private organizers: GDSCTeamMember[] | null = null;
   private description: string | null = null;
-  private configRequest: Promise<Response> | null = null;
-  private dataRequest: Promise<Response> | null = null;
+
+  private readonly configRequest: Promise<void>;
 
   constructor() {
-    void this.voidInitializeConfig();
+    this.configRequest = this.voidInitializeConfig();
   }
 
   public async getContact(): Promise<ContactMedia[]> {
@@ -99,10 +99,11 @@ export class GDSCDataService implements IGDSCDataService {
   }
 
   private async voidInitializeConfig(): Promise<void> {
-    this.configRequest = fetch('./assets/configs/config.json', { cache: 'force-cache' });
     try {
-      const response = await this.configRequest;
-      const templateConfig = response.json().then() as unknown as TemplateConfig;
+      const response = await fetch('https://raw.githubusercontent.com/kaczor6418/gdsc-website-template/master/assets/configs/config.json', {
+        cache: 'force-cache',
+      });
+      const templateConfig = (await response.json()) as unknown as TemplateConfig;
       this.gdscClubUrl = templateConfig.gdscClubRootUrl;
       this.clubName = templateConfig.clubName;
       this.contact = templateConfig.contact;
@@ -116,12 +117,11 @@ export class GDSCDataService implements IGDSCDataService {
     if (isNullOrUndefined(this.gdscClubUrl)) {
       throw new CouldNotFetchDataError('GDSC club url is undefined');
     }
-    if (isNullOrUndefined(this.dataRequest)) {
-      this.dataRequest = fetch(this.gdscClubUrl, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+    if (isNullOrUndefined(this.gdscData)) {
+      const dataResponse = await fetch(this.gdscClubUrl, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+      const dataRawText = await dataResponse.text();
+      this.gdscData = new DOMParser().parseFromString(dataRawText, 'text/html');
     }
-    const dataResponse = await this.dataRequest;
-    const dataRawText = await dataResponse.text();
-    this.gdscData = new DOMParser().parseFromString(dataRawText, 'text/html');
     return this.gdscData;
   }
 

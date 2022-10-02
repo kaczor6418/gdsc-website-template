@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Roboto';
-  src: local('JetBrainsMono Regular'), local('JetBrainsMono-Regular'), url('./assets/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-    url('./assets/fonts/JetBrainsMono-Regular.ttf') format('embedded-opentype');
+  src: local('JetBrainsMono Regular'), local('JetBrainsMono-Regular'), url('/assets/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('/assets/fonts/JetBrainsMono-Regular.ttf') format('embedded-opentype');
   font-display: swap;
   font-weight: normal;
   font-style: normal;

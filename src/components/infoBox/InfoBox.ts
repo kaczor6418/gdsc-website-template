@@ -15,7 +15,7 @@ export class InfoBox extends KKWebComponent<InfoBoxObservedAttributesTypes> impl
   static TAG = `kk-info-box`;
   static observedAttributes = [InfoBoxObservedAttributes.KK_CONTENT];
 
-  private contentWrapper: HTMLSpanElement = this.shadowRoot.querySelector('.info') as HTMLSpanElement;
+  private contentWrapper: HTMLSpanElement = this._shadowRoot.querySelector('.info') as HTMLSpanElement;
 
   constructor(infoContent: string) {
     super(template, style);

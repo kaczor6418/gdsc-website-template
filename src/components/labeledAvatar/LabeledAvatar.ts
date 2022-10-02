@@ -14,9 +14,9 @@ const template = `
 export class LabeledAvatar extends KKWebComponent implements KKLabeledAvatar {
   static TAG = `kk-labeled-avatar`;
 
-  private readonly labelWrapper: HTMLLabelElement = this.shadowRoot.querySelector('.avatar-label') as HTMLLabelElement;
-  private readonly subLabelWrapper: HTMLLabelElement = this.shadowRoot.querySelector('.avatar-sub-label') as HTMLLabelElement;
-  private readonly imageWrapper: HTMLInputElement = this.shadowRoot.querySelector('.avatar-img') as HTMLInputElement;
+  private readonly labelWrapper: HTMLLabelElement = this._shadowRoot.querySelector('.avatar-label') as HTMLLabelElement;
+  private readonly subLabelWrapper: HTMLLabelElement = this._shadowRoot.querySelector('.avatar-sub-label') as HTMLLabelElement;
+  private readonly imageWrapper: HTMLInputElement = this._shadowRoot.querySelector('.avatar-img') as HTMLInputElement;
 
   constructor(label: string, photoUrl: string, subLabel: string, size?: Size) {
     super(template, style);
