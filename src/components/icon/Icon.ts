@@ -7,7 +7,7 @@ import { isNullOrUndefined } from '../../common/utils/isNullOrUndefined';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { NoObservableAttribute } from '../../errors/NoObservableAttribute';
 import { SelectService } from '../../services/SelectionService/SelectionService';
-import { style } from './Icon.style';
+import style from './Icon.css';
 
 const template = ``;
 

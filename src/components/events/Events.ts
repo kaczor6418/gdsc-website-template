@@ -5,7 +5,7 @@ import { KKEvents } from './Events.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { SingleEvent } from './SingleEvent/SingleEvent';
 import { SingleEventObservedAttributes } from './SingleEvent/SingleEvent.enum';
-import { style } from './Events.style';
+import style from './Events.css';
 
 const template = `
   <section>

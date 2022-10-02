@@ -2,7 +2,7 @@ import type { ChipObservedAttributesTypes, KKChip } from './Chip.type';
 import { ChipObservedAttributes } from './Chip.enum';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { NoObservableAttribute } from '../../errors/NoObservableAttribute';
-import { style } from './Chip.style';
+import style from './Chip.css';
 
 const template = `
   <span class="chip"></span>

@@ -1,7 +1,7 @@
 import { KKLabeledAvatar } from './LabeledAvatar.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import type { Size } from '../../common/types';
-import { style } from './LabeledAvatar.style';
+import style from './LabeledAvatar.css';
 
 const template = `
 <div class="wrapper">

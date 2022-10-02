@@ -6,7 +6,7 @@ import { isNullOrUndefined } from '../../common/utils/isNullOrUndefined';
 import { KKSocialMedia } from '../socialMedia/SocialMedia.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { SocialMedia } from '../socialMedia/SocialMedia';
-import { style } from './Footer.style';
+import style from './Footer.css';
 
 const template = `
 <footer>

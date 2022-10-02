@@ -3,7 +3,7 @@ import { Icon } from '../icon/Icon';
 import { IconSize } from '../icon/Icon.enum';
 import type { KKSocialMedia } from './SocialMedia.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
-import { style } from './SocialMedia.style';
+import style from './SocialMedia.css';
 
 const template = `
 <section>

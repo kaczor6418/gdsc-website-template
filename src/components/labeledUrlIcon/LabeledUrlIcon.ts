@@ -3,7 +3,7 @@ import { Icon } from '../icon/Icon';
 import { isDefined } from '../../common/utils/isDefined';
 import { KKIcon } from '../icon/Icon.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
-import { style } from './LabeledUrlIcon.style';
+import style from './LabeledUrlIcon.css';
 
 const template = `
 <a class="wrapper" href="#">

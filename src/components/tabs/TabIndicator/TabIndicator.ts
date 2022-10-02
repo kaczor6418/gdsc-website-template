@@ -1,6 +1,6 @@
-import { KKTabIndicator, TabIndicatorProps } from './TabIndicator.type';
+import type { KKTabIndicator, TabIndicatorProps } from './TabIndicator.type';
 import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
-import { style } from './TabIndicator.style';
+import style from './TabIndicator.css';
 
 const template = `
   <span class="indicator"></span>

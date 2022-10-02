@@ -7,7 +7,7 @@ import { isEmptyArray } from '../../../common/utils/isEmptyArray';
 import { KKContact } from '../../contact/Contact.type';
 import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
 import { LabeledUrlAvatar } from '../../labeledUrlAvatar/LabeledUrlAvatar';
-import { style } from './SingleTeam.style';
+import style from './SingleTeam.css';
 
 const template = `
 <details>

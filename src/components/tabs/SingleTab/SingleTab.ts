@@ -1,9 +1,9 @@
 import { isDefined } from '../../../common/utils/isDefined';
-import { KKSingleTab } from './SingleTab.type';
+import type { KKSingleTab } from './SingleTab.type';
 import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
 import { rippleEffect } from '../../../rippleEffect';
-import { style } from './SingleTab.style';
-import { TabProps } from '../Tabs.type';
+import style from './SingleTab.css';
+import type { TabProps } from '../Tabs.type';
 
 const template = `
 <button role="tab" class="tab" tabindex="0" aria-selected="false">
