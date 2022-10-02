@@ -13,7 +13,7 @@ const template = `
 export class Contact extends KKWebComponent implements KKContact {
   static TAG = `kk-contact`;
 
-  private readonly contactsWrapper: HTMLUListElement = this.shadowRoot.querySelector('.contacts') as HTMLUListElement;
+  private readonly contactsWrapper: HTMLUListElement = this._shadowRoot.querySelector('.contacts') as HTMLUListElement;
 
   constructor(props: TeamMemberContact) {
     super(template, style);

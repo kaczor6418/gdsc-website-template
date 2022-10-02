@@ -12,9 +12,9 @@ const template = `
 export class LabeledUrlAvatar extends KKWebComponent implements KKLabeledUrlAvatar {
   static TAG = `kk-labeled-url-avatar`;
 
-  private readonly wrapper: HTMLAnchorElement = this.shadowRoot.querySelector('.wrapper') as HTMLAnchorElement;
-  private readonly labelWrapper: HTMLLabelElement = this.shadowRoot.querySelector('.avatar-label') as HTMLLabelElement;
-  private readonly imageWrapper: HTMLInputElement = this.shadowRoot.querySelector('.avatar-img') as HTMLInputElement;
+  private readonly wrapper: HTMLAnchorElement = this._shadowRoot.querySelector('.wrapper') as HTMLAnchorElement;
+  private readonly labelWrapper: HTMLLabelElement = this._shadowRoot.querySelector('.avatar-label') as HTMLLabelElement;
+  private readonly imageWrapper: HTMLInputElement = this._shadowRoot.querySelector('.avatar-img') as HTMLInputElement;
 
   constructor(label: string, photoUrl: string, userUrl: string) {
     super(template, style);

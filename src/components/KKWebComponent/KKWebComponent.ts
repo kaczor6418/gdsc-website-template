@@ -7,16 +7,16 @@ import { isObject } from '../../common/utils/isObject';
 let componentIdCounter = BigInt(CONSTANTS.INITIAL_COMPONENT_ID);
 
 export class KKWebComponent<T = unknown> extends HTMLElement implements KKWebComponentHandler<KKWebComponentObservedAttributes<T>> {
-  public readonly shadowRoot: ShadowRoot;
+  public readonly _shadowRoot: ShadowRoot;
   public readonly kkID: bigint;
   private readonly props: KKWebComponentObservedAttributes<T> | undefined = undefined;
 
   constructor(template: string, styles?: string, props?: KKWebComponentObservedAttributes<T>) {
     super();
     this.props = props;
-    this.shadowRoot = this.attachShadow({ mode: 'open' });
+    this._shadowRoot = this.attachShadow({ mode: 'open' });
     this.kkID = componentIdCounter++;
-    this.shadowRoot.innerHTML = template;
+    this._shadowRoot.innerHTML = template;
     this.injectStyles(styles);
   }
 
@@ -40,7 +40,7 @@ export class KKWebComponent<T = unknown> extends HTMLElement implements KKWebCom
     if (isDefined(propsToSet)) {
       for (const [key, value] of Object.entries(propsToSet)) {
         const attributeValue = isObject(value) || Array.isArray(value) ? JSON.stringify(value) : (value as string);
-        this.setAttribute(key.toLowerCase(), attributeValue);
+        this.setAttribute(key.toLowerCase().replaceAll('_', '-'), attributeValue);
       }
     }
   }
@@ -51,6 +51,6 @@ export class KKWebComponent<T = unknown> extends HTMLElement implements KKWebCom
     }
     const styleWrapper: HTMLStyleElement = document.createElement('style');
     styleWrapper.innerHTML = styles;
-    this.shadowRoot.appendChild(styleWrapper);
+    this._shadowRoot.appendChild(styleWrapper);
   }
 }

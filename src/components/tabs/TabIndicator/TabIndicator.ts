@@ -9,7 +9,7 @@ const template = `
 export class TabIndicator extends KKWebComponent implements KKTabIndicator {
   static TAG = `kk-tab-indicator`;
 
-  private readonly indicator: HTMLSpanElement = this.shadowRoot.querySelector('span') as HTMLSpanElement;
+  private readonly indicator: HTMLSpanElement = this._shadowRoot.querySelector('span') as HTMLSpanElement;
 
   private width: number;
   private index: number;

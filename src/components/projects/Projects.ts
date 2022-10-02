@@ -21,8 +21,8 @@ const template = `
 export class Projects extends KKWebComponent implements KKProjects {
   static TAG = `kk-projects`;
 
-  private readonly projectsWrapper: HTMLElement = this.shadowRoot.querySelector('.projects-created') as HTMLElement;
-  private readonly projectsPropositions: HTMLElement = this.shadowRoot.querySelector('.projects-propositions') as HTMLElement;
+  private readonly projectsWrapper: HTMLElement = this._shadowRoot.querySelector('.projects-created') as HTMLElement;
+  private readonly projectsPropositions: HTMLElement = this._shadowRoot.querySelector('.projects-propositions') as HTMLElement;
 
   constructor() {
     super(template, style);

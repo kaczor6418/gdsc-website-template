@@ -15,7 +15,7 @@ export class SingleTab extends KKWebComponent implements KKSingleTab {
   static TAG = `kk-single-tab`;
   private static ACTIVE_CLASS = 'tab--active';
 
-  private readonly tab: HTMLButtonElement = this.shadowRoot.querySelector('button') as HTMLButtonElement;
+  private readonly tab: HTMLButtonElement = this._shadowRoot.querySelector('button') as HTMLButtonElement;
   private readonly changeTabCallback: () => void;
   private readonly _index: number;
   private readonly _name;
