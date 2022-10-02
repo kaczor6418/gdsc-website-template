@@ -1,6 +1,3 @@
-export { App } from './App';
-import styles from './style/main.css';
-
-const rootStyleWrapper: HTMLStyleElement = document.createElement('style');
-rootStyleWrapper.innerHTML = styles;
-document.head.appendChild(rootStyleWrapper);
+import('./App').catch((e) => {
+  return console.error(`Couldn't load application because of this error:`, e);
+});

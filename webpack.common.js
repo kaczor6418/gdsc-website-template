@@ -4,7 +4,7 @@ import path from 'path';
 
 export default {
   target: ['web', 'es2020'],
-  entry: path.resolve('./src/bootstrap.ts'),
+  entry: path.resolve('./src/index.ts'),
   output: {
     filename: '[name].js',
     asyncChunks: true,
@@ -40,7 +40,10 @@ export default {
       scriptLoading: 'module'
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: path.resolve('./assets'), to: path.resolve('./dist/assets') }],
+      patterns: [
+        { from: path.resolve('./assets'), to: path.resolve('./dist/assets') },
+        { from: path.resolve('./style'), to: path.resolve('./dist/style') },
+      ],
       options: {
         concurrency: 50
       }
