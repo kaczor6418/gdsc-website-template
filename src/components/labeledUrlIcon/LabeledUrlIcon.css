@@ -1,4 +1,3 @@
-export const style = `
 :host {
   display: block;
 }
@@ -26,4 +25,3 @@ a {
 .label:hover {
   opacity: 100%;
 }
-`;

@@ -1,10 +1,10 @@
 import { InfoBox } from '../infoBox/InfoBox';
 import { isEmptyArray } from '../../common/utils/isEmptyArray';
-import { KKTeams } from './Teams.type';
+import type { KKTeams } from './Teams.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { SingleTeam } from './SingleTeam/SingleTeam';
-import { SingleTeamProps } from './SingleTeam/SingleTeam.type';
-import { style } from './Teams.style';
+import type { SingleTeamProps } from './SingleTeam/SingleTeam.type';
+import style from './Teams.css';
 
 const template = `
 <section class="teams">

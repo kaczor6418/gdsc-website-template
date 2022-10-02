@@ -1,10 +1,10 @@
-import { KKTabs, TabProps, TabsProps } from './Tabs.type';
+import type { KKTabs, TabProps, TabsProps } from './Tabs.type';
 import { isDefined } from '../../common/utils/isDefined';
-import { KKSingleTab } from './SingleTab/SingleTab.type';
-import { KKTabIndicator } from './TabIndicator/TabIndicator.type';
+import type { KKSingleTab } from './SingleTab/SingleTab.type';
+import type { KKTabIndicator } from './TabIndicator/TabIndicator.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import { SingleTab } from './SingleTab/SingleTab';
-import { style } from './Tabs.style';
+import style from './Tabs.css';
 import { TabIndicator } from './TabIndicator/TabIndicator';
 
 const template = `

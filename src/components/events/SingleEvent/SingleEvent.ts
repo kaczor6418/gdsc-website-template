@@ -6,7 +6,7 @@ import { NoObservableAttribute } from '../../../errors/NoObservableAttribute';
 import { rippleEffect } from '../../../rippleEffect';
 import { SelectService } from '../../../services/SelectionService/SelectionService';
 import { SingleEventObservedAttributes } from './SingleEvent.enum';
-import { style } from './SingleEvent.style';
+import style from './SingleEvent.css';
 
 const template = `
 <a href="#">

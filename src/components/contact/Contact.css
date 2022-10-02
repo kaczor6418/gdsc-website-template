@@ -1,4 +1,3 @@
-export const style = `
 :host {
   width: 100%;
 }
@@ -12,9 +11,8 @@ ul {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  
+
 }
 .contact__item {
   padding: var(--spacing-m);
 }
-`;

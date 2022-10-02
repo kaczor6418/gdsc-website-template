@@ -1,6 +1,6 @@
-import { KKLabeledUrlAvatar } from './LabeledUrlAvatar.type';
+import type { KKLabeledUrlAvatar } from './LabeledUrlAvatar.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
-import { style } from './LabeledUrlAvatar.style';
+import style from './LabeledUrlAvatar.css';
 
 const template = `
 <a class="wrapper" href="#">
