@@ -13,7 +13,7 @@ const template = `
 export class SocialMedia extends KKWebComponent implements KKSocialMedia {
   static TAG = `kk-social-media`;
 
-  private readonly iconsWrapper: HTMLElement = this.shadowRoot.querySelector('section') as HTMLElement;
+  private readonly iconsWrapper: HTMLElement = this._shadowRoot.querySelector('section') as HTMLElement;
 
   constructor() {
     super(template, style);

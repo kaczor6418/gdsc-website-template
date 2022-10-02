@@ -42,12 +42,12 @@ const template = `
 export class SingleTeam extends KKWebComponent implements KKSingleTeam {
   static TAG = `kk-single-team`;
 
-  private readonly nameWrapper: HTMLHeadingElement = this.shadowRoot.querySelector('.team-name') as HTMLHeadingElement;
-  private readonly technologiesWrapper: HTMLUListElement = this.shadowRoot.querySelector('.technologies-wrapper') as HTMLUListElement;
-  private readonly descriptionWrapper: HTMLParagraphElement = this.shadowRoot.querySelector('.description') as HTMLParagraphElement;
-  private readonly lookingForWrapper: HTMLParagraphElement = this.shadowRoot.querySelector('.looking-for') as HTMLParagraphElement;
-  private readonly contacts: KKContact = this.shadowRoot.querySelector(Contact.TAG) as KKContact;
-  private readonly membersWrapper: HTMLElement = this.shadowRoot.querySelector('.members') as HTMLElement;
+  private readonly nameWrapper: HTMLHeadingElement = this._shadowRoot.querySelector('.team-name') as HTMLHeadingElement;
+  private readonly technologiesWrapper: HTMLUListElement = this._shadowRoot.querySelector('.technologies-wrapper') as HTMLUListElement;
+  private readonly descriptionWrapper: HTMLParagraphElement = this._shadowRoot.querySelector('.description') as HTMLParagraphElement;
+  private readonly lookingForWrapper: HTMLParagraphElement = this._shadowRoot.querySelector('.looking-for') as HTMLParagraphElement;
+  private readonly contacts: KKContact = this._shadowRoot.querySelector(Contact.TAG) as KKContact;
+  private readonly membersWrapper: HTMLElement = this._shadowRoot.querySelector('.members') as HTMLElement;
 
   constructor(props: SingleTeamProps) {
     super(template, style);

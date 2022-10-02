@@ -59,7 +59,7 @@ export class Icon extends KKWebComponent<IconObservedAttributesTypes> implements
 
   async setIcon(iconId: string): Promise<void> {
     if (this.hasChildNodes() && isDefined(this.icon)) {
-      this.shadowRoot.removeChild(this.icon.interactiveElement);
+      this._shadowRoot.removeChild(this.icon.interactiveElement);
     }
     const rawIcon = await fetch(`./assets/icons/${iconId}.svg`, { cache: 'force-cache' }).then((response) => {
       return response.text();
@@ -69,7 +69,7 @@ export class Icon extends KKWebComponent<IconObservedAttributesTypes> implements
       throw new CouldNotFetchConfigError(iconId);
     }
     this.icon.changeInteractiveElement(newIcon as HTMLElement);
-    this.shadowRoot.appendChild(this.icon.interactiveElement);
+    this._shadowRoot.appendChild(this.icon.interactiveElement);
     this.setSize(this.size);
   }
 }

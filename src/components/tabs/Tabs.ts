@@ -15,7 +15,7 @@ const template = `
 export class Tabs extends KKWebComponent implements KKTabs {
   static TAG = `kk-tabs`;
 
-  private readonly tabsWrapper: HTMLUListElement = this.shadowRoot.querySelector('ul') as HTMLUListElement;
+  private readonly tabsWrapper: HTMLUListElement = this._shadowRoot.querySelector('ul') as HTMLUListElement;
   private readonly tabIndicator: KKTabIndicator;
   private readonly tabNameTab: Map<string, KKSingleTab> = new Map();
 

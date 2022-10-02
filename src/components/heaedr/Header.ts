@@ -21,9 +21,9 @@ const template = `
 export class Header extends KKWebComponent implements KKHeader {
   static TAG = `kk-header`;
 
-  private readonly headerWrapper: HTMLElement = this.shadowRoot.querySelector('header') as HTMLElement;
-  private readonly headerTitle: HTMLHeadingElement = this.shadowRoot.querySelector('h1') as HTMLHeadingElement;
-  private readonly icon: KKIcon = this.shadowRoot.querySelector(Icon.TAG) as KKIcon;
+  private readonly headerWrapper: HTMLElement = this._shadowRoot.querySelector('header') as HTMLElement;
+  private readonly headerTitle: HTMLHeadingElement = this._shadowRoot.querySelector('h1') as HTMLHeadingElement;
+  private readonly icon: KKIcon = this._shadowRoot.querySelector(Icon.TAG) as KKIcon;
 
   constructor(props?: HeaderProps) {
     super(template, style);

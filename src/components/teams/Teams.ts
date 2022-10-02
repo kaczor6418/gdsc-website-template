@@ -14,7 +14,7 @@ const template = `
 export class Teams extends KKWebComponent implements KKTeams {
   static TAG = `kk-teams`;
 
-  private readonly teamsWrapper: HTMLElement = this.shadowRoot.querySelector('.teams') as HTMLElement;
+  private readonly teamsWrapper: HTMLElement = this._shadowRoot.querySelector('.teams') as HTMLElement;
 
   constructor() {
     super(template, style);

@@ -17,8 +17,8 @@ export class UrlIcon extends KKWebComponent<UrlIconObservedAttributesTypes> {
   static TAG = `kk-url-icon`;
   static observedAttributes = [UrlIconObservedAttributes.KK_URL, UrlIconObservedAttributes.KK_ICON_ID, UrlIconObservedAttributes.KK_ICON_SIZE];
 
-  private readonly iconWrapper: HTMLAnchorElement = this.shadowRoot.querySelector('.icon-wrapper') as HTMLAnchorElement;
-  private readonly icon: KKIcon = this.shadowRoot.querySelector(Icon.TAG) as KKIcon;
+  private readonly iconWrapper: HTMLAnchorElement = this._shadowRoot.querySelector('.icon-wrapper') as HTMLAnchorElement;
+  private readonly icon: KKIcon = this._shadowRoot.querySelector(Icon.TAG) as KKIcon;
 
   constructor(url: string, iconProps: KKWebComponentObservedAttributes<UrlIconObservedAttributesTypes>) {
     super(template, style, iconProps);

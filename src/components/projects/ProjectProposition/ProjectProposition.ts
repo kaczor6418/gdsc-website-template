@@ -30,12 +30,12 @@ const template = `
 export class ProjectProposition extends KKWebComponent implements KKProjectProposition {
   static TAG = `kk-project-proposition`;
 
-  private readonly projectTitle: HTMLHeadingElement = this.shadowRoot.querySelector('.project__name') as HTMLHeadingElement;
-  private readonly projectTechnologies: HTMLUListElement = this.shadowRoot.querySelector('.technologies-wrapper') as HTMLUListElement;
-  private readonly projectDescription: HTMLParagraphElement = this.shadowRoot.querySelector('.project__description') as HTMLParagraphElement;
-  private readonly projectRepo: KKLabeledUrlIcon = this.shadowRoot.querySelector('.project__repository') as KKLabeledUrlIcon;
-  private readonly projectPicture: HTMLImageElement = this.shadowRoot.querySelector('.project__picture') as HTMLImageElement;
-  private readonly projectPictureCaption: HTMLElement = this.shadowRoot.querySelector('.project__picture__description') as HTMLElement;
+  private readonly projectTitle: HTMLHeadingElement = this._shadowRoot.querySelector('.project__name') as HTMLHeadingElement;
+  private readonly projectTechnologies: HTMLUListElement = this._shadowRoot.querySelector('.technologies-wrapper') as HTMLUListElement;
+  private readonly projectDescription: HTMLParagraphElement = this._shadowRoot.querySelector('.project__description') as HTMLParagraphElement;
+  private readonly projectRepo: KKLabeledUrlIcon = this._shadowRoot.querySelector('.project__repository') as KKLabeledUrlIcon;
+  private readonly projectPicture: HTMLImageElement = this._shadowRoot.querySelector('.project__picture') as HTMLImageElement;
+  private readonly projectPictureCaption: HTMLElement = this._shadowRoot.querySelector('.project__picture__description') as HTMLElement;
 
   constructor(project: ProjectPropositionProps) {
     super(template, style);

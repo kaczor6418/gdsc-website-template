@@ -1,0 +1,38 @@
+{
+  "test": ".*.ts$",
+  "exclude": [
+    ".*type.ts$"
+  ],
+  "minify": true,
+  "jsc": {
+    "target": "es2021",
+    "parser": {
+      "syntax": "typescript"
+    },
+    "minify": {
+      "compress": {
+        "comparisons": true,
+        "computed_props": true,
+        "conditionals": true,
+        "dead_code": true,
+        "directives": true,
+        "ecma": 2020,
+        "evaluate": true,
+        "if_return": true,
+        "join_vars": true,
+        "module": true,
+        "negate_iife": true,
+        "sequences": true,
+        "switches": true,
+        "unused": true
+      },
+      "mangle": true
+    }
+  },
+  "module": {
+    "type": "es6",
+    "strict": true,
+    "strictMode": true
+  },
+  "isModule": true
+}
