@@ -7,11 +7,8 @@ export default {
   entry: path.resolve('./src/index.ts'),
   output: {
     filename: '[name].js',
-    asyncChunks: true,
     path: path.resolve('./dist'),
     clean: true,
-    module: true,
-    scriptType: 'module',
   },
   module: {
     rules: [
@@ -29,14 +26,10 @@ export default {
   resolve: {
     extensions: ['.ts', '.js', '.css'],
   },
-  experiments: {
-    outputModule: true,
-  },
   plugins: [
     new HTMLWebpackPlugin({
       filename: 'index.html',
       template: path.resolve('./index.html'),
-      favicon: path.resolve('./favicon.ico'),
       scriptLoading: 'module'
     }),
     new CopyWebpackPlugin({
