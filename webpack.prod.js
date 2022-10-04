@@ -3,6 +3,11 @@ import commonConfig from './webpack.common.js';
 
 export default merge(commonConfig, {
   mode: 'production',
+  output: {
+    asyncChunks: true,
+    module: true,
+    scriptType: 'module',
+  },
   module: {
     rules: [
       {
@@ -50,5 +55,8 @@ export default merge(commonConfig, {
   },
   optimization: {
     usedExports: true,
+  },
+  experiments: {
+    outputModule: true,
   },
 });
