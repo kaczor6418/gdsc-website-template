@@ -1,11 +1,11 @@
-import { Body } from './components/body/Body';
-import { Footer } from './components/footer/Footer';
+import { Body } from './templates/Body/Body';
+import { Footer } from './templates/Footer/Footer';
 import { gdscService } from './services/globalServices';
-import { Header } from './components/heaedr/Header';
-import { IconID } from './components/icon/Icon.enum';
-import { KKBody } from './components/body/Body.type';
-import { KKFooter } from './components/footer/Footer.type';
-import { KKHeader } from './components/heaedr/Header.type';
+import { Header } from './templates/Header/Header';
+import { IconID } from './components/Icon/Icon.enum';
+import { KKBody } from './templates/Body/Body.type';
+import { KKFooter } from './templates/Footer/Footer.type';
+import { KKHeader } from './templates/Header/Header.type';
 import { KKWebComponent } from './components/KKWebComponent/KKWebComponent';
 
 const style = `
