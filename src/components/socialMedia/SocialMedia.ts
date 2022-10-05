@@ -1,6 +1,6 @@
+import { IconID, IconSize } from '../icon/Icon.enum';
 import type { ContactMedia } from '../../common/types';
 import { Icon } from '../icon/Icon';
-import { IconSize } from '../icon/Icon.enum';
 import type { KKSocialMedia } from './SocialMedia.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
 import style from './SocialMedia.css';
@@ -27,7 +27,7 @@ export class SocialMedia extends KKWebComponent implements KKSocialMedia {
     this.iconsWrapper.append(socialMediaIcons);
   }
 
-  private createSocialMediaIcon(iconId: string, url: string): HTMLAnchorElement {
+  private createSocialMediaIcon(iconId: string | IconID, url: string): HTMLAnchorElement {
     const iconWrapper: HTMLAnchorElement = document.createElement('a');
     iconWrapper.href = url;
     iconWrapper.textContent = iconId;

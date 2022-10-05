@@ -1,4 +1,4 @@
-import { IconObservedAttributes, IconSize } from './Icon.enum';
+import { IconID, IconObservedAttributes, IconSize } from './Icon.enum';
 import type { IconObservedAttributesTypes, KKIcon } from './Icon.type';
 import { CouldNotFetchConfigError } from '../../errors/CanNotFindIconError';
 import { isDefined } from '../../common/utils/isDefined';
@@ -10,16 +10,16 @@ import { SelectService } from '../../services/SelectionService/SelectionService'
 import style from './Icon.css';
 
 const template = ``;
-
 export class Icon extends KKWebComponent<IconObservedAttributesTypes> implements KKIcon {
   static TAG = `kk-icon`;
   static HIGHLIGHTED_CLASS = 'active';
   static observedAttributes = [IconObservedAttributes.KK_ICON_ID, IconObservedAttributes.KK_ICON_SIZE];
+  private static ICON_ROOT_PATH = './assets/icons/';
 
   private icon: ISelectionService<HTMLElement> = new SelectService<HTMLElement>();
   private size: IconSize;
 
-  constructor(iconId: string, size = IconSize.M) {
+  constructor(iconId: string | IconID, size = IconSize.M) {
     super(template, style);
     this.size = size;
     if (isDefined(iconId)) {
@@ -57,11 +57,11 @@ export class Icon extends KKWebComponent<IconObservedAttributesTypes> implements
     this.icon.interactiveElement?.setAttribute('height', size.toString());
   }
 
-  async setIcon(iconId: string): Promise<void> {
+  async setIcon(iconId: string | IconID): Promise<void> {
     if (this.hasChildNodes() && isDefined(this.icon)) {
       this._shadowRoot.removeChild(this.icon.interactiveElement);
     }
-    const rawIcon = await fetch(`./assets/icons/${iconId}.svg`, { cache: 'force-cache' }).then((response) => {
+    const rawIcon = await fetch(`${Icon.ICON_ROOT_PATH}${iconId}.svg`, { cache: 'force-cache' }).then((response) => {
       return response.text();
     });
     const newIcon = new DOMParser().parseFromString(rawIcon, 'image/svg+xml').firstElementChild;

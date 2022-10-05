@@ -3,9 +3,6 @@
 /dist/*
 /coverage/*
 /.nyc_output/*
-.eslintrc.json
-.pretierrc.json
-.stylelintrc.json
 webpack.common.js
 webpack.dev.js
 webpack.prod.js

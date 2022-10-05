@@ -4,6 +4,7 @@ import { CouldNotFetchConfigError } from '../../errors/CouldNotFetchConfigError'
 import { CouldNotFetchDataError } from '../../errors/CouldNotFetchDataError';
 import { isDefined } from '../../common/utils/isDefined';
 import { isNullOrUndefined } from '../../common/utils/isNullOrUndefined';
+import { UndefinedClubNameError } from '../../errors/UndefinedClubNameError';
 
 export class GDSCDataService implements IGDSCDataService {
   private gdscClubUrl: string | null = null;
@@ -29,7 +30,7 @@ export class GDSCDataService implements IGDSCDataService {
   public async getClubName(): Promise<string> {
     await this.configRequest;
     if (isNullOrUndefined(this.clubName)) {
-      throw new Error('asc');
+      throw new UndefinedClubNameError();
     }
     return this.clubName;
   }
