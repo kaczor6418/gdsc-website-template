@@ -2,6 +2,7 @@ import { Body } from './components/body/Body';
 import { Footer } from './components/footer/Footer';
 import { gdscService } from './services/globalServices';
 import { Header } from './components/heaedr/Header';
+import { IconID } from './components/icon/Icon.enum';
 import { KKBody } from './components/body/Body.type';
 import { KKFooter } from './components/footer/Footer.type';
 import { KKHeader } from './components/heaedr/Header.type';
@@ -40,7 +41,7 @@ export class App extends KKWebComponent {
   async initializeApp(): Promise<void> {
     const clubName = await gdscService.getClubName();
     await this.header.initializeData({
-      logo: 'gdsc',
+      logo: IconID.GDSC,
       tabsProps: {
         activeTab: 'Events',
         tabs: [

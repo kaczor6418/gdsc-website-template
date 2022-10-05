@@ -1,3 +1,4 @@
+import { IconID } from '../icon/Icon.enum';
 import { isDefined } from '../../common/utils/isDefined';
 import { KKContact } from './Contact.type';
 import { KKWebComponent } from '../KKWebComponent/KKWebComponent';
@@ -24,19 +25,19 @@ export class Contact extends KKWebComponent implements KKContact {
 
   public setContacts({ discord, messanger, telegram, mail, phone }: TeamMemberContact): void {
     if (isDefined(discord)) {
-      this.addContactItem('discord', discord);
+      this.addContactItem(IconID.DISCORD, discord);
     }
     if (isDefined(messanger)) {
-      this.addContactItem('messanger', messanger);
+      this.addContactItem(IconID.MESSANGER, messanger);
     }
     if (isDefined(telegram)) {
-      this.addContactItem('telegram', telegram);
+      this.addContactItem(IconID.TELEGRAM, telegram);
     }
     if (isDefined(mail)) {
-      this.addContactItem('mail', `mailto:${mail}`);
+      this.addContactItem(IconID.MAIL, `mailto:${mail}`);
     }
     if (isDefined(phone)) {
-      this.addContactItem('phone', `tel:${phone}`);
+      this.addContactItem(IconID.PHONE, `tel:${phone}`);
     }
   }
 

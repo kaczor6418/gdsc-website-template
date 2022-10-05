@@ -17,7 +17,7 @@ export class Chip extends KKWebComponent<ChipObservedAttributesTypes> implements
   constructor(content: string) {
     super(template, style);
     if (content) {
-      this.setAttribute('kk-text', content);
+      this.setAttribute(ChipObservedAttributes.KK_TEXT, content);
     }
   }
 

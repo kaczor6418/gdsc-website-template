@@ -1,6 +1,7 @@
 import { KKProjectProposition, ProjectPropositionProps } from './ProjectProposition.type';
 import { Chip } from '../../chip/Chip';
 import { DifficultyChip } from '../../difficultyChip/DifficultyChip';
+import { IconID } from '../../icon/Icon.enum';
 import { KKLabeledUrlIcon } from '../../labeledUrlIcon/LabeledUrlIcon.type';
 import { KKWebComponent } from '../../KKWebComponent/KKWebComponent';
 import { LabeledUrlIcon } from '../../labeledUrlIcon/LabeledUrlIcon';
@@ -50,7 +51,7 @@ export class ProjectProposition extends KKWebComponent implements KKProjectPropo
     this.projectTechnologies.append(new DifficultyChip(difficulty));
     this.addTechnologiesTags(technologies);
     this.projectDescription.textContent = description;
-    void this.projectRepo.setData({ iconId: 'github', label: name, url: readmeUrl });
+    void this.projectRepo.setData({ iconId: IconID.GITHUB, label: name, url: readmeUrl });
     this.projectPicture.src = pictureUrl;
     this.projectPicture.alt = name;
     this.projectPictureCaption.textContent = `${name} app screenshot`;

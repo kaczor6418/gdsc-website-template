@@ -22,8 +22,7 @@ This repository contains a generic template for Google Developer Students Club w
 automatically fetched from your GDSC page and reflected in this page. Additionally, by filling proper configs you can also share the information about
 students teems that looking for help, projects created by students and projects propositions that students can make.
 
-Under the hood whole project is built in plain JavaScript with CSS and HTML. To split the code I have use WebComponents. In the future there is a plan
-to add TypeScript
+Under the hood whole project is built in TypeScript + CSS + HTML. To split the code I have use WebComponents.
 
 ## Philosophy
 
