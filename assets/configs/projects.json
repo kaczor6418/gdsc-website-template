@@ -4,7 +4,7 @@
     "description": "Simple video player build using HTML, JavaScript and CSS.",
     "sourceCode": "https://github.com/tosh00/video-player",
     "technologies": ["JavaScript", "HTML", "CSS"],
-    "demo": {"url":"https://github.com/tosh00/vidoe-player-demo", "picture":"https://raw.githubusercontent.com/GDSC-Lodz-University-of-Technology/resources-images/master/projects/video-player.webp"},
+    "demo": {"url":"https://tosh00.github.io/", "picture":"https://raw.githubusercontent.com/GDSC-Lodz-University-of-Technology/resources-images/master/projects/video-player.webp"},
     "creators": [
       {
         "name": "Bartosz Palewicz",
