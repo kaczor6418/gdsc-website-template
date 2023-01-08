@@ -46,7 +46,7 @@ export class SelectService<T extends HTMLElement> implements ISelectionService<T
       throw new CanNotUseSelectionServiceError();
     }
     if (this.isEnabled()) {
-      this.interactiveElement.setAttribute('aria-selected', 'true');
+      this.interactiveElement.setAttribute('data-selected', 'true');
     }
   }
 
@@ -54,7 +54,7 @@ export class SelectService<T extends HTMLElement> implements ISelectionService<T
     if (isNullOrUndefined(this.interactiveElement)) {
       throw new CanNotUseSelectionServiceError();
     }
-    this.interactiveElement.setAttribute('aria-selected', 'false');
+    this.interactiveElement.setAttribute('data-selected', 'false');
   }
 
   public isDisabled(): boolean {
@@ -72,7 +72,7 @@ export class SelectService<T extends HTMLElement> implements ISelectionService<T
     if (isNullOrUndefined(this.interactiveElement)) {
       throw new CanNotUseSelectionServiceError();
     }
-    this.interactiveElement.setAttribute('aria-selected', 'false');
+    this.interactiveElement.setAttribute('data-selected', 'false');
     this.interactiveElement.tabIndex = 0;
   }
 
