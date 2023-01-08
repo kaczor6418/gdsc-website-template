@@ -6,7 +6,7 @@ import style from './SingleTab.css';
 import type { TabProps } from '../Tabs.type';
 
 const template = `
-<button role="tab" class="tab" tabindex="0" aria-selected="false">
+<button  class="tab" tabindex="0">
   <span class="content" data-content=""></span>
 </button>
 `;

@@ -8,7 +8,7 @@ import style from './Tabs.css';
 import { TabIndicator } from './TabIndicator/TabIndicator';
 
 const template = `
-<ul role="tablist" class="tabs">
+<ul class="tabs">
 </ul>
 `;
 
@@ -69,7 +69,6 @@ export class Tabs extends KKWebComponent implements KKTabs {
 
   private appendTab(tab: KKSingleTab): void {
     const li = document.createElement('li');
-    li.setAttribute('role', 'tab');
     li.appendChild(tab);
     this.tabsWrapper.appendChild(li);
   }
