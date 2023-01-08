@@ -29,11 +29,11 @@ button {
   text-align: center;
   user-select: none;
 }
-.tab[aria-selected=true] {
+.tab:is(:hover, :focus, :active) {
   position: relative;
   background-color: var(--surface2);
 }
-.tab[aria-selected=true]::before {
+.tab:is(:hover, :focus, :active)::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -47,12 +47,12 @@ button {
   filter: brightness(120%);
   animation: scroll-vhs 6s linear infinite;
 }
-.tab[aria-selected=true] .content {
+.tab:is(:hover, :focus, :active) .content {
   position: relative;
   filter: drop-shadow(0.08rem 0 0 rgba(255, 0, 0, 0.75)) drop-shadow(-0.05rem -0.08rem 0 rgba(0, 255, 0, 0.75)) drop-shadow(0.05rem 0.08rem 0 rgba(0, 0, 255, 0.75));
   animation: glitch-color var(--super-long-duration) infinite;
 }
-.tab[aria-selected=true] .content::after, .tab[aria-selected=true] .content::before {
+.tab:is(:hover, :focus, :active) .content::after, .content::before {
   content: attr(data-content);
   color: var(--text1);
   width: inherit;
@@ -61,11 +61,11 @@ button {
   background: inherit;
   overflow: hidden;
 }
-.tab[aria-selected=true] .content::before {
+.tab:is(:hover, :focus, :active) .content::before {
   left: -0.1rem;
   animation: glitch-noise-before 2s infinite linear alternate-reverse, glitch-color var(--super-long-duration) infinite;
 }
-.tab[aria-selected=true] .content::after {
+.tab:is(:hover, :focus, :active) .content::after {
   left: 0.1rem;
   animation: glitch-noise-after 2s infinite linear alternate-reverse, glitch-color var(--super-long-duration) infinite;
 }
