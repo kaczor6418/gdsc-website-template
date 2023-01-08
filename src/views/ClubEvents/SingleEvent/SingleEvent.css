@@ -17,7 +17,7 @@ a {
 }
 .wrapper:hover,
 .wrapper:focus,
-.wrapper[aria-selected='true'] {
+.wrapper:is(:hover, :focus, :active) {
   outline: none;
   background-color: var(--surface3);
   filter: drop-shadow(var(--shadow-around-level-0) var(--brand));
