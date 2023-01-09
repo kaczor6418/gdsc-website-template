@@ -18,11 +18,12 @@ header section .logo-title h1 {
   margin: 0;
   opacity: 0;
   display: inline;
-  visibility: hidden;
+  height: 0;
+  transform: scale(0);
   font-size: var(--font-size-l);
   padding-left: var(--spacing-l);
   transition: all var(--long-duration) var(--ease-in-out-quint);
-  transition-property: visibility, opacity;
+  transition-property: visibility, opacity, transform;
 }
 header nav {
   display: flex;
@@ -42,10 +43,11 @@ header nav kk-tabs {
     padding: 0 1rem 0 2rem;
   }
   header section .logo-title h1 {
+    height: auto;
     width: 100%;
     flex: 1;
     opacity: 1;
-    visibility: visible;
+    transform: scale(1);
   }
   header kk-tabs {
     padding-left: 50%;
