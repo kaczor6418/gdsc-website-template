@@ -1,46 +1,78 @@
 {
-  "name": "GDSC - Politechnika Łódzka",
-  "short_name": "GDSC - Łódź",
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "start_url": ".",
-  "display": "fullscreen",
-  "background_color": "#339977",
-  "description": "Website with base information about GDSC community at TUL",
+  "lang": "en",
+  "dir": "auto",
+  "name": "GDSC",
+  "short_name": "GDSC",
+  "description": "Keep all information about your GDSC in one place",
+  "display": "standalone",
+  "orientation": "natural",
+  "theme_color": "#2d2d2d",
+  "background_color": "#2d2d2d",
+  "categories": [
+    "education",
+    "blog",
+    "knowledge sharing"
+  ],
   "icons": [
     {
       "src": "assets/icons/logo48.png",
       "sizes": "48x48",
-      "type": "image/png; charset=utf-8"
+      "type": "image/png; charset=utf-8",
+      "purpose": "maskable any"
     },
     {
       "src": "assets/icons/logo72.png",
       "sizes": "72x72",
-      "type": "image/png; charset=utf-8"
+      "type": "image/png; charset=utf-8",
+      "purpose": "maskable any"
     },
     {
       "src": "assets/icons/logo96.png",
       "sizes": "96x96",
-      "type": "image/png; charset=utf-8"
+      "type": "image/png; charset=utf-8",
+      "purpose": "maskable any"
     },
     {
       "src": "assets/icons/logo144.png",
       "sizes": "144x144",
-      "type": "image/png; charset=utf-8"
+      "type": "image/png; charset=utf-8",
+      "purpose": "maskable any"
     },
     {
       "src": "assets/icons/logo168.png",
       "sizes": "168x168",
-      "type": "image/png; charset=utf-8"
+      "type": "image/png; charset=utf-8",
+      "purpose": "maskable any"
     },
     {
       "src": "assets/icons/logo192.png",
       "sizes": "192x192",
-      "type": "image/png; charset=utf-8"
+      "type": "image/png; charset=utf-8",
+      "purpose": "maskable any"
     }
   ],
-  "related_applications": [
+  "screenshots": [
     {
-      "platform": "gdsc community",
-      "url": "https://gdsc.community.dev/lodz-university-of-technology/"
+      "src": "assets/images/screenshot-events.jpg",
+      "type": "image/jpg",
+      "sizes": "1175x1960"
+    },
+    {
+      "src": "assets/images/screenshot-info.jpg",
+      "type": "image/jpg",
+      "sizes": "1175x1960"
+    },
+    {
+      "src": "assets/images/screenshot-teams.jpg",
+      "type": "image/jpg",
+      "sizes": "1175x1960"
+    },
+    {
+      "src": "assets/images/screenshot-projects.jpg",
+      "type": "image/jpg",
+      "sizes": "1175x1960"
     }
   ]
 }
