@@ -1,43 +1,15 @@
 #!/bin/bash
-RED="\033[1;31m"
-GREEN="\033[1;32m"
-NC="\033[0m"
+source ./git-hooks/git-hooks-helpers.sh
+source ./git-hooks/logs-colors.sh
 
-function remove_last_char_if_not_empty() {
-  container=("$@")
-  if [[ -n "$container" ]]; then
-    container=${container::-1}
-  fi
-  echo "$container"
-}
-
-function create_pattern() {
-  files_paths_list=("$@")
-  pattern=""
-  for file_name in $files_paths_list; do
-    pattern="${pattern}${file_name}|"
-  done
-  pattern=$(remove_last_char_if_not_empty "${pattern[*]}")
-  echo "$pattern"
-}
-
-function filter_array_with_inverted_regEx() {
-  files_paths_list=("$@")
-  query=$2
-  container=""
-  if [[ -z "${query}" ]]; then
-    container=$files_paths_list
-  else
-    for value in $files_paths_list; do
-      matched_string=$(echo "$value" | grep -v -E "$query")
-      if [[ -n "$matched_string" ]]; then
-        container="${container}${value} "
-      fi
-    done
-    container=$(remove_last_char_if_not_empty "${container[*]}")
-  fi
-  echo "$container"
-}
+export ESLINT_EXIT_CODE_TMP=$(mktemp)
+echo 0 >"$ESLINT_EXIT_CODE_TMP"
+export ESLINT_FILES_TO_ADD_AFTER_FIXES_TMP=$(mktemp)
+echo "" >"$ESLINT_FILES_TO_ADD_AFTER_FIXES_TMP"
+export PRETTIER_EXIT_CODE_TMP=$(mktemp)
+echo 0 >"$PRETTIER_EXIT_CODE_TMP"
+export PRETTIER_FILES_TO_ADD_AFTER_FIXES_TMP=$(mktemp)
+echo "" >"$PRETTIER_FILES_TO_ADD_AFTER_FIXES_TMP"
 
 function add_files_to_staged_tree() {
   files_paths=("$@")
@@ -46,27 +18,26 @@ function add_files_to_staged_tree() {
   fi
 }
 
-eslint_autofix_flag=""
-eslint_exit_code=0
-mocha_exit_code=0
-not_staged_ts_files=$(git diff --diff-filter=b --name-only | grep .ts$)
-staged_ts_files=$(git diff --cached --diff-filter=d --name-only | grep .ts$)
-ts_filter_regex=$(create_pattern "${not_staged_ts_files[*]}")
-ts_files_to_add_after_linting=$(filter_array_with_inverted_regEx "${staged_ts_files[*]}" "${ts_filter_regex}")
+./git-hooks/run-linters.sh &
+./git-hooks/run-code-formatters.sh &
+wait
+IFS= read -r eslint_exit_code <"$ESLINT_EXIT_CODE_TMP"
+IFS= read -r eslint_files_to_add_after_fix <"$ESLINT_FILES_TO_ADD_AFTER_FIXES_TMP"
+IFS= read -r prettier_exit_code <"$PRETTIER_EXIT_CODE_TMP"
+IFS= read -r prettier_files_to_add_after_fix <"$PRETTIER_FILES_TO_ADD_AFTER_FIXES_TMP"
+if [ $eslint_exit_code = 0 ]; then
+  echo -e "${GREEN} 🌀 ESLint finished SUCCESSFULLY ${NC}"
+else
+  echo -e "${RED} 🌀 ESLint finished UNSUCCESSFULLY ${NC}"
+fi
+if [ $prettier_exit_code = 0 ]; then
+  echo -e "${GREEN} 📝 Prettier finished SUCCESSFULLY ${NC}"
+else
+  echo -e "${RED} 📝 Prettier finished UNSUCCESSFULLY ${NC}"
+fi
 
-if [ ${#ts_files_to_add_after_linting} = ${#staged_ts_files} ]; then
-  eslint_autofix_flag="--fix"
-fi
-if [[ -n "$staged_ts_files" ]]; then
-  echo "Running ESLint..."
-  ./node_modules/.bin/eslint $staged_ts_files --quiet $eslint_autofix_flag
-  eslint_exit_code=$?
-  if [ $eslint_exit_code = 0 ]; then
-    echo -e "${GREEN} ✔ Eslint checks passed ${NC}"
-  fi
-fi
-if [ $eslint_exit_code = 0 ] && [ $mocha_exit_code = 0 ]; then
-  add_files_to_staged_tree "${ts_files_to_add_after_linting[*]}"
+if [ $eslint_exit_code = 0 ] && [ $prettier_exit_code = 0 ]; then
+  add_files_to_staged_tree "${eslint_files_to_add_after_fix[*]} ${prettier_files_to_add_after_fix[*]}"
   echo -e "${GREEN} ✔ Committed successfully *^____^* ${NC}"
   exit 0
 else
