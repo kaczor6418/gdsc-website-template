@@ -30,7 +30,7 @@ export class ClubEvents extends KKWebComponent implements KKClubEvents {
   }
 
   public async setUpcomingEvents(): Promise<void> {
-    const events = await gdscService.getUpcomingEvents();
+    const { events } = await gdscService.getUpcomingEvents();
     if (isEmptyArray(events)) {
       const infoBox = new InfoBox('There are no upcoming events!');
       this.upcomingEventsWrapper.append(infoBox);
@@ -54,7 +54,7 @@ export class ClubEvents extends KKWebComponent implements KKClubEvents {
   }
 
   public async setPastEvents(): Promise<void> {
-    const events = await gdscService.getPastEvents();
+    const { events } = await gdscService.getPastEvents();
     if (isEmptyArray(events)) {
       const infoBox = new InfoBox('There are no past events!');
       this.pastEventsWrapper.append(infoBox);
@@ -63,11 +63,10 @@ export class ClubEvents extends KKWebComponent implements KKClubEvents {
       this.pastEventsWrapper.append(eventsWrapper);
       for (const event of events) {
         const eventWrapper = document.createElement('li');
-        const description = await gdscService.fetchSinglePastEventDescription(event.url);
         eventWrapper.append(
           new SingleEvent({
             [SingleEventObservedAttributes.KK_DATE]: event.date,
-            [SingleEventObservedAttributes.KK_DESCRIPTION]: description,
+            [SingleEventObservedAttributes.KK_DESCRIPTION]: event.description,
             [SingleEventObservedAttributes.KK_PICTURE]: event.imageUrl,
             [SingleEventObservedAttributes.KK_TITLE]: event.title,
             [SingleEventObservedAttributes.KK_URL]: event.url,

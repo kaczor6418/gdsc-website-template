@@ -42,7 +42,7 @@ export class ClubDescription extends KKWebComponent implements KKClubDescription
   renderMembers = (members: EventSpeaker[]): void => {
     for (const { avatar, name, title } of members) {
       const singleOrganizer = document.createElement('li');
-      singleOrganizer.append(new LabeledAvatar(name, avatar, title));
+      singleOrganizer.append(new LabeledAvatar(name, avatar, title ?? ''));
       this.organizersWrapper.append(singleOrganizer);
     }
   };

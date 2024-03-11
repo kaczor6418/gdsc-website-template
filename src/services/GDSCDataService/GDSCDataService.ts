@@ -1,20 +1,36 @@
+import {
+  ABOUT_CLUB_SELECTOR,
+  CLUB_ORGANIZER_PHOTO_SELECTOR,
+  CLUB_ORGANIZER_PROFILE_SELECTOR,
+  CLUB_ORGANIZERS_SELECTOR,
+  CONFIG_PATH,
+  GDSC_COMMUNITY_BASE_URL,
+} from '../../common/CONSTANTS';
 import type { ContactMedia, TemplateConfig } from '../../common/types';
-import type { GDSCPastEvent, GDSCTeamMember, GDSCUpcomingEvent, IGDSCDataService } from './GDSCDataService.type';
+import { EventType, GDSCEvent, GDSCTeamMember, GetEvents, IGDSCDataService, RawEvent } from './GDSCDataService.type';
+import { CanNotFindClubIdError } from '../../errors/CanNotFindClubIdError';
 import { CouldNotFetchConfigError } from '../../errors/CouldNotFetchConfigError';
 import { CouldNotFetchDataError } from '../../errors/CouldNotFetchDataError';
+import { getRawEvents } from './getEvents';
 import { isDefined } from '../../common/utils/isDefined';
 import { isNullOrUndefined } from '../../common/utils/isNullOrUndefined';
+import { removeStyleFromElement } from '../../common/utils/removeStyleFromElement';
 import { UndefinedClubNameError } from '../../errors/UndefinedClubNameError';
+
+const PAGE_INCREMENT = 1;
 
 export class GDSCDataService implements IGDSCDataService {
   private gdscClubUrl: string | null = null;
+  private clubId: string | null = null;
   private clubName: string | null = null;
   private gdscData: Document | null = null;
   private contact: ContactMedia[] | null = null;
-  private upcomingEvents: GDSCUpcomingEvent[] | null = null;
-  private pastEvents: GDSCPastEvent[] | null = null;
+  private upcomingEvents: Map<number, GDSCEvent[]> = new Map<number, GDSCEvent[]>();
+  private pastEvents: Map<number, GDSCEvent[]> = new Map<number, GDSCEvent[]>();
   private organizers: GDSCTeamMember[] | null = null;
   private description: string | null = null;
+  private nextUpcomingEventsPage: number | null = PAGE_INCREMENT;
+  private nextPasEventsPage: number | null = PAGE_INCREMENT;
 
   private readonly configRequest: Promise<void>;
 
@@ -35,34 +51,54 @@ export class GDSCDataService implements IGDSCDataService {
     return this.clubName;
   }
 
-  public async getPastEvents(): Promise<GDSCPastEvent[]> {
-    if (isNullOrUndefined(this.gdscData)) {
-      await this.fetchRawData();
+  public async getPastEvents(page = this.nextPasEventsPage): Promise<GetEvents> {
+    if (isNullOrUndefined(page)) {
+      return { events: [], haveMoreEvents: false };
     }
-    if (isDefined(this.pastEvents)) {
-      return this.pastEvents;
+    const cashedEvents = this.pastEvents.get(page);
+    if (isDefined(cashedEvents)) {
+      this.nextPasEventsPage = page + PAGE_INCREMENT;
+      return {
+        events: cashedEvents,
+        haveMoreEvents: this.pastEvents.has(this.nextPasEventsPage),
+      };
     }
-    const rawPastEvents = this.gdscData?.querySelector('#past-events');
-    if (isNullOrUndefined(rawPastEvents)) {
-      return [];
+    if (isNullOrUndefined(this.clubId)) {
+      this.clubId = await this.getClubId();
     }
-    this.pastEvents = this.transformHtmlPastEventsToArrayOfEvents(rawPastEvents);
-    return this.pastEvents;
+    const pastEventsRes = await getRawEvents(this.clubId, EventType.COMPLETED, page);
+    const pastEvents = this.transformRawEventsToGDSCEvents(pastEventsRes.results);
+    this.pastEvents.set(page, pastEvents);
+    this.nextPasEventsPage = pastEventsRes.pagination.next_page;
+    return {
+      events: pastEvents,
+      haveMoreEvents: this.nextPasEventsPage !== null,
+    };
   }
 
-  public async getUpcomingEvents(): Promise<GDSCUpcomingEvent[]> {
-    if (isNullOrUndefined(this.gdscData)) {
-      await this.fetchRawData();
+  public async getUpcomingEvents(page = this.nextUpcomingEventsPage): Promise<GetEvents> {
+    if (isNullOrUndefined(page)) {
+      return { events: [], haveMoreEvents: false };
     }
-    if (isDefined(this.upcomingEvents)) {
-      return this.upcomingEvents;
+    const cashedEvents = this.upcomingEvents.get(page);
+    if (isDefined(cashedEvents)) {
+      this.nextUpcomingEventsPage = page + PAGE_INCREMENT;
+      return {
+        events: cashedEvents,
+        haveMoreEvents: this.upcomingEvents.has(this.nextUpcomingEventsPage),
+      };
     }
-    const rawUpcomingEvents = this.gdscData?.querySelector('#upcoming-events');
-    if (isNullOrUndefined(rawUpcomingEvents) || rawUpcomingEvents?.querySelector('strong')?.textContent?.includes('There are no upcoming events')) {
-      return [];
+    if (isNullOrUndefined(this.clubId)) {
+      this.clubId = await this.getClubId();
     }
-    this.upcomingEvents = this.transformHtmlUpcomingEventsToArrayOfEvents(rawUpcomingEvents);
-    return this.upcomingEvents;
+    const upcomingEventsRes = await getRawEvents(this.clubId, EventType.LIVE, page);
+    const upcomingEvents = this.transformRawEventsToGDSCEvents(upcomingEventsRes.results);
+    this.upcomingEvents.set(page, upcomingEvents);
+    this.nextUpcomingEventsPage = upcomingEventsRes.pagination.next_page;
+    return {
+      events: upcomingEvents,
+      haveMoreEvents: this.nextUpcomingEventsPage !== null,
+    };
   }
 
   public async getOrganizers(): Promise<GDSCTeamMember[]> {
@@ -72,11 +108,11 @@ export class GDSCDataService implements IGDSCDataService {
     if (isDefined(this.organizers)) {
       return this.organizers;
     }
-    const rawContacts = this.gdscData?.querySelector('#team-list');
+    const rawContacts = this.gdscData?.querySelector(CLUB_ORGANIZERS_SELECTOR);
     if (isNullOrUndefined(rawContacts)) {
       return [];
     }
-    this.organizers = this.transformHtmlOrganizersToArrayOfContacts(rawContacts);
+    this.organizers = await this.transformHtmlOrganizersToArrayOfContacts(rawContacts);
     return this.organizers;
   }
 
@@ -87,30 +123,41 @@ export class GDSCDataService implements IGDSCDataService {
     if (isDefined(this.description)) {
       return this.description;
     }
-    this.description = this.gdscData?.querySelector('#about .general-body')?.innerHTML ?? '';
+    const descriptionElement = this.gdscData?.querySelector(ABOUT_CLUB_SELECTOR);
+    if (isNullOrUndefined(descriptionElement)) {
+      return `<h2>NO DESCRIPTION</h2>`;
+    }
+    removeStyleFromElement(descriptionElement);
+    this.description = descriptionElement.innerHTML;
     return this.description;
-  }
-
-  public async fetchSinglePastEventDescription(eventUrl: string): Promise<string> {
-    const rawEvent = await fetch(eventUrl, { cache: 'force-cache' }).then((res) => {
-      return res.text();
-    });
-    const eventShortDescription = new DOMParser().parseFromString(rawEvent, 'text/html').querySelector('.event-short-description-on-banner');
-    return eventShortDescription?.textContent ?? 'This event does not have short description';
   }
 
   private async voidInitializeConfig(): Promise<void> {
     try {
-      const response = await fetch('https://raw.githubusercontent.com/kaczor6418/gdsc-website-template/master/assets/configs/config.json', {
+      const response = await fetch(CONFIG_PATH, {
         cache: 'force-cache',
       });
       const templateConfig = (await response.json()) as unknown as TemplateConfig;
       this.gdscClubUrl = templateConfig.gdscClubRootUrl;
       this.clubName = templateConfig.clubName;
+      this.clubId = templateConfig.clubId ?? null;
       this.contact = templateConfig.contact;
     } catch (e) {
       throw new CouldNotFetchConfigError(e as Error);
     }
+  }
+
+  private async getClubId(): Promise<string> {
+    if (this.clubId !== null) {
+      return this.clubId;
+    }
+    const rawPage = await this.fetchRawData();
+    const maybeClubId = rawPage.querySelector('form[chapterid]')?.getAttribute('chapterid');
+    if (isNullOrUndefined(maybeClubId)) {
+      throw new CanNotFindClubIdError();
+    }
+    this.clubId = maybeClubId;
+    return this.clubId;
   }
 
   private async fetchRawData(): Promise<Document> {
@@ -126,77 +173,61 @@ export class GDSCDataService implements IGDSCDataService {
     return this.gdscData;
   }
 
-  private transformHtmlPastEventsToArrayOfEvents(htmlEvents: Element): GDSCPastEvent[] {
-    const pastEvents: GDSCPastEvent[] = [];
-    const eventsTitles: string[] = [];
-    const eventsUrls: string[] = [];
-    for (const event of Array.from(htmlEvents.querySelectorAll('a'))) {
-      eventsTitles.push(event.title);
-      eventsUrls.push(event.href.replace(window.location.host, 'gdsc.community.dev'));
-    }
-    const eventsImagesUrls = Array.from(htmlEvents.querySelectorAll('img')).map((image) => {
-      return image.src;
-    });
-    const eventsDates = Array.from(htmlEvents.querySelectorAll('.vertical-box--event-date')).map((date) => {
-      return date.textContent?.trim() ?? 'NO DATE';
-    });
-    const eventsTypes = Array.from(htmlEvents.querySelectorAll('.vertical-box--event-type')).map((type) => {
-      return type.textContent?.trim();
-    });
-    for (let i = 0; i < eventsTitles.length; i++) {
+  private transformRawEventsToGDSCEvents(events: RawEvent[]): GDSCEvent[] {
+    const pastEvents: GDSCEvent[] = [];
+    for (const event of events) {
       pastEvents.push({
-        date: eventsDates[i],
-        imageUrl: eventsImagesUrls[i],
-        title: eventsTitles[i],
-        type: eventsTypes[i],
-        url: eventsUrls[i],
+        date: event.start_date,
+        description: event.description_short ?? event.description,
+        imageUrl: event.cropped_picture_url,
+        title: event.title,
+        type: event.event_type_title,
+        url: event.url,
       });
     }
     return pastEvents;
   }
 
-  private transformHtmlUpcomingEventsToArrayOfEvents(htmlEvents: Element): GDSCUpcomingEvent[] {
-    const upcomingEvents: GDSCUpcomingEvent[] = [];
-    const eventsTitles = Array.from(htmlEvents.querySelectorAll('h4')).map((title) => {
-      return title.textContent ?? 'NO TITLE';
-    });
-    const eventsImagesUrls = Array.from(htmlEvents.querySelectorAll('img')).map((image) => {
-      return image.src;
-    });
-    const eventsDates = Array.from(htmlEvents.querySelectorAll('strong')).map((date) => {
-      return date.textContent ?? 'NO DATE';
-    });
-    const eventsTypes = Array.from(htmlEvents.querySelectorAll('span')).map((type) => {
-      return type.textContent?.trim();
-    });
-    const eventsUrls = Array.from(htmlEvents.querySelectorAll('a')).map((eventUrl) => {
-      return eventUrl.href.replace(window.location.host, 'gdsc.community.dev');
-    });
-    const eventsDescriptions = Array.from(htmlEvents.querySelectorAll('p')).map((description) => {
-      return description.textContent ?? 'NO DESCRIPTION';
-    });
-    for (let i = 0; i < eventsTitles.length; i++) {
-      upcomingEvents.push({
-        date: eventsDates[i],
-        description: eventsDescriptions[i],
-        imageUrl: eventsImagesUrls[i],
-        title: eventsTitles[i],
-        type: eventsTypes[i],
-        url: eventsUrls[i],
+  private async transformHtmlOrganizersToArrayOfContacts(htmlOrganizers: Element): Promise<GDSCTeamMember[]> {
+    const teamMembers: GDSCTeamMember[] = [];
+    const organizersPhotos = htmlOrganizers.querySelectorAll(CLUB_ORGANIZER_PHOTO_SELECTOR);
+    const organizersProfiles = Array.from<HTMLAnchorElement>(htmlOrganizers.querySelectorAll(CLUB_ORGANIZER_PROFILE_SELECTOR));
+    const membersNames = await this.extractMembersData(organizersProfiles);
+    for (let idx = 0; idx < organizersPhotos.length; idx++) {
+      const photoEl = organizersPhotos[idx] as HTMLImageElement;
+      teamMembers.push({
+        avatar: photoEl.src ?? 'NO PHOTO',
+        name: membersNames[idx],
       });
     }
-    return upcomingEvents;
+    return teamMembers;
   }
 
-  private transformHtmlOrganizersToArrayOfContacts(htmlOrganizers: Element): GDSCTeamMember[] {
-    return Array.from(htmlOrganizers.querySelectorAll('.people-card')).map((contact) => {
-      // TODO(GH-3): make sure avatar name and title is required in core team member
-      const memberPhoto = contact.querySelector('img') as HTMLImageElement;
-      return {
-        avatar: memberPhoto.src,
-        name: memberPhoto.alt,
-        title: contact.querySelector('.people-card--title')?.textContent ?? 'NO TITLE',
-      };
-    });
+  private async extractMembersData(membersProfilesAnchors: HTMLAnchorElement[]): Promise<string[]> {
+    const profilesRes = await Promise.all(
+      membersProfilesAnchors
+        .map((anchor) => {
+          return anchor.href.replace(location.href, GDSC_COMMUNITY_BASE_URL);
+        })
+        .map((profileUrl) => {
+          return fetch(profileUrl);
+        })
+    );
+    const rawProfiles = await Promise.all(
+      profilesRes.map((res) => {
+        return res.text();
+      })
+    );
+    return rawProfiles
+      .map((rawProfile) => {
+        return new DOMParser().parseFromString(rawProfile, 'text/html');
+      })
+      .map((profile) => {
+        const profileTitle = profile.querySelector('head title')?.textContent;
+        if (isNullOrUndefined(profileTitle)) {
+          return 'NO NAME';
+        }
+        return profileTitle.split('|')[0].trim();
+      });
   }
 }
