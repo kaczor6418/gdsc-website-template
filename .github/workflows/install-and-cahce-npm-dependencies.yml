@@ -1,0 +1,26 @@
+name: Install and cache dependencies
+on: workflow_call
+jobs:
+  install_and_cache_npm_dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🏗️
+        uses: actions/checkout@v3
+
+      - name: Setup node 🦠
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Cache NPM dependencies 💾
+        uses: actions/cache@v3
+        id: cache-npm-packages
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies 🛠️
+        if: steps.cache-npm-packages.outputs.cache-hit != 'true'
+        run: npm ci
