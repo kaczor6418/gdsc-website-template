@@ -1,10 +1,10 @@
 import type { KKWebComponentHandler, KKWebComponentObservedAttributes } from './KKWebComponent.type';
-import { CONSTANTS } from '../../common/CONSTANTS';
+import { INITIAL_COMPONENT_ID } from '../../common/CONSTANTS';
 import { isDefined } from '../../common/utils/isDefined';
 import { isNullOrUndefined } from '../../common/utils/isNullOrUndefined';
 import { isObject } from '../../common/utils/isObject';
 
-let componentIdCounter = BigInt(CONSTANTS.INITIAL_COMPONENT_ID);
+let componentIdCounter = BigInt(INITIAL_COMPONENT_ID);
 
 export class KKWebComponent<T = unknown> extends HTMLElement implements KKWebComponentHandler<KKWebComponentObservedAttributes<T>> {
   public readonly _shadowRoot: ShadowRoot;
