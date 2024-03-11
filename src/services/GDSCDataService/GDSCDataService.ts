@@ -207,7 +207,7 @@ export class GDSCDataService implements IGDSCDataService {
     const profilesRes = await Promise.all(
       membersProfilesAnchors
         .map((anchor) => {
-          return anchor.href.replace(location.href, GDSC_COMMUNITY_BASE_URL);
+          return anchor.href.replace(location.origin, GDSC_COMMUNITY_BASE_URL);
         })
         .map((profileUrl) => {
           return fetch(profileUrl);
