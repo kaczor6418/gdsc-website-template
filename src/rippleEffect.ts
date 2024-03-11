@@ -1,4 +1,4 @@
-import { CONSTANTS } from './common/CONSTANTS';
+import { DEFAULT_RIPPLE_EFFECT_TIME } from './common/CONSTANTS';
 
 const style = `
 .ripple {
@@ -24,7 +24,7 @@ const style = `
 }
 `;
 
-export function rippleEffect(element: HTMLElement, e: MouseEvent, rippleEffectTimeMS = CONSTANTS.DEFAULT_RIPPLE_EFFECT_TIME): void {
+export function rippleEffect(element: HTMLElement, e: MouseEvent, rippleEffectTimeMS = DEFAULT_RIPPLE_EFFECT_TIME): void {
   const ripple = document.createElement('span');
   const styleWrapper = document.createElement('style');
   const { left, top, width, height } = element.getBoundingClientRect();

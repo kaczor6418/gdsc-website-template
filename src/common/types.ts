@@ -4,6 +4,8 @@ export interface TemplateConfig {
   gdscClubRootUrl: string;
   clubName: string;
   contact: ContactMedia[];
+
+  clubId?: string;
 }
 
 export interface ContactMedia {
@@ -23,5 +25,9 @@ export interface ClubMember {
 }
 
 export interface EventSpeaker extends ClubMember {
-  title: string;
+  title?: string;
+}
+
+export interface KKFetchResponse<T = Record<PropertyKey, unknown>> extends Response {
+  json(): Promise<T>;
 }
