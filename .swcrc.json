@@ -1,8 +1,6 @@
 {
   "test": ".*.ts$",
-  "exclude": [
-    ".*type.ts$"
-  ],
+  "exclude": [".*type.ts$"],
   "minify": true,
   "jsc": {
     "target": "es2021",

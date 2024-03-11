@@ -10,11 +10,7 @@
   "orientation": "natural",
   "theme_color": "#2d2d2d",
   "background_color": "#2d2d2d",
-  "categories": [
-    "education",
-    "blog",
-    "knowledge sharing"
-  ],
+  "categories": ["education", "blog", "knowledge sharing"],
   "icons": [
     {
       "src": "assets/homescreen/homescreen48.png",
@@ -58,6 +54,5 @@
       "type": "image/png",
       "purpose": "maskable any"
     }
-  ],
-
+  ]
 }
