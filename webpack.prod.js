@@ -37,7 +37,7 @@ export default merge(commonConfig, {
                   sequences: true,
                   switches: true,
                   unused: true,
-                  module: true
+                  module: true,
                 },
                 mangle: true,
               },

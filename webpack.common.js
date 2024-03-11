@@ -30,7 +30,7 @@ export default {
     new HTMLWebpackPlugin({
       filename: 'index.html',
       template: path.resolve('./index.html'),
-      scriptLoading: 'module'
+      scriptLoading: 'module',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -38,8 +38,8 @@ export default {
         { from: path.resolve('./style'), to: path.resolve('./dist/style') },
       ],
       options: {
-        concurrency: 50
-      }
+        concurrency: 50,
+      },
     }),
   ],
 };

@@ -12,7 +12,8 @@ svg {
   transition: all var(--default-duration) var(--ease-in-out-quint);
   will-change: filter, fill;
 }
-svg:hover, svg[data-selected="true"] {
+svg:hover,
+svg[data-selected='true'] {
   filter: drop-shadow(var(--shadow-around-level-0) var(--brand));
   fill: var(--brand);
 }
