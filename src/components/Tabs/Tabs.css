@@ -8,7 +8,7 @@
   align-items: stretch;
 }
 
-.tabs  kk-tab-indicator {
+.tabs kk-tab-indicator {
   position: absolute;
   z-index: 100;
   bottom: 0;
